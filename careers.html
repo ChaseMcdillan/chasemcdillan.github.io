@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Clevis Corporation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0e0e10;
+            --text-primary: #ffffff;
+            --text-secondary: #86868b;
+            --border-color: #222222;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter', sans-serif; padding: 80px 24px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 48px; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 40px; }
+        h2 { font-size: 24px; margin-top: 40px; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        p { color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px; }
+        .job-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; margin-bottom: 16px; }
+        .job-card h3 { font-size: 18px; margin-bottom: 6px; }
+        .job-tag { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #ff7b00; margin-bottom: 12px; }
+        .apply-input { width: 100%; padding: 14px; background: #111; border: 1px solid var(--border-color); color: #fff; border-radius: 6px; margin-bottom: 12px; outline: none; }
+        .btn { padding: 12px 24px; background: #fff; color: #000; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+        .home-nav { margin-bottom: 40px; display: block; color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="home-nav">&larr; Return to Core Portal</a>
+        <h1>Join the Architecture</h1>
+        <p>We build production models, computing environments, and complex graphic rendering systems from the ground up.</p>
+
+        <h2>Clevis Corporation Infrastructure Openings</h2>
+        <div class="job-card">
+            <span class="job-tag">Hardware Engineering</span>
+            <h3>Senior Kernel Systems Architect</h3>
+            <p>Design low-level memory handling protocols and power delivery arrays for upcoming LucasPhone variations.</p>
+        </div>
+        <div class="job-card">
+            <span class="job-tag">Firmware Development</span>
+            <h3>Telemetry Optimization Lead</h3>
+            <p>Scale processing paths on next-generation display matrices to limit interface rendering delays.</p>
+        </div>
+
+        <h2>Clevis Studios Simulation Openings</h2>
+        <div class="job-card">
+            <span class="job-tag">Graphics Software</span>
+            <h3>Lead Game Engine Specialist (Angry Arabs Branch)</h3>
+            <p>Develop rigid-body mechanical physics trees and continuous environmental asset compilation frameworks.</p>
+        </div>
+        <div class="job-card">
+            <span class="job-tag">Runtime Mechanics</span>
+            <h3>Interactive Systems Logic Engineer</h3>
+            <p>Debug algorithmic runtime parameters handling user inputs and real-time interface metrics scaling.</p>
+        </div>
+
+        <h2>Transmit Profile Signature</h2>
+        <form onsubmit="event.preventDefault(); alert('Profile packet transmission complete.');">
+            <input type="text" class="apply-input" placeholder="Full Candidate Signature Identification" required>
+            <input type="email" class="apply-input" placeholder="Secure Telemetry Email Route" required>
+            <button type="submit" class="btn">Transmit Credentials</button>
+        </form>
+    </div>
+
+</body>
+</html>
