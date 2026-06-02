@@ -3,21 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clevis Ecosystem - Smart Agriculture</title>
-    <!-- Google Fonts for Apple-like typography -->
+    <title>Clevis Corporation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #000000;
-            --bg-secondary: #161617;
-            --bg-elevated: #2d2d2e;
-            --text-primary: #f5f5f7;
+            --text-primary: #ffffff;
             --text-secondary: #86868b;
-            --accent-blue: #2997ff;
-            --accent-green: #30d158;
-            --border-color: #424245;
+            --accent-orange: #ff7b00;
             --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
@@ -27,1026 +22,129 @@
             padding: 0;
         }
 
-        body {
-            font-family: var(--font-stack);
+        body, html {
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            overflow-x: hidden;
+            font-family: var(--font-stack);
+            height: 100%;
+            overflow: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        a {
-            color: inherit;
+        /* TOP LEFT CORNER NAVIGATION LOGO */
+        .brand-header {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 1000;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .wheat-logo {
+            width: 16px;
+            height: 16px;
+            fill: var(--accent-orange);
+        }
+
+        .brand-name {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* GLOBAL NAV OVERLAY IN BOTTOM CORNER FOR ACCESSING THE ECOSYSTEM */
+        .portal-nav {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 32px;
+        }
+
+        .portal-link {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        /* NAVIGATION BAR & DROPDOWN HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(22, 22, 23, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 9999;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1024px;
-            margin: 0 auto;
-            height: 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 22px;
-        }
-
-        .nav-logo {
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.5px;
-            cursor: pointer;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            height: 100%;
-            align-items: center;
-        }
-
-        .nav-item {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
-
-        .nav-item:hover {
+        .portal-link:hover {
             color: var(--text-primary);
         }
 
-        /* Full Width Dropdown Panel */
-        .dropdown-panel {
-            position: absolute;
-            top: 48px;
-            left: 0;
-            width: 100%;
-            background-color: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-            padding: 40px 0;
-            z-index: 9998;
-        }
-
-        .nav-item:hover .dropdown-panel {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-content {
-            max-width: 1024px;
-            margin: 0 auto;
-            padding: 0 22px;
-            display: flex;
-            gap: 80px;
-        }
-
-        .dropdown-col h4 {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
-        }
-
-        .dropdown-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .dropdown-col ul li {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-primary);
-            cursor: pointer;
-        }
-
-        .dropdown-col ul li:hover {
-            color: var(--accent-blue);
-        }
-
-        .nav-auth-btn {
-            font-size: 12px;
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        /* MAIN CONTENT VIEWS ROUTER */
-        main {
-            margin-top: 48px;
-            min-height: calc(100vh - 48px);
-        }
-
-        .view-section {
-            display: none;
-        }
-
-        .view-section.active {
-            display: block;
-        }
-
-        /* HOME VIEW HEROES */
-        .hero-section {
-            height: 90vh;
+        /* HERO MATRIX CONTAINER */
+        .welcome-viewport {
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-size: cover;
-            background-position: center;
-            position: relative;
             padding: 20px;
+            user-select: none;
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-
-        .hero-section h1 {
-            font-size: 56px;
+        .main-heading {
+            font-size: 120px;
             font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 10px;
+            letter-spacing: -4px;
+            line-height: 1;
+            margin-bottom: 16px;
         }
 
-        .hero-section p {
-            font-size: 24px;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .btn-link {
-            font-size: 18px;
-            color: var(--accent-blue);
-            cursor: pointer;
-        }
-
-        .btn-link:hover {
-            text-decoration: underline;
-        }
-
-        /* HOME SUBGRID */
-        .home-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 12px;
-            background-color: #000;
-        }
-
-        @media (max-width: 768px) {
-            .home-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .grid-card {
-            height: 500px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 50px;
-            text-align: center;
-        }
-
-        .grid-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.3);
-        }
-
-        .grid-card-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .grid-card h3 {
+        .sub-heading {
             font-size: 32px;
-            font-weight: 600;
-        }
-
-        .grid-card p {
-            font-size: 16px;
-            color: #e8e8ed;
-            margin-top: 5px;
-            margin-bottom: 12px;
-        }
-
-        /* APPLE-STYLE BUY/CUSTOMIZE PAGE */
-        .buy-container {
-            max-width: 1024px;
-            margin: 0 auto;
-            padding: 60px 22px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .buy-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .buy-gallery {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
-        .buy-gallery img {
-            width: 100%;
-            border-radius: 18px;
-            object-fit: cover;
-            background-color: var(--bg-secondary);
-        }
-
-        .buy-options-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .buy-header h2 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .buy-price-tag {
-            font-size: 24px;
             font-weight: 400;
-            margin-top: 10px;
+            letter-spacing: -0.5px;
             color: var(--text-primary);
+            margin-bottom: 12px;
         }
 
-        .option-group-title {
+        .credit-heading {
             font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             color: var(--text-secondary);
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .option-selector-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .option-card {
-            border: 2px solid var(--border-color);
-            background-color: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 16px;
-            cursor: pointer;
-            text-align: center;
-            transition: border-color 0.2s ease;
-        }
-
-        .option-card.selected {
-            border-color: var(--accent-blue);
-            background-color: rgba(41, 151, 255, 0.05);
-        }
-
-        .option-card h5 {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .option-card p {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        /* FarmerPlus Premium Subscription Tier UI */
-        .premium-addon-box {
-            background: linear-gradient(135deg, #1e3c1a 0%, #112210 100%);
-            border: 1px solid var(--accent-green);
-            border-radius: 16px;
-            padding: 24px;
-            margin-top: 20px;
-        }
-
-        .premium-addon-box h4 {
-            font-size: 20px;
-            color: var(--accent-green);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .premium-addon-box p {
-            font-size: 13px;
-            color: #d1d1d6;
-            margin: 8px 0 16px;
-            line-height: 1.5;
-        }
-
-        /* TEXT / CONTENT INTENSE PAGES (LEGAL, CAREERS, MEMBER) */
-        .content-layout {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 80px 22px;
-        }
-
-        .content-layout h2 {
-            font-size: 48px;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-        }
-
-        .content-layout h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-
-        .content-layout p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #e8e8ed;
-            margin-bottom: 16px;
-        }
-
-        /* MODAL WINDOW SYSTEM (AUTH) */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 100000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            width: 100%;
-            max-width: 400px;
-            padding: 40px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: var(--text-secondary);
-            font-size: 20px;
-        }
-
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .auth-form input {
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            color: white;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-        }
-
-        .auth-form input:focus {
-            border-color: var(--accent-blue);
-        }
-
-        .auth-submit-btn {
-            background-color: var(--accent-blue);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .auth-toggle-mode {
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 16px;
-            cursor: pointer;
-        }
-
-        /* FOOTER SYSTEM */
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 60px 0 30px;
-            font-size: 12px;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-container {
-            max-width: 1024px;
-            margin: 0 auto;
-            padding: 0 22px;
-        }
-
-        .footer-links-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-links-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .footer-col h5 {
-            color: var(--text-primary);
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-col ul li {
-            cursor: pointer;
-        }
-
-        .footer-col ul li:hover {
-            color: var(--text-primary);
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
         }
     </style>
 </head>
 <body>
 
-    <!-- STICKY APPLE BAR & HOVER DROPDOWNS -->
-    <header>
-        <div class="nav-container">
-            <div class="nav-logo" onclick="navigateTo('home')">Clevis</div>
-            <ul class="nav-links">
-                <!-- Hardware Dropdown Context -->
-                <li class="nav-item">
-                    Hardware
-                    <div class="dropdown-panel">
-                        <div class="dropdown-content">
-                            <div class="dropdown-col">
-                                <h4>Ecosystem Flagships</h4>
-                                <ul>
-                                    <li onclick="navigateTo('buy', 'lucasphone')">LucasPhone Mini</li>
-                                    <li onclick="navigateTo('buy', 'cleviswatch')">ClevisWatch Ultra-Pro</li>
-                                    <li onclick="navigateTo('buy', 'clevistv')">ClevisTV Max</li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-col">
-                                <h4>Wearables & Infrastructure</h4>
-                                <ul>
-                                    <li onclick="navigateTo('buy', 'clevispods')">ClevisPods Pro</li>
-                                    <li onclick="navigateTo('buy', 'clevispad')">ClevisPad Crop-Edition</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <!-- Produce Dropdown Context -->
-                <li class="nav-item">
-                    Smart Produce
-                    <div class="dropdown-panel">
-                        <div class="dropdown-content">
-                            <div class="dropdown-col">
-                                <h4>Gen-2 BioTech Roots</h4>
-                                <ul>
-                                    <li onclick="navigateTo('buy', 'carrot')">Carrot 1</li>
-                                    <li onclick="navigateTo('buy', 'potato')">Potato II Custom</li>
-                                    <li onclick="navigateTo('buy', 'strawberry')">Strawberry Matrix</li>
-                                    <li onclick="navigateTo('buy', 'corn')">Corn Kernel Core</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item" onclick="navigateTo('farmerplus')">FarmerPlus</li>
-                <li class="nav-item" onclick="navigateTo('careers')">Careers</li>
-                <li class="nav-item" onclick="navigateTo('legal')">Legal</li>
-            </ul>
-            <div class="nav-auth-btn" onclick="openAuthModal()">Sign In</div>
-        </div>
+    <header class="brand-header">
+        <a href="index.html" class="logo-link">
+            <svg class="wheat-logo" viewBox="0 0 24 24">
+                <path d="M12,2C11.45,2 11,2.45 11,3C11,3.55 11.45,4 12,4C12.55,4 13,3.55 13,3C13,2.45 12.55,2 12,2M12,6C11.45,6 11,6.45 11,7C11,7.55 11.45,8 12,8C12.55,8 13,7.55 13,7C13,6.45 12.55,6 12,6M12,10C11.45,10 11,10.45 11,11C11,11.55 11.45,12 12,12C12.55,12 13,11.55 13,11C13,10.45 12.55,10 12,10M12,14C11.45,14 11,14.45 11,15C11,15.55 11.45,16 12,16C12.55,16 13,15.55 13,15C13,14.45 12.55,14 12,14M12,18C11.45,18 11,18.45 11,19C11,19.55 11.45,20 12,20C12.55,20 13,19.55 13,19C13,18.45 12.55,18 12,18Z"/>
+            </svg>
+            <span class="brand-name">Clevis</span>
+        </a>
     </header>
 
-    <!-- CONTENT ELEMENT VIEWPORTS ROUTED BY JAVASCRIPT -->
-    <main>
-        
-        <!-- HOME PAGE ROUTE VIEW -->
-        <div id="view-home" class="view-section active">
-            <!-- Hero Product Variant 1 -->
-            <section class="hero-section" style="background-image: url('https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=1600');">
-                <div class="hero-content">
-                    <h1>LucasPhone Mini</h1>
-                    <p>Pocket-sized processing. Field-ready connectivity.</p>
-                    <div class="hero-cta">
-                        <span class="btn-link" onclick="navigateTo('buy', 'lucasphone')">Configure and Buy &gt;</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Hero Product Variant 2 -->
-            <section class="hero-section" style="background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1600');">
-                <div class="hero-content">
-                    <h1>Potato II Custom</h1>
-                    <p>Engineered starch optimization. Zero mineral compromise.</p>
-                    <div class="hero-cta">
-                        <span class="btn-link" onclick="navigateTo('buy', 'potato')">Configure Crop &gt;</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Primary 4-Box Structural Subgrid -->
-            <div class="home-grid">
-                <div class="grid-card" style="background-image: url('https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=800');">
-                    <div class="grid-card-content">
-                        <h3>ClevisWatch Ultra-Pro</h3>
-                        <p>Soil metrics mapped direct to wrists.</p>
-                        <span class="btn-link" onclick="navigateTo('buy', 'cleviswatch')">Buy &gt;</span>
-                    </div>
-                </div>
-                <div class="grid-card" style="background-image: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800');">
-                    <div class="grid-card-content">
-                        <h3>ClevisTV Max</h3>
-                        <p>Thermal imagery dashboarding up to 8K resolutions.</p>
-                        <span class="btn-link" onclick="navigateTo('buy', 'clevistv')">Buy &gt;</span>
-                    </div>
-                </div>
-                <div class="grid-card" style="background-image: url('https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&q=80&w=800');">
-                    <div class="grid-card-content">
-                        <h3>Carrot 1</h3>
-                        <p>Beta-carotene optimization engines configured raw.</p>
-                        <span class="btn-link" onclick="navigateTo('buy', 'carrot')">Buy &gt;</span>
-                    </div>
-                </div>
-                <div class="grid-card" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=800');">
-                    <div class="grid-card-content">
-                        <h3>ClevisPods Pro</h3>
-                        <p>Active acoustic isolation filtering ambient harvest machinery sound.</p>
-                        <span class="btn-link" onclick="navigateTo('buy', 'clevispods')">Buy &gt;</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TRANSACTIONAL INTERACTIVE PRODUCT PURCHASE ROUTE VIEW -->
-        <div id="view-buy" class="view-section">
-            <div class="buy-container">
-                <div class="buy-gallery">
-                    <img id="product-buy-img" src="" alt="Dynamic Configuration View">
-                </div>
-                <div class="buy-options-panel">
-                    <div class="buy-header">
-                        <h2 id="product-buy-title">Product Name</h2>
-                        <div class="buy-price-tag" id="product-buy-price">$0.00</div>
-                    </div>
-
-                    <!-- Custom Finish Selector Structure -->
-                    <div>
-                        <div class="option-group-title">1. Choose Finish</div>
-                        <div class="option-selector-grid">
-                            <div class="option-card selected" onclick="selectOption(this, 'finish')">
-                                <h5>Harvest Gray</h5>
-                                <p>Anodized matte protection</p>
-                            </div>
-                            <div class="option-card" onclick="selectOption(this, 'finish')">
-                                <h5>Bio Green</h5>
-                                <p>Organic polymers coat</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Storage / Yield Spec Selection Layout -->
-                    <div>
-                        <div class="option-group-title">2. Choose Capacity / Allocation Tier</div>
-                        <div class="option-selector-grid">
-                            <div class="option-card selected" onclick="selectOption(this, 'capacity', 0)">
-                                <h5 id="cap-opt-1-title">Standard Grid</h5>
-                                <p id="cap-opt-1-desc">Base performance profiles</p>
-                            </div>
-                            <div class="option-card" onclick="selectOption(this, 'capacity', 1)">
-                                <h5 id="cap-opt-2-title">Enterprise Field</h5>
-                                <p id="cap-opt-2-desc">Uncapped operational bands</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FarmerPlus Integration Step -->
-                    <div class="premium-addon-box">
-                        <h4>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                            Add FarmerPlus Coverage
-                        </h4>
-                        <p>Unlock advanced analytics telemetry systems, overnight biometric node replacement privileges, and full hardware field repair protection grids.</p>
-                        <div class="option-selector-grid">
-                            <div class="option-card" id="farmerplus-addon-card" onclick="toggleFarmerPlusAddon()">
-                                <h5>FarmerPlus Included</h5>
-                                <p>+$29.99 / month</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="auth-submit-btn" style="margin-top: 20px;" onclick="alert('Order submitted successfully to configuration queue.')">Add to Field Deployment Bag</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- FARMERPLUS DETAILS ROUTE VIEW -->
-        <div id="view-farmerplus" class="view-section content-layout">
-            <h2>FarmerPlus Ecosystem Access</h2>
-            <p>The definitive subscription platform designed around modern smart cultivation. FarmerPlus acts as the operational bridge combining remote satellite processing vectors with real-time biometric tracking across your landscape infrastructure deployments.</p>
-            
-            <h3>Premium Benefits Framework</h3>
-            <p><strong>Predictive Metabolic Diagnostics:</strong> Early indicators mapped using array sensors flag trace element deficits up to seventy-two hours prior to leaf presentation.</p>
-            <p><strong>Expedited Hardware Swaps:</strong> Structural units down due to harsh field hazards are completely replaced within one processing day, minimizing data drop issues.</p>
-            <p><strong>Distributed Compute Pools:</strong> Offload local tracking arrays into core server stacks to parse millions of telemetry vectors instantly.</p>
-        </div>
-
-        <!-- EXPANDED CAREERS COMPONENT ROUTE VIEW -->
-        <div id="view-careers" class="view-section content-layout">
-            <h2>Join the Architecture of Tomorrow</h2>
-            <p>At Clevis, we create tools balancing deep technological infrastructure loops with sustainable, highly functional food systems. Our engineering, agronomy, and distribution networks are expanding quickly.</p>
-            
-            <h3>Active Field Deployments</h3>
-            <p><strong>Senior Systems Agronomist (Starch Infrastructure):</strong> Managing development tracks behind future Potato II custom configurations.</p>
-            <p><strong>Firmware Architecture Specialist:</strong> Writing execution structures for real-time node coordination on tracking rigs.</p>
-
-            <h3>Submit Core Profile</h3>
-            <form class="auth-form" onsubmit="event.preventDefault(); alert('Application cataloged to profile index.');">
-                <input type="text" placeholder="Full Legal Name" required>
-                <input type="email" placeholder="Email Contact Route" required>
-                <input type="text" placeholder="Target Field (e.g., Firmware, BioTech)" required>
-                <button type="submit" class="auth-submit-btn">Transmit Application</button>
-            </form>
-        </div>
-
-        <!-- DEEP LEGAL & COMPLIANCE ROUTE VIEW -->
-        <div id="view-legal" class="view-section content-layout">
-            <h2>Legal Framework and Directives</h2>
-            <p>Comprehensive tracking parameters, data storage practices, and intellectual seed management boundaries relating to operations with the Clevis Ecosystem.</p>
-            
-            <h3>1. Synthetic Seed Licensing Framework</h3>
-            <p>All genetic structural properties cataloged inside Carrot 1, Potato II Custom, and Corn Kernel Core systems remain proprietary properties under active structural patents. Purchasing individual products gives access for one commercial growing season. Reparsing or copying seed signatures without authentication is forbidden.</p>
-            
-            <h3>2. Data Collection Protections</h3>
-            <p>Telemetry channels logged via ClevisWatch Ultra-Pro sensors analyze chemical compounds, local soil contents, and environmental temperatures. This data helps optimize performance. Profiles are fully encrypted prior to server storage loops.</p>
-        </div>
-
+    <main class="welcome-viewport">
+        <h1 class="main-heading">HI</h1>
+        <h2 class="sub-heading">Welcome to the Clevis Ecosystem</h2>
+        <h3 class="credit-heading">by Chase McDillan</h3>
     </main>
 
-    <!-- SIGN IN SYSTEM MODAL (AUTHENTICATION LAYER) -->
-    <div class="modal-overlay" id="auth-modal">
-        <div class="modal-card">
-            <span class="modal-close" onclick="closeAuthModal()">&times;</span>
-            <h3 id="modal-title" style="font-size: 24px; font-weight:600; text-align:center;">Sign In to Clevis</h3>
-            <form class="auth-form" onsubmit="event.preventDefault(); handleAuthSuccess();">
-                <input type="email" placeholder="Apple ID or Clevis Profile Route" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit" class="auth-submit-btn" id="modal-submit-btn">Authenticate Account</button>
-            </form>
-            <div class="auth-toggle-mode" id="modal-toggle-text" onclick="toggleAuthMode()">New to the ecosystem? Create yours now.</div>
-        </div>
-    </div>
+    <nav class="portal-nav">
+        <a href="hardware.html" class="portal-link">Hardware</a>
+        <a href="games.html" class="portal-link">Games</a>
+        <a href="careers.html" class="portal-link">Careers</a>
+        <a href="legal.html" class="portal-link">Legal</a>
+    </nav>
 
-    <!-- CLEAN GRAPHIC APPLE FOOTER -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-links-grid">
-                <div class="footer-col">
-                    <h5>Explore Ecosystem</h5>
-                    <ul>
-                        <li onclick="navigateTo('buy', 'lucasphone')">LucasPhone Mini</li>
-                        <li onclick="navigateTo('buy', 'cleviswatch')">ClevisWatch Ultra-Pro</li>
-                        <li onclick="navigateTo('buy', 'clevistv')">ClevisTV Max</li>
-                        <li onclick="navigateTo('buy', 'clevispods')">ClevisPods Pro</li>
-                        <li onclick="navigateTo('buy', 'clevispad')">ClevisPad</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Bio-Tech Profiles</h5>
-                    <ul>
-                        <li onclick="navigateTo('buy', 'carrot')">Carrot 1</li>
-                        <li onclick="navigateTo('buy', 'potato')">Potato II Custom</li>
-                        <li onclick="navigateTo('buy', 'strawberry')">Strawberry Matrix</li>
-                        <li onclick="navigateTo('buy', 'corn')">Corn Kernel Core</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Premium Tiers</h5>
-                    <ul>
-                        <li onclick="navigateTo('farmerplus')">FarmerPlus Subscriptions</li>
-                        <li onclick="navigateTo('home')">Developer Field Kits</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Corporate Core</h5>
-                    <ul>
-                        <li onclick="navigateTo('careers')">Careers Opportunities</li>
-                        <li onclick="navigateTo('legal')">Legal Framework</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div>Copyright &copy; 2026 Clevis Ecosystem Inc. All rights reserved.</div>
-                <div style="display:flex; gap:16px;">
-                    <span style="cursor:pointer;" onclick="navigateTo('legal')">Privacy Guidelines</span>
-                    <span style="cursor:pointer;" onclick="navigateTo('legal')">Terms of Use</span>
-                    <span style="cursor:pointer;" onclick="navigateTo('legal')">Seed Licensing Agreements</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- INTERACTIVE CONFIGURATION & NAVIGATION JAVASCRIPT OBJECT ROUTER -->
-    <script>
-        // High-fidelity absolute image mapping to ensure clean loading paths across elements
-        const productDatabase = {
-            lucasphone: {
-                title: "LucasPhone Mini",
-                basePrice: 799,
-                img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "128GB Internal Array", price: 0 },
-                    { name: "512GB Enterprise Array", price: 150 }
-                ]
-            },
-            cleviswatch: {
-                title: "ClevisWatch Ultra-Pro",
-                basePrice: 449,
-                img: "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "41mm Cellular Mesh", price: 0 },
-                    { name: "45mm Full Field Link", price: 50 }
-                ]
-            },
-            clevistv: {
-                title: "ClevisTV Max",
-                basePrice: 1299,
-                img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "55-inch Matrix Screen", price: 0 },
-                    { name: "85-inch Harvester Panel", price: 400 }
-                ]
-            },
-            clevispods: {
-                title: "ClevisPods Pro",
-                basePrice: 249,
-                img: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "Standard Audio Node", price: 0 },
-                    { name: "High-Frequency Acoustic Shield", price: 40 }
-                ]
-            },
-            clevispad: {
-                title: "ClevisPad Crop-Edition",
-                basePrice: 899,
-                img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "Wi-Fi Telemetry Mode", price: 0 },
-                    { name: "Direct Satellite Array Link", price: 200 }
-                ]
-            },
-            carrot: {
-                title: "Carrot 1 (Starch Node)",
-                basePrice: 1.99,
-                img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "Single Core Bushel", price: 0 },
-                    { name: "Acre Custom Cultivation Run", price: 120 }
-                ]
-            },
-            potato: {
-                title: "Potato II Custom",
-                basePrice: 2.49,
-                img: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "Standard Bulk Batch", price: 0 },
-                    { name: "Premium Yield Clone Run", price: 150 }
-                ]
-            },
-            strawberry: {
-                title: "Strawberry Matrix",
-                basePrice: 4.99,
-                img: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "Standard Sweetness Index", price: 0 },
-                    { name: "Max Structural Starch Matrix", price: 80 }
-                ]
-            },
-            corn: {
-                title: "Corn Kernel Core",
-                basePrice: 3.49,
-                img: "https://images.unsplash.com/photo-1514517604298-cf80e0fb7f1e?auto=format&fit=crop&q=80&w=600",
-                caps: [
-                    { name: "Standard Stalk Run", price: 0 },
-                    { name: "Drought-Resilient Kernel Array", price: 190 }
-                ]
-            }
-        };
-
-        let currentActiveProduct = "lucasphone";
-        let capacityPricePremium = 0;
-        let isFarmerPlusPremiumActive = false;
-
-        // ROUTER CONTROL MECHANISM
-        function navigateTo(viewId, productId = null) {
-            // Drop view selectors out
-            document.querySelectorAll('.view-section').forEach(view => {
-                view.classList.remove('active');
-            });
-
-            const targetedViewElement = document.getElementById(`view-${viewId}`);
-            if (targetedViewElement) {
-                targetedViewElement.classList.add('active');
-                window.scrollTo(0, 0);
-            }
-
-            // Handle transaction customization data loads
-            if (viewId === 'buy' && productId && productDatabase[productId]) {
-                currentActiveProduct = productId;
-                capacityPricePremium = 0;
-                isFarmerPlusPremiumActive = false;
-                
-                const productMetaRecord = productDatabase[productId];
-                document.getElementById('product-buy-title').innerText = productMetaRecord.title;
-                document.getElementById('product-buy-img').src = productMetaRecord.img;
-                
-                // Set variant capacity descriptions
-                document.getElementById('cap-opt-1-title').innerText = productMetaRecord.caps[0].name;
-                document.getElementById('cap-opt-2-title').innerText = productMetaRecord.caps[1].name;
-                
-                // Clear state selection cards visual overrides
-                document.getElementById('farmerplus-addon-card').classList.remove('selected');
-                
-                refreshCalculatedPriceOutput();
-            }
-        }
-
-        // PRICE RECALCULATION ENGINE
-        function refreshCalculatedPriceOutput() {
-            const product = productDatabase[currentActiveProduct];
-            let aggregatePrice = product.basePrice + capacityPricePremium;
-            if (isFarmerPlusPremiumActive) {
-                aggregatePrice += 29.99;
-            }
-            
-            const displayValueString = product.basePrice < 10 
-                ? `$${aggregatePrice.toFixed(2)}` 
-                : `$${Math.floor(aggregatePrice).toLocaleString()}`;
-                
-            document.getElementById('product-buy-price').innerText = displayValueString;
-        }
-
-        // CARD INTERACTION HANDLING
-        function selectOption(element, category, capacityIndex = null) {
-            const siblings = element.parentElement.children;
-            for (let sibling of siblings) {
-                sibling.classList.remove('selected');
-            }
-            element.classList.add('selected');
-
-            if (category === 'capacity' && capacityIndex !== null) {
-                const product = productDatabase[currentActiveProduct];
-                capacityPricePremium = product.caps[capacityIndex].price;
-                refreshCalculatedPriceOutput();
-            }
-        }
-
-        function toggleFarmerPlusAddon() {
-            const card = document.getElementById('farmerplus-addon-card');
-            isFarmerPlusPremiumActive = !isFarmerPlusPremiumActive;
-            
-            if (isFarmerPlusPremiumActive) {
-                card.classList.add('selected');
-            } else {
-                card.classList.remove('selected');
-            }
-            refreshCalculatedPriceOutput();
-        }
-
-        // MODAL MANAGEMENT LOGIC
-        let authIsSignUpMode = false;
-
-        function openAuthModal() {
-            document.getElementById('auth-modal').classList.add('active');
-        }
-
-        function closeAuthModal() {
-            document.getElementById('auth-modal').classList.remove('active');
-        }
-
-        function toggleAuthMode() {
-            authIsSignUpMode = !authIsSignUpMode;
-            const title = document.getElementById('modal-title');
-            const button = document.getElementById('modal-submit-btn');
-            const toggle = document.getElementById('modal-toggle-text');
-
-            if (authIsSignUpMode) {
-                title.innerText = "Create Clevis Profile";
-                button.innerText = "Register Profile";
-                toggle.innerText = "Already have a node account? Sign in here.";
-            } else {
-                title.innerText = "Sign In to Clevis";
-                button.innerText = "Authenticate Account";
-                toggle.innerText = "New to the ecosystem? Create yours now.";
-            }
-        }
-
-        function handleAuthSuccess() {
-            alert(authIsSignUpMode ? 'Ecosystem authentication profile generated.' : 'Profile signature accepted.');
-            closeAuthModal();
-            document.querySelector('.nav-auth-btn').innerText = "Account";
-        }
-    </script>
 </body>
 </html>
