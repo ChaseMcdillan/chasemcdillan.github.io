@@ -38,7 +38,7 @@
             text-decoration: underline;
         }
 
-        /* Fake Apple Global Nav Bar */
+        /* Translucent Global Nav Bar */
         .nav-bar {
             position: fixed;
             top: 0;
@@ -97,7 +97,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 120px;
+            padding-top: 100px;
             text-align: center;
             overflow: hidden;
         }
@@ -113,38 +113,40 @@
         }
 
         .product-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 700;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 8px;
+            padding: 0 20px;
         }
 
         .product-sub {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
             font-weight: 400;
             letter-spacing: -0.01em;
             color: #86868b;
             margin-bottom: 18px;
+            padding: 0 20px;
         }
 
         .cta-links {
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
             display: flex;
             gap: 20px;
             z-index: 10;
+            margin-bottom: 20px;
         }
 
-        /* Simulated product graphics */
+        /* Product graphics placement */
         .product-visual {
             position: absolute;
             bottom: 0;
-            width: 80%;
-            max-width: 800px;
-            height: 45vh;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: bottom center;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
         }
 
         /* --- INDIVIDUAL SECTIONS --- */
@@ -168,69 +170,70 @@
             margin-bottom: 15px;
         }
 
-        /* 2. MacBook Leo (White Section variant) */
+        /* 2. ClevisBook Carrot (Light Apple Aesthetic) */
         .section-macbook {
             background-color: #fbfbfd;
             color: #1d1d1f;
         }
         .section-macbook .product-title { color: #1d1d1f; }
         .section-macbook .tagline { color: #bf4800; }
-        .section-macbook .visual-leo {
-            /* Minimalist geometric wireframe resembling a thin open laptop */
-            border-top: 6px solid #d2d2d7;
-            border-left: 6px solid #d2d2d7;
-            border-right: 6px solid #d2d2d7;
-            border-radius: 20px 20px 0 0;
-            background: linear-gradient(180deg, #e8e8ed 0%, #ffffff 100%);
-            box-shadow: 0px -20px 40px rgba(0,0,0,0.05);
+        
+        /* Laptop image container utilizing the fetched image resource */
+        .macbook-photo {
+            width: 100%;
+            max-width: 650px;
+            height: 100%;
+            background-image: url('https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSj-Db4a6rJomssvvQB3d01hvSEAyGOtwMq4W0uCdir50t-lrgk_xR_lOGB8SUGlCet0KGLBKNiyYQbiAs');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            mix-blend-mode: multiply; /* Blends white photo background smoothly into the page */
         }
 
-        /* 3. liePhone 67 */
+        /* 3. ClevisPhone Potato */
         .section-iphone {
             background-color: #000000;
         }
         .section-iphone .product-title {
-            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            background: linear-gradient(90deg, #b58900, #ffbb00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .section-iphone .visual-phone {
-            /* Sleek pill-shaped container sitting dynamically at the bottom */
-            border: 4px solid #222;
+        .visual-phone {
+            border: 4px solid #2d2d30;
             border-bottom: none;
             border-radius: 40px 40px 0 0;
-            background: linear-gradient(180deg, #111 0%, #000 100%);
-            width: 45%;
-            max-width: 380px;
-            height: 50vh;
+            background: linear-gradient(180deg, #1a1a1c 0%, #000000 100%);
+            width: 40%;
+            max-width: 340px;
+            height: 100%;
+            position: relative;
         }
-        .section-iphone .visual-phone::before {
-            /* Dynamic Island mimic */
+        .visual-phone::before {
             content: '';
             position: absolute;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 110px;
-            height: 30px;
-            background-color: #000;
+            width: 100px;
+            height: 25px;
+            background-color: #000000;
             border-radius: 20px;
         }
 
-        /* 4. dahPods */
+        /* 4. ClevisPods Farming Simulator XL */
         .section-pods {
             background-color: #000000;
-            background: radial-gradient(circle at center, #1c1c1e 0%, #000000 100%);
+            background: radial-gradient(circle at center, #1a231a 0%, #000000 100%);
         }
-        .section-pods .visual-pods {
-            /* Floating design elements */
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            width: 60%;
-            max-width: 500px;
-            height: 40vh;
+        .visual-pods {
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            width: 55%;
+            max-width: 480px;
+            height: 90%;
             border-radius: 30px 30px 0 0;
         }
     </style>
@@ -242,9 +245,9 @@
         <div class="nav-content">
             <span class="nav-logo">CM</span>
             <div class="nav-links">
-                <span onclick="document.getElementById('leo').scrollIntoView();">MacBook Leo</span>
-                <span onclick="document.getElementById('liephone').scrollIntoView();">liePhone 67</span>
-                <span onclick="document.getElementById('dahpods').scrollIntoView();">dahPods</span>
+                <span onclick="document.getElementById('carrot').scrollIntoView();">ClevisBook</span>
+                <span onclick="document.getElementById('potato').scrollIntoView();">ClevisPhone</span>
+                <span onclick="document.getElementById('pods').scrollIntoView();">ClevisPods</span>
             </div>
         </div>
     </nav>
@@ -255,38 +258,44 @@
         <p class="product-sub">My name is <span style="color: #fff; font-weight: 600;">Chase McDlilan</span></p>
     </section>
 
-    <!-- MacBook Leo Showcase (Clean White Apple Aesthetic) -->
-    <section id="leo" class="section section-macbook">
+    <!-- ClevisBook Carrot Section -->
+    <section id="carrot" class="section section-macbook">
         <p class="tagline">New</p>
-        <h2 class="product-title">MacBook Leo</h2>
-        <p class="product-sub">Mind-blowing performance. Strikingly thin.</p>
+        <h2 class="product-title">ClevisBook Carrot</h2>
+        <p class="product-sub">Unbelievably crunchy processing speed.</p>
         <div class="cta-links">
             <a href="#">Learn more &gt;</a>
             <a href="#">Buy &gt;</a>
         </div>
-        <div class="product-visual visual-leo"></div>
+        <div class="product-visual">
+            <div class="macbook-photo"></div>
+        </div>
     </section>
 
-    <!-- liePhone 67 Showcase (Sleek Pro Dark Aesthetic) -->
-    <section id="liephone" class="section section-iphone">
-        <h2 class="product-title">liePhone 67 Pro</h2>
-        <p class="product-sub">Titanium. So strong. So light. So elite.</p>
+    <!-- ClevisPhone Potato Section -->
+    <section id="potato" class="section section-iphone">
+        <h2 class="product-title">ClevisPhone Potato</h2>
+        <p class="product-sub">Grown from pure innovation. Starch contrast display.</p>
         <div class="cta-links">
             <a href="#">Learn more &gt;</a>
             <a href="#">Buy &gt;</a>
         </div>
-        <div class="product-visual visual-phone"></div>
+        <div class="product-visual">
+            <div class="visual-phone"></div>
+        </div>
     </section>
 
-    <!-- dahPods Showcase (Audio/Atmospheric Aesthetic) -->
-    <section id="dahpods" class="section section-pods">
-        <h2 class="product-title">dahPods Max</h2>
-        <p class="product-sub">Sound standard, completely reimagined.</p>
+    <!-- ClevisPods Massive Name Section -->
+    <section id="pods" class="section section-pods">
+        <h2 class="product-title">ClevisPods Farming Simulator 2x Antidisestablishmentarianisms Pro Max Mega Alpha Omega 4.8.5 inches</h2>
+        <p class="product-sub">Heavy agriculture soundscaping. Built for the fields.</p>
         <div class="cta-links">
             <a href="#">Learn more &gt;</a>
             <a href="#">Buy &gt;</a>
         </div>
-        <div class="product-visual visual-pods"></div>
+        <div class="product-visual">
+            <div class="visual-pods"></div>
+        </div>
     </section>
 
 </body>
