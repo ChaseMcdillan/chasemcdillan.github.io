@@ -239,16 +239,30 @@
 
     <script>
         const db = {
-            clevisphone: { title: "ClevisPhone", basePrice: 999, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=500", specs: { cpu: "12-Core", telemetry: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0 }, { name: "Satin Gold", p: 50 }], tiers: [{ name: "256GB Setup", p: 0 }, { name: "1TB Matrix", p: 300 }] },
-            lucasphone: { title: "LucasPhone Mini", basePrice: 799, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=500", specs: { cpu: "8-Core", telemetry: "450 Mbps" }, finishes: [{ name: "Matte Black", p: 0 }, { name: "Alabaster White", p: 0 }], tiers: [{ name: "128GB Base", p: 0 }, { name: "512GB Matrix", p: 180 }] },
-            clevisbook: { title: "ClevisBook Pro", basePrice: 1999, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=500", specs: { cpu: "24-Core Node", telemetry: "4.8 Gbps" }, finishes: [{ name: "Stellar Silver", p: 0 }, { name: "Deep Charcoal", p: 100 }], tiers: [{ name: "16-Inch Base", p: 0 }, { name: "16-Inch Extreme", p: 500 }] },
-            cleviswatch: { title: "ClevisWatch Ultra", basePrice: 449, img: "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=500", specs: { cpu: "3-Core Matrix", telemetry: "120 Mbps" }, finishes: [{ name: "Satin Titanium", p: 0 }, { name: "Onyx Carbon", p: 40 }], tiers: [{ name: "41mm Cluster", p: 0 }, { name: "45mm Array", p: 70 }] },
-            clevisbuds: { title: "ClevisBuds Spatial", basePrice: 249, img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=500", specs: { cpu: "H2 Acoustic", telemetry: "96 kHz HD" }, finishes: [{ name: "Ceramic Gloss", p: 0 }, { name: "Stealth Onyx", p: 20 }], tiers: [{ name: "Standard Node", p: 0 }, { name: "Pro Active Shield", p: 50 }] },
-            clevistv: { title: "ClevisTV Max", basePrice: 1299, img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=500", specs: { cpu: "16-Core Frame", telemetry: "2.4 Gbps" }, finishes: [{ name: "Brushed Metal", p: 0 }, { name: "Zero Frame", p: 0 }], tiers: [{ name: "55-inch Setup", p: 0 }, { name: "85-inch Canvas", p: 600 }] },
-            angryarabs: { title: "Angry Arabs", basePrice: 4.99, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=500", specs: { cpu: "Vector Matrix", telemetry: "Active Logs" }, finishes: [{ name: "Standard Code", p: 0 }, { name: "Dev Package", p: 15 }], tiers: [{ name: "Core Simulation", p: 0 }, { name: "Uncapped Vectors", p: 5 }] },
-            circleblast: { title: "Circle Blast", basePrice: 2.99, img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=500", specs: { cpu: "Geometry Core", telemetry: "120Hz Loop" }, finishes: [{ name: "Standard Build", p: 0 }, { name: "Collector Mesh", p: 3 }], tiers: [{ name: "Standard Grid", p: 0 }, { name: "Frame Buffer Uncapped", p: 4 }] },
-            calebsim: { title: "Caleb's Eating Sim", basePrice: 1.99, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=500", specs: { cpu: "Iteration Loop", telemetry: "Sync Active" }, finishes: [{ name: "Standard Profile", p: 0 }, { name: "Gold Skin Matrix", p: 2 }], tiers: [{ name: "Standard Run", p: 0 }, { name: "Deep Monitoring", p: 3 }] }
-        };
+            const db = {
+    clevisphone: { title: "ClevisPhone Series", desc: "Our hallmark computational communication matrices.", models: [
+        { name: "ClevisPhone Elite 4", price: 1199, specs: { cpu: "E14 Architecture", telemetry: "950 Mbps" }, finishes: [{ name: "Space Graphite", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }, { name: "Satin Gold", p: 50, img: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?auto=format&fit=crop&q=80&w=600" }] },
+        { name: "ClevisPhone Aura 4", price: 999, specs: { cpu: "Aura Silicon v4", telemetry: "850 Mbps" }, finishes: [{ name: "Aurora Blue", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
+        { name: "ClevisPhone Pure 2", price: 799, specs: { cpu: "Pure Node Gen2", telemetry: "700 Mbps" }, finishes: [{ name: "Ceramic Silver", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
+        { name: "Nebula A2 Flagship", price: 1299, specs: { cpu: "Nebula Quantum Core", telemetry: "1.2 Gbps" }, finishes: [{ name: "Cosmic Obsidian", p: 0, img: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?auto=format&fit=crop&q=80&w=600" }] }
+    ]},
+    lucasphone: { title: "LucasPhone Mini", desc: "Ultra-compact performance frameworks.", models: [
+        { name: "LucasPhone Mini", price: 699, specs: { cpu: "L1 Mini Core", telemetry: "500 Mbps" }, finishes: [{ name: "Matte Black", p: 0, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=600" }, { name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1565630916779-e303be97b6f5?auto=format&fit=crop&q=80&w=600" }] }
+    ]},
+    clevisbook: { title: "ClevisBook Frameworks", desc: "Desktop pipelines packed inside a forged architecture.", models: [
+        { name: "ClevisBook Nano 2", price: 1499, specs: { cpu: "N2 Efficient Node", telemetry: "2.4 Gbps" }, finishes: [{ name: "Stellar Silver", p: 0, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] },
+        { name: "ClevisBook Mega 1", price: 2499, specs: { cpu: "M1 Colossus Engine", telemetry: "9.6 Gbps" }, finishes: [{ name: "Deep Charcoal", p: 150, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] }
+    ]},
+    clevispad: { title: "ClevisPad Matrix", desc: "High-refresh mobile canvases optimized for design routing.", models: [
+        { name: "ClevisPad Thin", price: 899, specs: { cpu: "T1 Processing Slip", telemetry: "600 Mbps" }, finishes: [{ name: "Anodized Slate", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
+        { name: "ClevisPad 2", price: 1099, specs: { cpu: "Pro Core Gen2", telemetry: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
+        { name: "LucasPad Mini", price: 599, specs: { cpu: "L-Silicon Pad Node", telemetry: "400 Mbps" }, finishes: [{ name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] }
+    ]},
+    clevisvision: { title: "Clevis Vision Ecosystem", desc: "Spatial telemetry matrices mapping display steps.", models: [
+        { name: "Clevis Vision Pro", price: 3499, specs: { cpu: "Dual Spatial Engine", telemetry: "48 GB/s Bus" }, finishes: [{ name: "Solo Knit Band Titanium", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] },
+        { name: "Clevis Vision", price: 1999, specs: { cpu: "Standard Spatial Node", telemetry: "24 GB/s Bus" }, finishes: [{ name: "Lightweight Charcoal", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] }
+    ]}
+};
 
         let activeKey = "clevisphone", finishIdx = 0, tierIdx = 0;
 
