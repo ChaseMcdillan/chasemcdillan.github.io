@@ -14,228 +14,129 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; }
         header { position: fixed; top: 0; width: 100%; height: 48px; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-container { max-width: 1024px; margin: 0 auto; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 22px; }
-        .nav-logo { font-weight: 500; font-size: 14px; cursor: pointer; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .nav-logo { font-weight: 500; font-size: 14px; cursor: pointer; color: var(--text-primary); }
         .nav-links { display: flex; gap: 40px; list-style: none; }
-        .nav-item { font-size: 12px; color: var(--text-secondary); cursor: pointer; position: relative; padding: 15px 0; }
+        .nav-item { font-size: 12px; color: var(--text-secondary); cursor: pointer; padding: 15px 0; }
         .nav-item:hover { color: var(--text-primary); }
-        
-        .dropdown-panel { 
-            position: absolute; 
-            top: 48px; 
-            left: 50%; 
-            transform: translateX(-50%) translateY(-8px); 
-            width: 100vw; 
-            background: var(--bg-secondary); 
-            border-bottom: 1px solid var(--border-color); 
-            opacity: 0; 
-            visibility: hidden; 
-            padding: 30px; 
-            display: flex; 
-            justify-content: center; 
-            z-index: 9998; 
-            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
-        }
-        .nav-item:hover .dropdown-panel { 
-            opacity: 1; 
-            visibility: visible; 
-            transform: translateX(-50%) translateY(0); 
-        }
-        .dropdown-content { max-width: 1024px; width: 100%; display: grid; grid-template-columns: 1fr; }
-        .dropdown-col ul { list-style: none; display: flex; gap: 20px; }
-        .dropdown-col ul li { font-size: 14px; color: var(--text-primary); cursor: pointer; }
-        .dropdown-col ul li:hover { color: var(--accent-orange); }
         
         main { margin-top: 48px; }
         .view-section { display: none; }
         .view-section.active { display: block; }
         
-        .home-welcome-hero { 
-            height: calc(100vh - 48px); 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center;
-            opacity: 0;
-            animation: fadeInPage 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-        @keyframes fadeInPage {
-            to { opacity: 1; }
-        }
-        .home-welcome-hero h1 { font-size: 120px; font-weight: 700; letter-spacing: -5px; }
-        .home-welcome-hero h2 { font-size: 32px; font-weight: 400; margin-bottom: 10px; }
+        .home-welcome-hero { height: calc(100vh - 48px); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         
-        .home-strip-section { 
-            height: 60vh; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            padding: 40px; 
-            border-bottom: 1px solid var(--border-color); 
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .home-strip-section:hover {
-            transform: scale(1.015);
-        }
-        .home-strip-section h2 { font-size: 48px; font-weight: 700; }
-        .home-strip-section p { font-size: 18px; color: var(--text-secondary); margin: 12px 0 24px; max-width: 600px; }
+        .apple-buy-container { max-width: 1100px; margin: 0 auto; padding: 60px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .apple-media-sticky { position: sticky; top: 88px; background: #111112; border-radius: 22px; padding: 40px; min-height: 500px; display: flex; align-items: center; justify-content: center; }
+        .apple-device-frame { position: relative; width: 380px; height: 380px; }
+        .apple-device-frame img { position: absolute; max-width: 100%; opacity: 0; transition: opacity 0.4s ease; }
+        .apple-device-frame img.active { opacity: 1; }
         
-        .strip-cta { font-size: 16px; color: #ffffff; border-bottom: 1px solid #ffffff; cursor: pointer; padding-bottom: 2px; transition: opacity 0.3s ease, border-color 0.3s ease; }
-        .strip-cta:hover { opacity: 0.6; border-color: transparent; }
-        
-        .home-product-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 16px; }
-        @media(max-width: 768px) { .home-product-matrix { grid-template-columns: 1fr; } }
-        
-        .matrix-card { 
-            height: 450px; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            background-color: var(--bg-secondary); 
-            border-radius: 6px; 
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
-        }
-        .matrix-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-        }
-        .matrix-card h3 { font-size: 28px; }
-        .matrix-card p { font-size: 14px; color: var(--text-secondary); margin: 8px 0 18px; max-width: 80%; }
-        
-        /* APPLE INSPIRED INTERFACE CANVAS */
-        .apple-buy-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 22px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-        @media(max-width: 850px) { .apple-buy-container { grid-template-columns: 1fr; } }
-        
-        .apple-media-sticky {
-            position: sticky;
-            top: 88px;
-            height: fit-content;
-            background: #111112;
-            border-radius: 22px;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-        }
-        
-        .apple-device-frame {
-            position: relative;
-            width: 100%;
-            max-width: 380px;
-            height: 380px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .apple-device-frame img {
-            position: absolute;
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            opacity: 0;
-        }
-        .apple-device-frame img.active {
-            opacity: 1;
-        }
-        
-        .apple-swatch-row {
-            display: flex;
-            gap: 14px;
-            margin: 20px 0 35px;
-        }
-        .apple-dot {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            box-shadow: inset 0 0 0 2px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-        .apple-dot:hover { transform: scale(1.1); }
+        .apple-dot { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: transform 0.2s; }
         .apple-dot.selected { border-color: #ffffff; transform: scale(1.1); }
         
-        .apple-config-box {
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: transparent;
-            transition: border-color 0.3s, background 0.3s;
-        }
-        .apple-config-box:hover { border-color: #555; }
-        .apple-config-box.active { border-color: var(--accent-orange); background: rgba(255,123,0,0.03); }
-        
-        .text-layout-panel { max-width: 800px; margin: 0 auto; padding: 60px 22px; }
-        .text-layout-panel h2 { font-size: 36px; margin-bottom: 20px; }
-        .job-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 25px; border-radius: 12px; margin-bottom: 15px; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .job-card:hover { transform: translateY(-2px); border-color: #555; }
-        
-        footer { background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 30px 0; font-size: 12px; color: var(--text-secondary); }
-        .footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-        .footer-links { display: flex; gap: 20px; }
-        .footer-links a, .footer-links span { color: var(--text-secondary); text-decoration: none; cursor: pointer; }
-        .footer-links a:hover, .footer-links span:hover { color: var(--text-primary); }
+        .action-submit-btn { width: 100%; padding: 16px; background: #ffffff; color: #000000; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .job-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 25px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <div class="nav-logo" onclick="resetToHomeAndScrollTop()">Clevis Corporation</div>
+            <div class="nav-logo" onclick="location.reload()">Clevis Corporation</div>
             <ul class="nav-links">
-                <li class="nav-item">Hardware
-                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
-                        <li onclick="openConfigurator('clevisphone')">ClevisPhone</li>
-                        <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
-                        <li onclick="openConfigurator('clevisbook')">ClevisBook</li>
-                        <li onclick="openConfigurator('clevispad')">ClevisPad</li>
-                        <li onclick="openConfigurator('clevisvision')">Clevis Vision</li>
-                    </ul></div></div></div>
-                </li>
-                <li class="nav-item">Games
-                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
-                        <li onclick="openConfigurator('angryarabs')">Angry Arabs</li>
-                        <li onclick="openConfigurator('circleblast')">Circle Blast</li>
-                        <li onclick="openConfigurator('calebsim')">Caleb's Eating Sim</li>
-                    </ul></div></div></div>
-                </li>
+                <li class="nav-item" onclick="switchToPanel('home')">Hardware</li>
                 <li class="nav-item" onclick="switchToPanel('careers')">Careers</li>
-                <li class="nav-item" onclick="switchToPanel('legal')">Legal</li>
             </ul>
         </div>
     </header>
 
     <main>
         <div id="panel-home" class="view-section active">
-            <section class="home-welcome-hero"><h1>HI</h1><h2>Welcome to the Clevis Ecosystem</h2><p>by Chase McDillan</p></section>
-            
-            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1000');">
-                <h2>ClevisPhone</h2><p>Engineered with premium computational display architectures.</p>
-                <span class="strip-cta" onclick="openConfigurator('clevisphone')">Explore ClevisPhone Architecture &gt;</span>
-            </section>
+            <section class="home-welcome-hero"><h1>Clevis Ecosystem</h1></section>
+            <div style="max-width:800px; margin:0 auto; padding:40px;">
+                <div class="job-card" onclick="openConfigurator('clevisphone')"><h3>ClevisPhone Elite 4</h3><p>Configure Now</p></div>
+            </div>
+        </div>
 
-            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-159241781709
+        <div id="panel-buy" class="view-section">
+            <div id="discovery-sub-view" style="max-width:800px; margin:0 auto; padding:60px 22px;">
+                <h1 id="disc-brand-title"></h1>
+                <div id="disc-model-list" style="margin-top:30px;"></div>
+            </div>
+            
+            <div id="apple-purchase-view" class="apple-buy-container" style="display:none;">
+                <div class="apple-media-sticky">
+                    <div class="apple-device-frame" id="apple-frame-layer"></div>
+                </div>
+                <div>
+                    <h2 id="cfg-title"></h2>
+                    <div id="apple-swatch-container" style="display:flex; gap:15px; margin:20px 0;"></div>
+                    <button class="action-submit-btn" onclick="alert('Queued')">Purchase</button>
+                    <p style="margin-top:20px; cursor:pointer;" onclick="switchToPanel('home')">&lt; Back</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const db = {
+            clevisphone: { title: "ClevisPhone Series", models: [
+                { name: "ClevisPhone Elite 4", price: 1199, finishes: [
+                    { name: "Space Graphite", hex: "#2c2d30", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" },
+                    { name: "Satin Gold", hex: "#e3c79a", img: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?auto=format&fit=crop&q=80&w=600" }
+                ]}
+            ]}
+        };
+
+        function switchToPanel(id) {
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            document.getElementById(`panel-${id}`).classList.add('active');
+        }
+
+        function openConfigurator(key) {
+            switchToPanel('buy');
+            document.getElementById('discovery-sub-view').style.display = 'block';
+            document.getElementById('apple-purchase-view').style.display = 'none';
+            const data = db[key];
+            document.getElementById('disc-brand-title').innerText = data.title;
+            const list = document.getElementById('disc-model-list');
+            list.innerHTML = '';
+            data.models.forEach((m, i) => {
+                const div = document.createElement('div');
+                div.className = 'job-card';
+                div.innerHTML = `<h4>${m.name}</h4>`;
+                div.onclick = () => launchPurchase(m);
+                list.appendChild(div);
+            });
+        }
+
+        function launchPurchase(model) {
+            document.getElementById('discovery-sub-view').style.display = 'none';
+            document.getElementById('apple-purchase-view').style.display = 'grid';
+            document.getElementById('cfg-title').innerText = model.name;
+            
+            const frame = document.getElementById('apple-frame-layer');
+            const swatches = document.getElementById('apple-swatch-container');
+            frame.innerHTML = '';
+            swatches.innerHTML = '';
+            
+            model.finishes.forEach((fin, idx) => {
+                const img = document.createElement('img');
+                img.src = fin.img;
+                if(idx === 0) img.classList.add('active');
+                frame.appendChild(img);
+                
+                const dot = document.createElement('div');
+                dot.className = `apple-dot ${idx === 0 ? 'selected' : ''}`;
+                dot.style.backgroundColor = fin.hex;
+                dot.onclick = () => {
+                    document.querySelectorAll('.apple-dot').forEach(d => d.classList.remove('selected'));
+                    dot.classList.add('selected');
+                    frame.querySelectorAll('img').forEach((i, iIdx) => i.classList.toggle('active', iIdx === idx));
+                };
+                swatches.appendChild(dot);
+            });
+        }
+    </script>
+</body>
+</html>
