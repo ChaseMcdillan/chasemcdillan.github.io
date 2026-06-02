@@ -14,7 +14,21 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; }
         header { position: fixed; top: 0; width: 100%; height: 48px; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-container { max-width: 1024px; margin: 0 auto; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 22px; }
-        .nav-logo { font-weight: 500; font-size: 14px; cursor: pointer; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .nav-logo {
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo-image {
+    height: 28px;
+    width: auto;
+    display: block;
+}
         .nav-links { display: flex; gap: 40px; list-style: none; }
         .nav-item { font-size: 12px; color: var(--text-secondary); cursor: pointer; position: relative; padding: 15px 0; }
         .nav-item:hover { color: var(--text-primary); }
@@ -141,7 +155,10 @@
 
     <header>
         <div class="nav-container">
-            <div class="nav-logo" onclick="resetToHomeAndScrollTop()">Clevis Corporation</div>
+            <div class="nav-logo" onclick="resetToHomeAndScrollTop()">
+    <img src="images/clevis-logo.png" alt="Clevis Logo" class="nav-logo-image">
+    <span>Clevis Corporation</span>
+</div>
             <ul class="nav-links">
                 <li class="nav-item">Hardware
                     <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
