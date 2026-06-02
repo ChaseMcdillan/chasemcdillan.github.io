@@ -606,14 +606,17 @@
         .footer-links {
             display: flex;
             gap: 24px;
+            align-items: center;
         }
 
-        .footer-links span {
+        .footer-links span, .footer-links a {
             cursor: pointer;
             transition: color 0.2s ease;
+            color: var(--text-secondary);
+            text-decoration: none;
         }
 
-        .footer-links span:hover {
+        .footer-links span:hover, .footer-links a:hover {
             color: var(--text-primary);
         }
     </style>
@@ -635,8 +638,11 @@
                             <div class="dropdown-col">
                                 <h4>Compute Devices</h4>
                                 <ul>
+                                    <li onclick="openConfigurator('clevisphone')">ClevisPhone</li>
                                     <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
+                                    <li onclick="openConfigurator('clevisbook')">ClevisBook Pro</li>
                                     <li onclick="openConfigurator('cleviswatch')">ClevisWatch Ultra-Pro</li>
+                                    <li onclick="openConfigurator('clevisbuds')">ClevisBuds Spatial</li>
                                     <li onclick="openConfigurator('clevistv')">ClevisTV Max</li>
                                 </ul>
                             </div>
@@ -681,11 +687,25 @@
                 <p>by Chase McDillan</p>
             </section>
 
+            <!-- INFRASTRUCTURE PROFILE: CLEVISPHONE -->
+            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1400');">
+                <h2>ClevisPhone</h2>
+                <p>Our flagship architecture. Engineered with complete subsystem logic matrices and a premium dynamic computational display engine.</p>
+                <span class="strip-cta" onclick="openConfigurator('clevisphone')">Configure ClevisPhone Tier &gt;</span>
+            </section>
+
             <!-- INFRASTRUCTURE PROFILE: LUCASPHONE -->
             <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%), url('https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=1400');">
                 <h2>LucasPhone Mini</h2>
                 <p>Compact form layout packing advanced silicon arrays, architecture execution frames, and complete device memory processing modules.</p>
                 <span class="strip-cta" onclick="openConfigurator('lucasphone')">Configure Device Tier &gt;</span>
+            </section>
+
+            <!-- INFRASTRUCTURE PROFILE: CLEVISBOOK -->
+            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1400');">
+                <h2>ClevisBook Pro</h2>
+                <p>Uncapped desktop processing pipelines integrated directly into a hyper-thin forged aluminum chassis layout.</p>
+                <span class="strip-cta" onclick="openConfigurator('clevisbook')">Configure Workspace Engine &gt;</span>
             </section>
 
             <!-- INFRASTRUCTURE PROFILE: CLEVISTV -->
@@ -697,6 +717,11 @@
 
             <!-- SEGMENTED GRID ECOSYSTEM MATRIX -->
             <div class="home-product-matrix">
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%), url('https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=700');">
+                    <h3>ClevisBuds Spatial</h3>
+                    <p>Acoustic processing nodes providing low-latency telemetry synchronization directly to audio arrays.</p>
+                    <span class="strip-cta" onclick="openConfigurator('clevisbuds')">Configure Audio Array &gt;</span>
+                </div>
                 <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=700');">
                     <h3>Angry Arabs</h3>
                     <p>Physics engineering modules tracking multi-body mass calculations and collision vector data paths inside custom graphic shells.</p>
@@ -894,6 +919,7 @@
         <div class="footer-inner">
             <div>Copyright &copy; 2026 Clevis Corporation Inc. All operational parameters registered.</div>
             <div class="footer-links">
+                <a href="https://calebleung52.github.io" target="_blank">Meet Us</a>
                 <span onclick="switchToPanel('legal')">Data Terms</span>
                 <span onclick="switchToPanel('legal')">System Compliance</span>
             </div>
@@ -903,6 +929,21 @@
     <!-- HIGH-DENSITY DATA ARCHITECTURE AND INTERACTIVE ROUTING PLUGINS -->
     <script>
         const unifiedProductDatabase = {
+            clevisphone: {
+                brand: "Clevis Hardware Systems",
+                title: "ClevisPhone",
+                basePrice: 999,
+                img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "12-Core Silicon Engine", telemetry: "800 Mbps", io: "6.4 GB/s", therm: "Vapor Chamber Array" },
+                finishes: [
+                    { name: "Space Graphite", desc: "Micro-etched carbon protection layers", premium: 0 },
+                    { name: "Satin Gold", desc: "Molecular layer deposited metallic finish", premium: 50 }
+                ],
+                tiers: [
+                    { name: "256GB Baseline Setup", desc: "Standard production flash core storage", premium: 0 },
+                    { name: "1TB Extended Matrix", desc: "Max-capacity structural allocation unit", premium: 300 }
+                ]
+            },
             lucasphone: {
                 brand: "Clevis Hardware Systems",
                 title: "LucasPhone Mini",
@@ -918,6 +959,21 @@
                     { name: "512GB Extended Matrix", desc: "High-throughput operational space", premium: 180 }
                 ]
             },
+            clevisbook: {
+                brand: "Clevis Hardware Systems",
+                title: "ClevisBook Pro",
+                basePrice: 1999,
+                img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "24-Core Neural Node", telemetry: "4.8 Gbps", io: "32.4 GB/s", therm: "Dual-Outflow Exhaust" },
+                finishes: [
+                    { name: "Stellar Silver", desc: "Satin-blasted premium alloy framing", premium: 0 },
+                    { name: "Deep Charcoal", desc: "Oxidized dense diamond skin coat", premium: 100 }
+                ],
+                tiers: [
+                    { name: "16-Inch Baseline Setup", desc: "Standard computing block layout", premium: 0 },
+                    { name: "16-Inch Extreme Array", desc: "Fully-stacked vector parsing architecture", premium: 500 }
+                ]
+            },
             cleviswatch: {
                 brand: "Clevis Hardware Systems",
                 title: "ClevisWatch Ultra-Pro",
@@ -931,6 +987,21 @@
                 tiers: [
                     { name: "41mm Baseline Setup", desc: "Standard tracking density node", premium: 0 },
                     { name: "45mm Extended Matrix", desc: "Expanded display mesh array", premium: 70 }
+                ]
+            },
+            clevisbuds: {
+                brand: "Clevis Hardware Systems",
+                title: "ClevisBuds Spatial",
+                basePrice: 249,
+                img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "H2 Acoustic Node", telemetry: "96 kHz HD Audio", io: "Sub-5ms Sync", therm: "Passive Flow" },
+                finishes: [
+                    { name: "Ceramic Gloss", desc: "Ultra-smooth high-density polymer shell", premium: 0 },
+                    { name: "Stealth Onyx", desc: "Micro-textured tactical non-reflective finish", premium: 20 }
+                ],
+                tiers: [
+                    { name: "Standard Audio Node", desc: "Dynamic profile frequency driver", premium: 0 },
+                    { name: "Audiophile Active Shield", desc: "Includes real-time acoustic isolation engine", premium: 50 }
                 ]
             },
             clevistv: {
@@ -995,7 +1066,7 @@
             }
         };
 
-        let loadedKey = "lucasphone";
+        let loadedKey = "clevisphone";
         let activeFinishIndex = 0;
         let activeTierIndex = 0;
 
