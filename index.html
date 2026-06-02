@@ -2,86 +2,425 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Clevis Corporation | Unified Ecosystem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clevis Corporation Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #000; --text: #fff; --sub: #86868b; --accent: #ff7b00; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        :root {
+            --bg-primary: #000000; --bg-secondary: #161617; --text-primary: #ffffff;
+            --text-secondary: #86868b; --accent-orange: #ff7b00; --border-color: #333333;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; }
+        header { position: fixed; top: 0; width: 100%; height: 48px; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-container { max-width: 1024px; margin: 0 auto; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 22px; }
+        .nav-logo { font-weight: 500; font-size: 14px; cursor: pointer; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-item { font-size: 12px; color: var(--text-secondary); cursor: pointer; position: relative; padding: 15px 0; }
+        .nav-item:hover { color: var(--text-primary); }
         
-        /* Navigation */
-        nav { position: fixed; width: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); padding: 15px 40px; display: flex; gap: 30px; z-index: 1000; }
-        .nav-link { cursor: pointer; color: var(--sub); font-size: 13px; }
-        .nav-link:hover { color: var(--text); }
-
-        /* General Sections */
-        .section { min-height: 100vh; padding: 100px 40px; display: none; }
-        .section.active { display: block; }
-        h1 { font-size: 64px; }
-
-        /* Purchase Page Specifics */
-        .buy-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; }
-        .device-preview { height: 500px; background: #111; border-radius: 20px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .device-img { position: absolute; max-width: 80%; opacity: 0; transition: opacity 0.3s; }
-        .device-img.active { opacity: 1; }
-        .swatch { width: 30px; height: 30px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; }
-        .swatch.active { border-color: #fff; }
+        .dropdown-panel { 
+            position: absolute; 
+            top: 48px; 
+            left: 50%; 
+            transform: translateX(-50%) translateY(-8px); 
+            width: 100vw; 
+            background: var(--bg-secondary); 
+            border-bottom: 1px solid var(--border-color); 
+            opacity: 0; 
+            visibility: hidden; 
+            padding: 30px; 
+            display: flex; 
+            justify-content: center; 
+            z-index: 9998; 
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+        }
+        .nav-item:hover .dropdown-panel { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+        .dropdown-content { max-width: 1024px; width: 100%; display: grid; grid-template-columns: 1fr; }
+        .dropdown-col ul { list-style: none; display: flex; gap: 20px; }
+        .dropdown-col ul li { font-size: 14px; color: var(--text-primary); cursor: pointer; }
+        .dropdown-col ul li:hover { color: var(--accent-orange); }
+        
+        main { margin-top: 48px; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+        
+        .home-welcome-hero { 
+            height: calc(100vh - 48px); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+            opacity: 0;
+            animation: fadeInPage 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        @keyframes fadeInPage {
+            to { opacity: 1; }
+        }
+        .home-welcome-hero h1 { font-size: 120px; font-weight: 700; letter-spacing: -5px; }
+        .home-welcome-hero h2 { font-size: 32px; font-weight: 400; margin-bottom: 10px; }
+        
+        .home-strip-section { 
+            height: 60vh; 
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 40px; 
+            border-bottom: 1px solid var(--border-color); 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .home-strip-section:hover {
+            transform: scale(1.015);
+        }
+        .home-strip-section h2 { font-size: 48px; font-weight: 700; }
+        .home-strip-section p { font-size: 18px; color: var(--text-secondary); margin: 12px 0 24px; max-width: 600px; }
+        
+        .strip-cta { font-size: 16px; color: #ffffff; border-bottom: 1px solid #ffffff; cursor: pointer; padding-bottom: 2px; transition: opacity 0.3s ease, border-color 0.3s ease; }
+        .strip-cta:hover { opacity: 0.6; border-color: transparent; }
+        
+        .home-product-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 16px; }
+        @media(max-width: 768px) { .home-product-matrix { grid-template-columns: 1fr; } }
+        
+        .matrix-card { 
+            height: 450px; 
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            background-color: var(--bg-secondary); 
+            border-radius: 6px; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+        }
+        .matrix-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+        .matrix-card h3 { font-size: 28px; }
+        .matrix-card p { font-size: 14px; color: var(--text-secondary); margin: 8px 0 18px; max-width: 80%; }
+        
+        .config-container { max-width: 1000px; margin: 0 auto; padding: 60px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        @media(max-width: 768px) { .config-container { grid-template-columns: 1fr; } }
+        .config-gallery img { width: 100%; border-radius: 8px; background: var(--bg-secondary); }
+        .tech-spec-badge-box { background: var(--bg-secondary); padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid var(--border-color); }
+        .tech-spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; }
+        .config-details h2 { font-size: 36px; font-weight: 700; }
+        .config-price { font-size: 24px; margin: 10px 0 30px; color: var(--accent-orange); }
+        .config-group { margin-bottom: 30px; }
+        
+        .selection-box { border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; display: flex; justify-content: space-between; margin-bottom: 10px; cursor: pointer; background: transparent; transition: border-color 0.3s ease, background 0.3s ease; }
+        .selection-box.active { border-color: var(--accent-orange); background: rgba(255,123,0,0.05); }
+        
+        .action-submit-btn { width: 100%; padding: 16px; background: var(--text-primary); color: var(--bg-primary); border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s ease, color 0.3s ease; }
+        .action-submit-btn:hover { background: var(--accent-orange); color: #ffffff; }
+        
+        .text-layout-panel { max-width: 800px; margin: 0 auto; padding: 60px 22px; }
+        .text-layout-panel h2 { font-size: 36px; margin-bottom: 20px; }
+        .job-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 15px; transition: transform 0.3s ease; }
+        .job-card:hover { transform: translateY(-2px); border-color: #555; }
+        
+        footer { background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 30px 0; font-size: 12px; color: var(--text-secondary); }
+        .footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a, .footer-links span { color: var(--text-secondary); text-decoration: none; cursor: pointer; }
+        .footer-links a:hover, .footer-links span:hover { color: var(--text-primary); }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="nav-link" onclick="show('home')">Home</div>
-    <div class="nav-link" onclick="show('buy')">Store</div>
-    <div class="nav-link" onclick="show('profile')">Profile</div>
-    <div class="nav-link" onclick="show('legal')">Legal</div>
-</nav>
-
-<div id="home" class="section active">
-    <h1>Welcome to Clevis.</h1>
-    <p>The total integrated hardware and software environment.</p>
-</div>
-
-<div id="buy" class="section">
-    <h1>Purchase.</h1>
-    <div class="buy-container">
-        <div class="device-preview" id="preview">
-            <!-- Simulated Hardware Assets -->
-            <img src="https://via.placeholder.com/300x500/333/fff?text=Graphite+Device" class="device-img active" id="img-0">
-            <img src="https://via.placeholder.com/300x500/aaa/000?text=Silver+Device" class="device-img" id="img-1">
+    <header>
+        <div class="nav-container">
+            <div class="nav-logo" onclick="resetToHomeAndScrollTop()">Clevis Corporation</div>
+            <ul class="nav-links">
+                <li class="nav-item">Hardware
+                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
+                        <li onclick="openConfigurator('clevisphone')">ClevisPhone</li>
+                        <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
+                        <li onclick="openConfigurator('clevisbook')">ClevisBook</li>
+                        <li onclick="openConfigurator('clevispad')">ClevisPad</li>
+                        <li onclick="openConfigurator('clevisvision')">Clevis Vision</li>
+                    </ul></div></div></div>
+                </li>
+                <li class="nav-item">Games
+                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
+                        <li onclick="openConfigurator('angryarabs')">Angry Arabs</li>
+                        <li onclick="openConfigurator('circleblast')">Circle Blast</li>
+                        <li onclick="openConfigurator('calebsim')">Caleb's Eating Sim</li>
+                    </ul></div></div></div>
+                </li>
+                <li class="nav-item" onclick="switchToPanel('careers')">Careers</li>
+                <li class="nav-item" onclick="switchToPanel('legal')">Legal</li>
+            </ul>
         </div>
-        <div>
-            <h3>Pick your colour.</h3>
-            <div style="display:flex; gap:10px; margin-bottom:40px;">
-                <div class="swatch active" style="background:#333;" onclick="switchColor(0, this)"></div>
-                <div class="swatch" style="background:#aaa;" onclick="switchColor(1, this)"></div>
+    </header>
+
+    <main>
+        <div id="panel-home" class="view-section active">
+            <section class="home-welcome-hero"><h1>HI</h1><h2>Welcome to the Clevis Ecosystem</h2><p>by Chase McDillan</p></section>
+            
+            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1000');">
+                <h2>ClevisPhone</h2><p>Engineered with premium computational display architectures.</p>
+                <span class="strip-cta" onclick="openConfigurator('clevisphone')">Explore ClevisPhone Architecture &gt;</span>
+            </section>
+
+            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=1000');">
+                <h2>LucasPhone Mini</h2><p>Compact layouts packing advanced execution silicon matrices.</p>
+                <span class="strip-cta" onclick="openConfigurator('lucasphone')">Explore LucasPhone Framework &gt;</span>
+            </section>
+
+            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000');">
+                <h2>ClevisBook Pro</h2><p>Uncapped desktop pipelines packed inside a forged aluminum framework.</p>
+                <span class="strip-cta" onclick="openConfigurator('clevisbook')">Explore Compute Line &gt;</span>
+            </section>
+
+            <div class="home-product-matrix">
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600');">
+                    <h3>ClevisPad Studio</h3><p>High-refresh canvases optimized for visual telemetry routing workflows.</p>
+                    <span class="strip-cta" onclick="openConfigurator('clevispad')">Explore Displays &gt;</span>
+                </div>
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600');">
+                    <h3>Clevis Vision Spatial</h3><p>Unmatched volumetric spatial telemetry computing nodes.</p>
+                    <span class="strip-cta" onclick="openConfigurator('clevisvision')">Explore Spatial Gear &gt;</span>
+                </div>
             </div>
-            <button onclick="alert('Added to cart')">Add to Bag</button>
         </div>
-    </div>
-</div>
 
-<div id="profile" class="section">
-    <h1>Caleb Leung.</h1>
-    <p>Design Architect & Lead Technologist.</p>
-</div>
+        <div id="panel-buy" class="view-section">
+            <div id="discovery-sub-view" style="max-width:800px; margin:0 auto; padding:60px 22px;">
+                <h1 id="disc-brand-title" style="font-size:48px; font-weight:700; margin-bottom:10px;"></h1>
+                <p id="disc-brand-desc" style="color:var(--text-secondary); font-size:18px; margin-bottom:40px;"></p>
+                <h3 style="font-size:14px; text-transform:uppercase; color:var(--text-secondary); margin-bottom:15px; letter-spacing:1px;">Select Variant Base</h3>
+                <div id="disc-model-list" style="display:flex; flex-direction:column; gap:12px; margin-bottom:40px;"></div>
+            </div>
+            
+            <div id="apple-purchase-view" style="display:none;" class="config-container">
+                <div class="config-gallery">
+                    <img id="cfg-img" src="" alt="Premium Device Display" style="transition:transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);">
+                    <div class="tech-spec-badge-box">
+                        <div class="tech-spec-grid">
+                            <div><b id="spec-cpu"></b><br><span style="color:var(--text-secondary)">Compute Node</span></div>
+                            <div><b id="spec-bw"></b><br><span style="color:var(--text-secondary)">Telemetry Bus</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="config-details">
+                    <span style="font-size:12px; font-weight:600; text-transform:uppercase; color:var(--accent-orange); letter-spacing:1px;">Configure Premium Finish</span>
+                    <h2 id="cfg-title" style="margin:5px 0 15px;">Product Matrix</h2>
+                    
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:16px; border-radius:8px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <h4 style="font-size:14px;">FarmerPlus Subscription Matrix</h4>
+                            <p style="font-size:12px; color:var(--text-secondary);">Apply global 10% architectural member discount.</p>
+                        </div>
+                        <input type="checkbox" id="farmer-plus-toggle" style="width:20px; height:20px; accent-color:var(--accent-orange); cursor:pointer;" onchange="toggleFarmerPlusMatrix()">
+                    </div>
 
-<div id="legal" class="section">
-    <h1>Legal.</h1>
-    <p>Terms of service and ecosystem compliance policies.</p>
-</div>
+                    <div class="config-group">
+                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Select Style Matrix Option</label>
+                        <div id="apple-color-swatches" style="display:flex; flex-direction:column; gap:10px;"></div>
+                    </div>
+                    <div class="config-group">
+                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Memory Substrate Tiers</label>
+                        <div class="selection-box active"><div><h4>Unified Runtime Matrix Profile</h4></div><div>Included</div></div>
+                    </div>
+                    <div class="config-price" id="cfg-price" style="font-size:32px; font-weight:700; color:#fff; margin-bottom:20px;">$0.00</div>
+                    <button class="action-submit-btn" onclick="triggerCheckoutLog()">Queue to Build Matrix</button>
+                    <button class="strip-cta" style="background:none; border:none; margin-top:20px; display:block;" onclick="backToDiscoveryView()"> &lt; Back to System Variants</button>
+                </div>
+            </div>
+        </div>
 
-<script>
-    function show(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-    }
+        <div id="panel-careers" class="view-section">
+            <div class="home-welcome-hero" style="height:100vh; margin-top:-48px;">
+                <h1 style="font-size:120px; font-weight:700; letter-spacing:-5px;">Hello</h1>
+                <h2 style="font-size:32px; font-weight:400; color:var(--text-secondary);">I am Caleb Leung</h2>
+                <p style="font-size:14px; color:var(--accent-orange); text-transform:uppercase; letter-spacing:2px; margin-top:15px;">Photographer & Tech Designer Matrix</p>
+            </div>
+            <div style="max-width:800px; margin:0 auto; padding:100px 22px; border-top:1px solid var(--border-color);">
+                <h2 style="font-size:48px; font-weight:700; margin-bottom:30px;">Structuring Visual Substrates</h2>
+                <p style="font-size:18px; line-height:1.6; color:var(--text-secondary); margin-bottom:40px;">
+                    Operating at the interface of hardware architecture design and high-frequency light capture telemetry loops. My profile targets the removal of clutter inside modern user configurations, implementing deep minimalist system paths.
+                </p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:60px;">
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
+                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Aperture Engineering</h4>
+                        <p style="font-size:13px; color:var(--text-secondary)">High-contrast dynamic exposure monitoring vectors.</p>
+                    </div>
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
+                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Interface Substrates</h4>
+                        <p style="font-size:13px; color:var(--text-secondary)">Minimal code-footprint user response frameworks.</p>
+                    </div>
+                </div>
+                <button class="action-submit-btn" onclick="window.open('https://calebleung52.github.io', '_blank')" style="background:#fff; color:#000;">Learn More</button>
+            </div>
+        </div>
 
-    function switchColor(idx, el) {
-        document.querySelectorAll('.device-img').forEach(img => img.classList.remove('active'));
-        document.querySelectorAll('.swatch').forEach(sw => sw.classList.remove('active'));
-        document.getElementById('img-' + idx).classList.add('active');
-        el.classList.add('active');
-    }
-</script>
+        <div id="view-legal" class="view-section text-layout-panel">
+            <h2>Legal Framework</h2>
+            <p>All component processing options and device configurations are subject to systemic updates managed by Chase McDillan.</p>
+        </div>
+    </main>
 
+    <footer>
+        <div class="footer-inner">
+            <div>&copy; 2026 Clevis Corporation.</div>
+            <div class="footer-links">
+                <a href="https://calebleung52.github.io" target="_blank">Meet Us</a>
+                <span onclick="switchToPanel('legal')">Data Terms</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const db = {
+            clevisphone: { title: "ClevisPhone Series", desc: "Our hallmark computational communication matrices.", models: [
+                { name: "ClevisPhone Elite 4", price: 1199, specs: { cpu: "E14 Architecture", telemetry: "950 Mbps" }, finishes: [{ name: "Space Graphite", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }, { name: "Satin Gold", p: 50, img: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisPhone Aura 4", price: 999, specs: { cpu: "Aura Silicon v4", telemetry: "850 Mbps" }, finishes: [{ name: "Aurora Blue", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisPhone Pure 2", price: 799, specs: { cpu: "Pure Node Gen2", telemetry: "700 Mbps" }, finishes: [{ name: "Ceramic Silver", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "Nebula A2 Flagship", price: 1299, specs: { cpu: "Nebula Quantum Core", telemetry: "1.2 Gbps" }, finishes: [{ name: "Cosmic Obsidian", p: 0, img: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            lucasphone: { title: "LucasPhone Mini", desc: "Ultra-compact performance frameworks.", models: [
+                { name: "LucasPhone Mini", price: 699, specs: { cpu: "L1 Mini Core", telemetry: "500 Mbps" }, finishes: [{ name: "Matte Black", p: 0, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=600" }, { name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1565630916779-e303be97b6f5?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            clevisbook: { title: "ClevisBook Frameworks", desc: "Desktop processing pipelines packed inside a forged design matrix.", models: [
+                { name: "ClevisBook Nano 2", price: 1499, specs: { cpu: "N2 Efficient Node", telemetry: "2.4 Gbps" }, finishes: [{ name: "Stellar Silver", p: 0, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisBook Mega 1", price: 2499, specs: { cpu: "M1 Colossus Engine", telemetry: "9.6 Gbps" }, finishes: [{ name: "Deep Charcoal", p: 150, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            clevispad: { title: "ClevisPad Matrix", desc: "High-refresh mobile canvases optimized for system design.", models: [
+                { name: "ClevisPad Thin", price: 899, specs: { cpu: "T1 Engine", telemetry: "600 Mbps" }, finishes: [{ name: "Anodized Slate", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisPad 2", price: 1099, specs: { cpu: "Pro Core Gen2", telemetry: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "LucasPad Mini", price: 599, specs: { cpu: "L-Silicon Pad Node", telemetry: "400 Mbps" }, finishes: [{ name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            clevisvision: { title: "Clevis Vision Ecosystem", desc: "Spatial telemetry matrices mapping real-world display metrics.", models: [
+                { name: "Clevis Vision Pro", price: 3499, specs: { cpu: "Dual Spatial Node", telemetry: "48 GB/s Bus" }, finishes: [{ name: "Solo Knit Band Titanium", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "Clevis Vision", price: 1999, specs: { cpu: "Standard Spatial Core", telemetry: "24 GB/s Bus" }, finishes: [{ name: "Lightweight Charcoal", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            angryarabs: { title: "Angry Arabs", desc: "Clevis Studios simulation engine distribution build.", models: [
+                { name: "Standard Simulation Engine", price: 4.99, specs: { cpu: "Vector Matrix", telemetry: "Active Logs" }, finishes: [{ name: "Digital Build Profile", p: 0, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=500" }] }
+            ]},
+            circleblast: { title: "Circle Blast", desc: "High-refresh layout rendering engine loops.", models: [
+                { name: "Standard Runtime Build", price: 2.99, specs: { cpu: "Geometry Core", telemetry: "120Hz Loop" }, finishes: [{ name: "Standard Matrix Pack", p: 0, img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=500" }] }
+            ]},
+            calebsim: { title: "Caleb's Eating Sim", desc: "Ultra-minimal tracking logic engine setup.", models: [
+                { name: "Standard Simulator Distribution", price: 1.99, specs: { cpu: "Iteration Loop", telemetry: "Sync Active" }, finishes: [{ name: "Core Setup Profile", p: 0, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=500" }] }
+            ]}
+        };
+
+        let currentModelArray = [];
+        let chosenModelIdx = 0;
+        let finishIdx = 0;
+        let isFarmerPlusApplied = false;
+
+        function openConfigurator(key) {
+            switchToPanel('buy');
+            const dataRoot = db[key] || { title: key.toUpperCase(), desc: "Custom configuration deployment.", models: [] };
+            document.getElementById('disc-brand-title').innerText = dataRoot.title;
+            document.getElementById('disc-brand-desc').innerText = dataRoot.desc;
+            
+            backToDiscoveryView();
+            currentModelArray = dataRoot.models;
+            
+            const listContainer = document.getElementById('disc-model-list');
+            listContainer.innerHTML = '';
+            
+            currentModelArray.forEach((model, index) => {
+                const card = document.createElement('div');
+                card.className = 'job-card';
+                card.style.cssText = 'cursor:pointer; display:flex; justify-content:space-between; align-items:center;';
+                card.innerHTML = `<div><h4 style="font-size:18px;">${model.name}</h4><p style="font-size:12px; color:var(--text-secondary)">Base Platform Profile</p></div><div style="font-size:18px; font-weight:600; color:var(--accent-orange);">$${model.price}</div>`;
+                card.onclick = () => launchApplePurchaseInterface(index);
+                listContainer.appendChild(card);
+            });
+        }
+
+        function launchApplePurchaseInterface(modelIdx) {
+            chosenModelIdx = modelIdx;
+            finishIdx = 0;
+            document.getElementById('discovery-sub-view').style.display = 'none';
+            document.getElementById('apple-purchase-view').style.display = 'grid';
+            
+            const item = currentModelArray[modelIdx];
+            document.getElementById('cfg-title').innerText = item.name;
+            document.getElementById('spec-cpu').innerText = item.specs.cpu;
+            document.getElementById('spec-bw').innerText = item.specs.telemetry;
+            
+            const swatchBox = document.getElementById('apple-color-swatches');
+            swatchBox.innerHTML = '';
+            item.finishes.forEach((fin, idx) => {
+                const opt = document.createElement('div');
+                opt.className = `selection-box ${idx === 0 ? 'active' : ''}`;
+                opt.id = `apple-fin-${idx}`;
+                opt.innerHTML = `<div><h4>${fin.name}</h4></div><div>${fin.p === 0 ? 'Standard' : '+$'+fin.p}</div>`;
+                opt.onclick = () => selectAppleColorTrack(idx);
+                swatchBox.appendChild(opt);
+            });
+            
+            updateAppleMediaLayout();
+        }
+
+        function selectAppleColorTrack(idx) {
+            finishIdx = idx;
+            currentModelArray[chosenModelIdx].finishes.forEach((_, i) => {
+                const element = document.getElementById(`apple-fin-${i}`);
+                if(element) element.classList.toggle('active', i === idx);
+            });
+            updateAppleMediaLayout();
+        }
+
+        function updateAppleMediaLayout() {
+            const item = currentModelArray[chosenModelIdx];
+            const activeFinishObj = item.finishes[finishIdx];
+            const imgElement = document.getElementById('cfg-img');
+            imgElement.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                imgElement.src = activeFinishObj.img;
+                imgElement.style.transform = 'scale(1)';
+            }, 200);
+            
+            let finalPrice = item.price + activeFinishObj.p;
+            if (isFarmerPlusApplied) finalPrice *= 0.90;
+            
+            document.getElementById('cfg-price').innerText = item.price < 15 ? `$${finalPrice.toFixed(2)}` : `$${Math.floor(finalPrice).toLocaleString()}`;
+        }
+
+        function toggleFarmerPlusMatrix() {
+            isFarmerPlusApplied = document.getElementById('farmer-plus-toggle').checked;
+            updateAppleMediaLayout();
+        }
+
+        function backToDiscoveryView() {
+            document.getElementById('discovery-sub-view').style.display = 'block';
+            document.getElementById('apple-purchase-view').style.display = 'none';
+            document.getElementById('farmer-plus-toggle').checked = false;
+            isFarmerPlusApplied = false;
+        }
+
+        function switchToPanel(id) {
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            document.getElementById(id === 'legal' ? 'view-legal' : `panel-${id}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function resetToHomeAndScrollTop() {
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            document.getElementById('panel-home').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function triggerCheckoutLog() {
+            alert(`Configuration complete for ${currentModelArray[chosenModelIdx].name}. Pipeline successfully queued into building matrix.`);
+        }
+    </script>
 </body>
 </html>
