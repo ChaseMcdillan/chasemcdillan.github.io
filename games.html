@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clevis Studios - Entertainment Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0c0c0d;
+            --text-primary: #ffffff;
+            --text-secondary: #86868b;
+            --accent-orange: #ff7b00;
+            --border-color: #1c1c1e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter', sans-serif; }
+        
+        header { position: fixed; top: 0; width: 100%; height: 48px; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); z-index: 9999; border-bottom: 1px solid var(--border-color); }
+        .nav-container { max-width: 1024px; margin: 0 auto; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+        .studios-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; font-size: 12px; text-transform: uppercase; font-weight: 600; }
+        
+        /* BOX BOUNDED WHEAT ICON FOR CLEVIS STUDIOS BRANDING */
+        .logo-box { border: 1.5px solid var(--accent-orange); padding: 3px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+        .logo-box svg { width: 12px; height: 12px; fill: var(--accent-orange); }
+
+        .nav-links { display: flex; gap: 32px; list-style: none; height: 100%; align-items: center; }
+        .nav-item { font-size: 12px; color: var(--text-secondary); cursor: pointer; text-decoration: none; }
+        .nav-item:hover { color: var(--text-primary); }
+
+        main { margin-top: 48px; padding-bottom: 100px; }
+        .hero-banner { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); border-bottom: 1px solid var(--border-color); }
+        .hero-banner h1 { font-size: 64px; font-weight: 700; letter-spacing: -3px; }
+        .hero-banner p { color: var(--text-secondary); font-size: 20px; margin-top: 12px; }
+
+        .games-showcase { max-width: 1024px; margin: 80px auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .game-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; transition: transform 0.3s ease; }
+        .game-card:hover { transform: translateY(-4px); }
+        .game-thumb { height: 220px; background-size: cover; background-position: center; }
+        .game-meta { padding: 24px; }
+        .game-meta h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .game-meta p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px; }
+        .play-btn { display: inline-block; padding: 8px 18px; background: #fff; color: #000; border-radius: 20px; font-size: 12px; font-weight: 600; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="studios-logo">
+                <div class="logo-box">
+                    <svg viewBox="0 0 24 24"><path d="M12,2C11.45,2 11,2.45 11,3C11,3.55 11.45,4 12,4C12.55,4 13,3.55 13,3C13,2.45 12.55,2 12,2Z"/></svg>
+                </div>
+                Clevis Studios
+            </a>
+            <ul class="nav-links">
+                <a href="hardware.html" class="nav-item">Hardware</a>
+                <a href="games.html" class="nav-item" style="color: #fff;">Games</a>
+                <a href="careers.html" class="nav-item">Careers</a>
+                <a href="legal.html" class="nav-item">Legal</a>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-banner">
+            <h1>Interactive Simulation Engines</h1>
+            <p>High-fidelity software design frameworks by Clevis Studios.</p>
+        </div>
+
+        <section class="games-showcase">
+            <div class="game-card">
+                <div class="game-thumb" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="game-meta">
+                    <h3>Angry Arabs</h3>
+                    <p>Physics-guided structural deconstruction algorithms compiled for real-time mobile graphics rendering.</p>
+                    <a href="#" class="play-btn" onclick="alert('Launching Application Module...')">Execute Title</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumb" style="background-image: url('https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="game-meta">
+                    <h3>Circle Blast</h3>
+                    <p>Vector geometric collision simulations operating completely inside localized high-refresh frame buffers.</p>
+                    <a href="#" class="play-btn" onclick="alert('Launching Application Module...')">Execute Title</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumb" style="background-image: url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=500');"></div>
+                <div class="game-meta">
+                    <h3>Caleb's Eating Sim</h3>
+                    <p>Dynamic consumption metrics and resource depletion state engines running on custom multi-threaded logical paths.</p>
+                    <a href="#" class="play-btn" onclick="alert('Launching Application Module...')">Execute Title</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
