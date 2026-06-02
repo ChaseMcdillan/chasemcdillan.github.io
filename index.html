@@ -18,7 +18,8 @@
         .nav-links { display: flex; gap: 40px; list-style: none; }
         .nav-item { font-size: 12px; color: var(--text-secondary); cursor: pointer; position: relative; padding: 15px 0; }
         .nav-item:hover { color: var(--text-primary); }
-.dropdown-panel { 
+        
+        .dropdown-panel { 
             position: absolute; 
             top: 48px; 
             left: 50%; 
@@ -43,9 +44,11 @@
         .dropdown-col ul { list-style: none; display: flex; gap: 20px; }
         .dropdown-col ul li { font-size: 14px; color: var(--text-primary); cursor: pointer; }
         .dropdown-col ul li:hover { color: var(--accent-orange); }
+        
         main { margin-top: 48px; }
         .view-section { display: none; }
         .view-section.active { display: block; }
+        
         .home-welcome-hero { 
             height: calc(100vh - 48px); 
             display: flex; 
@@ -56,12 +59,13 @@
             opacity: 0;
             animation: fadeInPage 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
-        .home-welcome-hero h1 { font-size: 120px; font-weight: 700; letter-spacing: -5px; }
         @keyframes fadeInPage {
             to { opacity: 1; }
         }
+        .home-welcome-hero h1 { font-size: 120px; font-weight: 700; letter-spacing: -5px; }
         .home-welcome-hero h2 { font-size: 32px; font-weight: 400; margin-bottom: 10px; }
-    .home-strip-section { 
+        
+        .home-strip-section { 
             height: 60vh; 
             background-size: cover; 
             background-position: center; 
@@ -74,12 +78,19 @@
             border-bottom: 1px solid var(--border-color); 
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
+        .home-strip-section:hover {
+            transform: scale(1.015);
+        }
         .home-strip-section h2 { font-size: 48px; font-weight: 700; }
         .home-strip-section p { font-size: 18px; color: var(--text-secondary); margin: 12px 0 24px; max-width: 600px; }
-        .strip-cta { font-size: 16px; color: #ffffff; border-bottom: 1px solid #ffffff; cursor: pointer; padding-bottom: 2px; }
+        
+        .strip-cta { font-size: 16px; color: #ffffff; border-bottom: 1px solid #ffffff; cursor: pointer; padding-bottom: 2px; transition: opacity 0.3s ease, border-color 0.3s ease; }
+        .strip-cta:hover { opacity: 0.6; border-color: transparent; }
+        
         .home-product-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 16px; }
         @media(max-width: 768px) { .home-product-matrix { grid-template-columns: 1fr; } }
-      .matrix-card { 
+        
+        .matrix-card { 
             height: 450px; 
             background-size: cover; 
             background-position: center; 
@@ -98,6 +109,7 @@
         }
         .matrix-card h3 { font-size: 28px; }
         .matrix-card p { font-size: 14px; color: var(--text-secondary); margin: 8px 0 18px; max-width: 80%; }
+        
         .config-container { max-width: 1000px; margin: 0 auto; padding: 60px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         @media(max-width: 768px) { .config-container { grid-template-columns: 1fr; } }
         .config-gallery img { width: 100%; border-radius: 8px; background: var(--bg-secondary); }
@@ -106,13 +118,18 @@
         .config-details h2 { font-size: 36px; font-weight: 700; }
         .config-price { font-size: 24px; margin: 10px 0 30px; color: var(--accent-orange); }
         .config-group { margin-bottom: 30px; }
-        .selection-box { border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; display: flex; justify-content: space-between; margin-bottom: 10px; cursor: pointer; }
+        
+        .selection-box { border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; display: flex; justify-content: space-between; margin-bottom: 10px; cursor: pointer; background: transparent; transition: border-color 0.3s ease, background 0.3s ease; }
         .selection-box.active { border-color: var(--accent-orange); background: rgba(255,123,0,0.05); }
-        .action-submit-btn { width: 100%; padding: 16px; background: var(--text-primary); color: var(--bg-primary); border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        
+        .action-submit-btn { width: 100%; padding: 16px; background: var(--text-primary); color: var(--bg-primary); border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s ease, color 0.3s ease; }
+        .action-submit-btn:hover { background: var(--accent-orange); color: #ffffff; }
+        
         .text-layout-panel { max-width: 800px; margin: 0 auto; padding: 60px 22px; }
         .text-layout-panel h2 { font-size: 36px; margin-bottom: 20px; }
-        .job-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 15px; }
-        .careers-input, .careers-select { width: 100%; padding: 12px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: #fff; border-radius: 6px; margin-bottom: 15px; }
+        .job-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 15px; transition: transform 0.3s ease; }
+        .job-card:hover { transform: translateY(-2px); border-color: #555; }
+        
         footer { background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 30px 0; font-size: 12px; color: var(--text-secondary); }
         .footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
         .footer-links { display: flex; gap: 20px; }
@@ -130,10 +147,9 @@
                     <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
                         <li onclick="openConfigurator('clevisphone')">ClevisPhone</li>
                         <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
-                        <li onclick="openConfigurator('clevisbook')">ClevisBook Pro</li>
-                        <li onclick="openConfigurator('cleviswatch')">ClevisWatch</li>
-                        <li onclick="openConfigurator('clevisbuds')">ClevisBuds</li>
-                        <li onclick="openConfigurator('clevistv')">ClevisTV Max</li>
+                        <li onclick="openConfigurator('clevisbook')">ClevisBook</li>
+                        <li onclick="openConfigurator('clevispad')">ClevisPad</li>
+                        <li onclick="openConfigurator('clevisvision')">Clevis Vision</li>
                     </ul></div></div></div>
                 </li>
                 <li class="nav-item">Games
@@ -155,35 +171,42 @@
             
             <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1000');">
                 <h2>ClevisPhone</h2><p>Engineered with premium computational display architectures.</p>
-                <span class="strip-cta" onclick="openConfigurator('clevisphone')">Configure ClevisPhone &gt;</span>
+                <span class="strip-cta" onclick="openConfigurator('clevisphone')">Explore ClevisPhone Architecture &gt;</span>
             </section>
 
             <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=1000');">
                 <h2>LucasPhone Mini</h2><p>Compact layouts packing advanced execution silicon matrices.</p>
-                <span class="strip-cta" onclick="openConfigurator('lucasphone')">Configure Device &gt;</span>
+                <span class="strip-cta" onclick="openConfigurator('lucasphone')">Explore LucasPhone Framework &gt;</span>
             </section>
 
             <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000');">
                 <h2>ClevisBook Pro</h2><p>Uncapped desktop pipelines packed inside a forged aluminum framework.</p>
-                <span class="strip-cta" onclick="openConfigurator('clevisbook')">Configure Workspace &gt;</span>
+                <span class="strip-cta" onclick="openConfigurator('clevisbook')">Explore Compute Line &gt;</span>
             </section>
 
             <div class="home-product-matrix">
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=600');">
-                    <h3>ClevisBuds Spatial</h3><p>Acoustic processing frameworks with low-latency audio logging.</p>
-                    <span class="strip-cta" onclick="openConfigurator('clevisbuds')">Configure Audio Array &gt;</span>
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600');">
+                    <h3>ClevisPad Studio</h3><p>High-refresh canvases optimized for visual telemetry routing workflows.</p>
+                    <span class="strip-cta" onclick="openConfigurator('clevispad')">Explore Displays &gt;</span>
                 </div>
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=600');">
-                    <h3>ClevisWatch Ultra</h3><p>Wrist telemetry nodes generating continuous health metrics data paths.</p>
-                    <span class="strip-cta" onclick="openConfigurator('cleviswatch')">Configure Telemetry &gt;</span>
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600');">
+                    <h3>Clevis Vision Spatial</h3><p>Unmatched volumetric spatial telemetry computing nodes.</p>
+                    <span class="strip-cta" onclick="openConfigurator('clevisvision')">Explore Spatial Gear &gt;</span>
                 </div>
             </div>
         </div>
 
         <div id="panel-buy" class="view-section">
-            <div class="config-container">
+            <div id="discovery-sub-view" style="max-width:800px; margin:0 auto; padding:60px 22px;">
+                <h1 id="disc-brand-title" style="font-size:48px; font-weight:700; margin-bottom:10px;"></h1>
+                <p id="disc-brand-desc" style="color:var(--text-secondary); font-size:18px; margin-bottom:40px;"></p>
+                <h3 style="font-size:14px; text-transform:uppercase; color:var(--text-secondary); margin-bottom:15px; letter-spacing:1px;">Select Variant Base</h3>
+                <div id="disc-model-list" style="display:flex; flex-direction:column; gap:12px; margin-bottom:40px;"></div>
+            </div>
+            
+            <div id="apple-purchase-view" style="display:none;" class="config-container">
                 <div class="config-gallery">
-                    <img id="cfg-img" src="" alt="Render">
+                    <img id="cfg-img" src="" alt="Premium Device Display" style="transition:transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);">
                     <div class="tech-spec-badge-box">
                         <div class="tech-spec-grid">
                             <div><b id="spec-cpu"></b><br><span style="color:var(--text-secondary)">Compute Node</span></div>
@@ -192,38 +215,60 @@
                     </div>
                 </div>
                 <div class="config-details">
-                    <h2 id="cfg-title">Product</h2>
-                    <div class="config-price" id="cfg-price">$0.00</div>
+                    <span style="font-size:12px; font-weight:600; text-transform:uppercase; color:var(--accent-orange); letter-spacing:1px;">Configure Premium Finish</span>
+                    <h2 id="cfg-title" style="margin:5px 0 15px;">Product Matrix</h2>
+                    
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:16px; border-radius:8px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <h4 style="font-size:14px;">FarmerPlus Subscription Matrix</h4>
+                            <p style="font-size:12px; color:var(--text-secondary);">Apply global 10% architectural member discount.</p>
+                        </div>
+                        <input type="checkbox" id="farmer-plus-toggle" style="width:20px; height:20px; accent-color:var(--accent-orange); cursor:pointer;" onchange="toggleFarmerPlusMatrix()">
+                    </div>
+
                     <div class="config-group">
-                        <div class="selection-box active" id="finish-opt-0" onclick="selectFinishOption(0)">
-                            <div><h4 id="finish-title-0">Standard Style</h4></div><div>Base</div>
-                        </div>
-                        <div class="selection-box" id="finish-opt-1" onclick="selectFinishOption(1)">
-                            <div><h4 id="finish-title-1">Premium Style</h4></div><div>Premium</div>
-                        </div>
+                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Select Style Matrix Option</label>
+                        <div id="apple-color-swatches" style="display:flex; flex-direction:column; gap:10px;"></div>
                     </div>
                     <div class="config-group">
-                        <div class="selection-box active" id="tier-opt-0" onclick="selectTierOption(0)">
-                            <div><h4 id="tier-title-0">Standard Tier</h4></div><div id="tier-premium-0">+$0</div>
-                        </div>
-                        <div class="selection-box" id="tier-opt-1" onclick="selectTierOption(1)">
-                            <div><h4 id="tier-title-1">Ultimate Tier</h4></div><div id="tier-premium-1">+$0</div>
-                        </div>
+                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Memory Substrate Tiers</label>
+                        <div class="selection-box active"><div><h4>Unified Runtime Matrix Profile</h4></div><div>Included</div></div>
                     </div>
-                    <button class="action-submit-btn" onclick="triggerCheckoutLog()">Compile & Purchase Array</button>
+                    <div class="config-price" id="cfg-price" style="font-size:32px; font-weight:700; color:#fff; margin-bottom:20px;">$0.00</div>
+                    <button class="action-submit-btn" onclick="triggerCheckoutLog()">Queue to Build Matrix</button>
+                    <button class="strip-cta" style="background:none; border:none; margin-top:20px; display:block;" onclick="backToDiscoveryView()"> &lt; Back to System Variants</button>
                 </div>
             </div>
         </div>
 
-        <div id="panel-careers" class="view-section text-layout-panel">
-            <h2>Join the Architecture</h2>
-            <div class="job-card"><h4>Silicon Engineering Matrix Lead</h4><p>Manage hardware system frameworks.</p></div>
-            <div class="job-card"><h4>Game Engine Systems Expert</h4><p>Optimize physics execution routines for Clevis Studios.</p></div>
+        <div id="panel-careers" class="view-section">
+            <div class="home-welcome-hero" style="height:100vh; margin-top:-48px;">
+                <h1 style="font-size:120px; font-weight:700; letter-spacing:-5px;">Hello</h1>
+                <h2 style="font-size:32px; font-weight:400; color:var(--text-secondary);">I am Caleb Leung</h2>
+                <p style="font-size:14px; color:var(--accent-orange); text-transform:uppercase; letter-spacing:2px; margin-top:15px;">Photographer & Tech Designer Matrix</p>
+            </div>
+            <div style="max-width:800px; margin:0 auto; padding:100px 22px; border-top:1px solid var(--border-color);">
+                <h2 style="font-size:48px; font-weight:700; margin-bottom:30px;">Structuring Visual Substrates</h2>
+                <p style="font-size:18px; line-height:1.6; color:var(--text-secondary); margin-bottom:40px;">
+                    Operating at the interface of hardware architecture design and high-frequency light capture telemetry loops. My profile targets the removal of clutter inside modern user configurations, implementing deep minimalist system paths.
+                </p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:60px;">
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
+                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Aperture Engineering</h4>
+                        <p style="font-size:13px; color:var(--text-secondary)">High-contrast dynamic exposure monitoring vectors.</p>
+                    </div>
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
+                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Interface Substrates</h4>
+                        <p style="font-size:13px; color:var(--text-secondary)">Minimal code-footprint user response frameworks.</p>
+                    </div>
+                </div>
+                <button class="action-submit-btn" onclick="window.open('https://calebleung52.github.io', '_blank')" style="background:#fff; color:#000;">Learn More</button>
+            </div>
         </div>
 
         <div id="view-legal" class="view-section text-layout-panel">
             <h2>Legal Framework</h2>
-            <p>All component processing options configurations are subject to systemic updates managed by Chase McDillan.</p>
+            <p>All component processing options and device configurations are subject to systemic updates managed by Chase McDillan.</p>
         </div>
     </main>
 
@@ -239,132 +284,44 @@
 
     <script>
         const db = {
-            const db = {
-    clevisphone: { title: "ClevisPhone Series", desc: "Our hallmark computational communication matrices.", models: [
-        { name: "ClevisPhone Elite 4", price: 1199, specs: { cpu: "E14 Architecture", telemetry: "950 Mbps" }, finishes: [{ name: "Space Graphite", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }, { name: "Satin Gold", p: 50, img: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?auto=format&fit=crop&q=80&w=600" }] },
-        { name: "ClevisPhone Aura 4", price: 999, specs: { cpu: "Aura Silicon v4", telemetry: "850 Mbps" }, finishes: [{ name: "Aurora Blue", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
-        { name: "ClevisPhone Pure 2", price: 799, specs: { cpu: "Pure Node Gen2", telemetry: "700 Mbps" }, finishes: [{ name: "Ceramic Silver", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
-        { name: "Nebula A2 Flagship", price: 1299, specs: { cpu: "Nebula Quantum Core", telemetry: "1.2 Gbps" }, finishes: [{ name: "Cosmic Obsidian", p: 0, img: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?auto=format&fit=crop&q=80&w=600" }] }
-    ]},
-    lucasphone: { title: "LucasPhone Mini", desc: "Ultra-compact performance frameworks.", models: [
-        { name: "LucasPhone Mini", price: 699, specs: { cpu: "L1 Mini Core", telemetry: "500 Mbps" }, finishes: [{ name: "Matte Black", p: 0, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=600" }, { name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1565630916779-e303be97b6f5?auto=format&fit=crop&q=80&w=600" }] }
-    ]},
-    clevisbook: { title: "ClevisBook Frameworks", desc: "Desktop pipelines packed inside a forged architecture.", models: [
-        { name: "ClevisBook Nano 2", price: 1499, specs: { cpu: "N2 Efficient Node", telemetry: "2.4 Gbps" }, finishes: [{ name: "Stellar Silver", p: 0, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] },
-        { name: "ClevisBook Mega 1", price: 2499, specs: { cpu: "M1 Colossus Engine", telemetry: "9.6 Gbps" }, finishes: [{ name: "Deep Charcoal", p: 150, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] }
-    ]},
-    clevispad: { title: "ClevisPad Matrix", desc: "High-refresh mobile canvases optimized for design routing.", models: [
-        { name: "ClevisPad Thin", price: 899, specs: { cpu: "T1 Processing Slip", telemetry: "600 Mbps" }, finishes: [{ name: "Anodized Slate", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
-        { name: "ClevisPad 2", price: 1099, specs: { cpu: "Pro Core Gen2", telemetry: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
-        { name: "LucasPad Mini", price: 599, specs: { cpu: "L-Silicon Pad Node", telemetry: "400 Mbps" }, finishes: [{ name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] }
-    ]},
-    clevisvision: { title: "Clevis Vision Ecosystem", desc: "Spatial telemetry matrices mapping display steps.", models: [
-        { name: "Clevis Vision Pro", price: 3499, specs: { cpu: "Dual Spatial Engine", telemetry: "48 GB/s Bus" }, finishes: [{ name: "Solo Knit Band Titanium", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] },
-        { name: "Clevis Vision", price: 1999, specs: { cpu: "Standard Spatial Node", telemetry: "24 GB/s Bus" }, finishes: [{ name: "Lightweight Charcoal", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] }
-    ]}
-};
+            clevisphone: { title: "ClevisPhone Series", desc: "Our hallmark computational communication matrices.", models: [
+                { name: "ClevisPhone Elite 4", price: 1199, specs: { cpu: "E14 Architecture", telemetry: "950 Mbps" }, finishes: [{ name: "Space Graphite", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }, { name: "Satin Gold", p: 50, img: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisPhone Aura 4", price: 999, specs: { cpu: "Aura Silicon v4", telemetry: "850 Mbps" }, finishes: [{ name: "Aurora Blue", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisPhone Pure 2", price: 799, specs: { cpu: "Pure Node Gen2", telemetry: "700 Mbps" }, finishes: [{ name: "Ceramic Silver", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "Nebula A2 Flagship", price: 1299, specs: { cpu: "Nebula Quantum Core", telemetry: "1.2 Gbps" }, finishes: [{ name: "Cosmic Obsidian", p: 0, img: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            lucasphone: { title: "LucasPhone Mini", desc: "Ultra-compact performance frameworks.", models: [
+                { name: "LucasPhone Mini", price: 699, specs: { cpu: "L1 Mini Core", telemetry: "500 Mbps" }, finishes: [{ name: "Matte Black", p: 0, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=600" }, { name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1565630916779-e303be97b6f5?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            clevisbook: { title: "ClevisBook Frameworks", desc: "Desktop processing pipelines packed inside a forged design matrix.", models: [
+                { name: "ClevisBook Nano 2", price: 1499, specs: { cpu: "N2 Efficient Node", telemetry: "2.4 Gbps" }, finishes: [{ name: "Stellar Silver", p: 0, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisBook Mega 1", price: 2499, specs: { cpu: "M1 Colossus Engine", telemetry: "9.6 Gbps" }, finishes: [{ name: "Deep Charcoal", p: 150, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            clevispad: { title: "ClevisPad Matrix", desc: "High-refresh mobile canvases optimized for system design.", models: [
+                { name: "ClevisPad Thin", price: 899, specs: { cpu: "T1 Engine", telemetry: "600 Mbps" }, finishes: [{ name: "Anodized Slate", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "ClevisPad 2", price: 1099, specs: { cpu: "Pro Core Gen2", telemetry: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "LucasPad Mini", price: 599, specs: { cpu: "L-Silicon Pad Node", telemetry: "400 Mbps" }, finishes: [{ name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            clevisvision: { title: "Clevis Vision Ecosystem", desc: "Spatial telemetry matrices mapping real-world display metrics.", models: [
+                { name: "Clevis Vision Pro", price: 3499, specs: { cpu: "Dual Spatial Node", telemetry: "48 GB/s Bus" }, finishes: [{ name: "Solo Knit Band Titanium", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] },
+                { name: "Clevis Vision", price: 1999, specs: { cpu: "Standard Spatial Core", telemetry: "24 GB/s Bus" }, finishes: [{ name: "Lightweight Charcoal", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] }
+            ]},
+            angryarabs: { title: "Angry Arabs", desc: "Clevis Studios simulation engine distribution build.", models: [
+                { name: "Standard Simulation Engine", price: 4.99, specs: { cpu: "Vector Matrix", telemetry: "Active Logs" }, finishes: [{ name: "Digital Build Profile", p: 0, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=500" }] }
+            ]},
+            circleblast: { title: "Circle Blast", desc: "High-refresh layout rendering engine loops.", models: [
+                { name: "Standard Runtime Build", price: 2.99, specs: { cpu: "Geometry Core", telemetry: "120Hz Loop" }, finishes: [{ name: "Standard Matrix Pack", p: 0, img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=500" }] }
+            ]},
+            calebsim: { title: "Caleb's Eating Sim", desc: "Ultra-minimal tracking logic engine setup.", models: [
+                { name: "Standard Simulator Distribution", price: 1.99, specs: { cpu: "Iteration Loop", telemetry: "Sync Active" }, finishes: [{ name: "Core Setup Profile", p: 0, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=500" }] }
+            ]}
+        };
 
-        let activeKey = "clevisphone", finishIdx = 0, tierIdx = 0;
-
-        function openConfigurator(key) {
-            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
-            document.getElementById('panel-buy').classList.add('active');
-            activeKey = key; finishIdx = 0; tierIdx = 0;
-            const item = db[key];
-            document.getElementById('cfg-title').innerText = item.title;
-            document.getElementById('cfg-img').src = item.img;
-            document.getElementById('spec-cpu').innerText = item.specs.cpu;
-            document.getElementById('spec-bw').innerText = item.specs.telemetry;
-            document.getElementById('finish-title-0').innerText = item.finishes[0].name;
-            document.getElementById('finish-title-1').innerText = item.finishes[1].name;
-            document.getElementById('tier-title-0').innerText = item.tiers[0].name;
-            document.getElementById('tier-title-1').innerText = item.tiers[1].name;
-            document.getElementById('tier-premium-0').innerText = item.tiers[0].p === 0 ? "Standard" : `+$${item.tiers[0].p}`;
-            document.getElementById('tier-premium-1').innerText = item.tiers[1].p === 0 ? "Standard" : `+$${item.tiers[1].p}`;
-            updateStyles(); calcPrice(); window.scrollTo(0,0);
-        }
-
-        function selectFinishOption(i) { finishIdx = i; updateStyles(); calcPrice(); }
-        function selectTierOption(i) { tierIdx = i; updateStyles(); calcPrice(); }
-        function updateStyles() {
-            document.getElementById('finish-opt-0').classList.toggle('active', finishIdx === 0);
-            document.getElementById('finish-opt-1').classList.toggle('active', finishIdx === 1);
-            document.getElementById('tier-opt-0').classList.toggle('active', tierIdx === 0);
-            document.getElementById('tier-opt-1').classList.toggle('active', tierIdx === 1);
-        }
-
-        function calcPrice() {
-            const item = db[activeKey];
-            const total = item.basePrice + item.finishes[finishIdx].p + item.tiers[tierIdx].p;
-            document.getElementById('cfg-price').innerText = item.basePrice < 15 ? `$${total.toFixed(2)}` : `$${Math.floor(total).toLocaleString()}`;
-        }
-
-        function switchToPanel(id) {
-            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
-            document.getElementById(id === 'legal' ? 'view-legal' : `panel-${id}`).classList.add('active');
-            window.scrollTo(0,0);
-        }
-
-        function resetToHomeAndScrollTop() {
-            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
-            document.getElementById('panel-home').classList.add('active');
-            window.scrollTo(0,0);
-        }
-
-        function triggerCheckoutLog() {
-            alert(`Configuration complete for ${db[activeKey].title}. Pipeline queued.`);
-        }
-        // EXTENSION DATA MATRIX HOOKS
         let currentModelArray = [];
         let chosenModelIdx = 0;
+        let finishIdx = 0;
         let isFarmerPlusApplied = false;
 
-        // INJECT ADAPTIVE DISCOVERY UI ELEMENT OVERRIDES
-        document.getElementById('panel-buy').innerHTML = `
-            <div id="discovery-sub-view" style="max-width:800px; margin:0 auto; padding:60px 22px;">
-                <h1 id="disc-brand-title" style="font-size:48px; font-weight:700; margin-bottom:10px;"></h1>
-                <p id="disc-brand-desc" style="color:var(--text-secondary); font-size:18px; margin-bottom:40px;"></p>
-                <h3 style="font-size:14px; text-transform:uppercase; color:var(--text-secondary); margin-bottom:15px; letter-spacing:1px;">Select Configuration Model</h3>
-                <div id="disc-model-list" style="display:flex; flex-direction:column; gap:12px; margin-bottom:40px;"></div>
-            </div>
-            <div id="apple-purchase-view" style="display:none;" class="config-container">
-                <div class="config-gallery">
-                    <img id="cfg-img" src="" alt="Premium Device Display" style="transition:transform 0.4s ease;">
-                    <div class="tech-spec-badge-box">
-                        <div class="tech-spec-grid">
-                            <div><b id="spec-cpu"></b><br><span style="color:var(--text-secondary)">Compute Layer</span></div>
-                            <div><b id="spec-bw"></b><br><span style="color:var(--text-secondary)">Telemetry Bus</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="config-details">
-                    <span style="font-size:12px; font-weight:600; text-transform:uppercase; color:var(--accent-orange); letter-spacing:1px;">Configure Your Finish</span>
-                    <h2 id="cfg-title" style="margin:5px 0 15px;">Product Matrix</h2>
-                    
-                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:16px; border-radius:8px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center;">
-                        <div>
-                            <h4 style="font-size:14px;">FarmerPlus Ecosystem Membership</h4>
-                            <p style="font-size:12px; color:var(--text-secondary);">Apply global 10% configuration savings matrix.</p>
-                        </div>
-                        <input type="checkbox" id="farmer-plus-toggle" style="width:20px; height:20px; accent-color:var(--accent-orange); cursor:pointer;" onchange="toggleFarmerPlusMatrix()">
-                    </div>
-
-                    <div class="config-group">
-                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Select Color Matrix Option</label>
-                        <div id="apple-color-swatches" style="display:flex; flex-direction:column; gap:10px;"></div>
-                    </div>
-                    <div class="config-group">
-                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Operational Memory Tier</label>
-                        <div class="selection-box active"><div><h4>Baseline Logic Configuration</h4></div><div>Included</div></div>
-                    </div>
-                    <div class="config-price" id="cfg-price" style="font-size:32px; font-weight:700; color:#fff; margin-bottom:20px;">$0.00</div>
-                    <button class="action-submit-btn" onclick="triggerCheckoutLog()">Queue to Build Matrix</button>
-                    <button class="strip-cta" style="background:none; border:none; margin-top:15px; display:block;" onclick="backToDiscoveryView()"> &lt; Back to System Models</button>
-                </div>
-            </div>
-        `;
-
-        // OVERRIDE DEVICE NAVIGATION ROUTER FOR DISCOVERY PHASES
         function openConfigurator(key) {
             switchToPanel('buy');
             const dataRoot = db[key] || { title: key.toUpperCase(), desc: "Custom configuration deployment.", models: [] };
@@ -380,8 +337,8 @@
             currentModelArray.forEach((model, index) => {
                 const card = document.createElement('div');
                 card.className = 'job-card';
-                card.style.cssText = 'cursor:pointer; display:flex; justify-content:between; align-items:center; transition:var(--transition-smooth);';
-                card.innerHTML = `<div><h4 style="font-size:18px;">${model.name}</h4><p style="font-size:12px; color:var(--text-secondary)">Base Platform Base Config</p></div><div style="font-size:18px; font-weight:600; color:var(--accent-orange);">$${model.price}</div>`;
+                card.style.cssText = 'cursor:pointer; display:flex; justify-content:space-between; align-items:center;';
+                card.innerHTML = `<div><h4 style="font-size:18px;">${model.name}</h4><p style="font-size:12px; color:var(--text-secondary)">Base Platform Profile</p></div><div style="font-size:18px; font-weight:600; color:var(--accent-orange);">$${model.price}</div>`;
                 card.onclick = () => launchApplePurchaseInterface(index);
                 listContainer.appendChild(card);
             });
@@ -434,7 +391,7 @@
             let finalPrice = item.price + activeFinishObj.p;
             if (isFarmerPlusApplied) finalPrice *= 0.90;
             
-            document.getElementById('cfg-price').innerText = `$${Math.floor(finalPrice).toLocaleString()}`;
+            document.getElementById('cfg-price').innerText = item.price < 15 ? `$${finalPrice.toFixed(2)}` : `$${Math.floor(finalPrice).toLocaleString()}`;
         }
 
         function toggleFarmerPlusMatrix() {
@@ -449,31 +406,21 @@
             isFarmerPlusApplied = false;
         }
 
-        // OVERRIDE CAREERS SECTION INTO FUTURISTIC CALEB LEUNG PROFILE
-        document.getElementById('panel-careers').innerHTML = `
-            <div class="home-welcome-hero" style="height:100vh; margin-top:-48px;">
-                <h1 style="font-size:120px; font-weight:700; letter-spacing:-5px;">Hello</h1>
-                <h2 style="font-size:32px; font-weight:400; color:var(--text-secondary);">I am Caleb Leung</h2>
-                <p style="font-size:14px; color:var(--accent-orange); text-transform:uppercase; letter-spacing:2px; margin-top:15px;">Photographer & Tech Designer Matrix</p>
-            </div>
-            <div style="max-width:800px; margin:0 auto; padding:100px 22px; border-top:1px solid var(--border-color);">
-                <h2 style="font-size:48px; font-weight:700; margin-bottom:30px;">Structuring Visual Substrates</h2>
-                <p style="font-size:18px; line-height:1.6; color:var(--text-secondary); margin-bottom:40px;">
-                    Operating at the interface of hardware architecture design and high-frequency light capture telemetry loops. My profile targets the removal of clutter inside modern user configurations, implementing deep minimalist system paths.
-                </p>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:60px;">
-                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
-                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Aperture Engineering</h4>
-                        <p style="font-size:13px; color:var(--text-secondary)">High-contrast dynamic exposure monitoring vectors.</p>
-                    </div>
-                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
-                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Interface Substrates</h4>
-                        <p style="font-size:13px; color:var(--text-secondary)">Minimal code-footprint user response frameworks.</p>
-                    </div>
-                </div>
-                <button class="action-submit-btn" onclick="window.open('https://calebleung52.github.io', '_blank')" style="background:#fff; color:#000;">Learn More</button>
-            </div>
-        `;
+        function switchToPanel(id) {
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            document.getElementById(id === 'legal' ? 'view-legal' : `panel-${id}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function resetToHomeAndScrollTop() {
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            document.getElementById('panel-home').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function triggerCheckoutLog() {
+            alert(`Configuration complete for ${currentModelArray[chosenModelIdx].name}. Pipeline successfully queued into building matrix.`);
+        }
     </script>
 </body>
 </html>
