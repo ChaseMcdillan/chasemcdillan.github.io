@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clevis Corporation</title>
+    <title>Clevis Corporation Ecosystem</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,12 +11,15 @@
         :root {
             --bg-primary: #000000;
             --bg-secondary: #161617;
-            --bg-elevated: #2d2d2e;
+            --bg-elevated: #1d1d1f;
+            --bg-card: #2d2d2e;
             --text-primary: #ffffff;
             --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
             --accent-orange: #ff7b00;
             --border-color: #333333;
             --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * {
@@ -37,7 +40,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PREMIUM APP-BAR NAVIGATION GRID */
+        /* FIXED APP-BAR NAVIGATION OVERLAY */
         header {
             position: fixed;
             top: 0;
@@ -63,24 +66,25 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-weight: 500;
-            font-size: 13px;
+            font-size: 14px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             cursor: pointer;
             color: var(--text-primary);
+            transition: var(--transition-smooth);
         }
 
         .nav-logo svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             fill: var(--accent-orange);
         }
 
         .nav-links {
             display: flex;
-            gap: 36px;
+            gap: 40px;
             list-style: none;
             height: 100%;
             align-items: center;
@@ -102,7 +106,7 @@
             color: var(--text-primary);
         }
 
-        /* APPLE-STYLE EXPANDING HOVER DROPDOWN MENU */
+        /* FULL-WIDTH DROPDOWN MENUS */
         .dropdown-panel {
             position: absolute;
             top: 48px;
@@ -114,7 +118,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.25s ease, visibility 0.25s;
-            padding: 40px 0;
+            padding: 48px 0;
             z-index: 9998;
             display: flex;
             justify-content: center;
@@ -136,17 +140,17 @@
 
         .dropdown-col h4 {
             font-size: 11px;
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
+            letter-spacing: 0.8px;
+            margin-bottom: 18px;
         }
 
         .dropdown-col ul {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .dropdown-col ul li {
@@ -156,31 +160,32 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            transition: color 0.2s ease;
         }
 
         .dropdown-col ul li:hover {
-            color: var(--text-secondary);
+            color: var(--accent-orange);
         }
 
-        /* CLEVIS STUDIOS INTEGRATION GRAPHIC LOGO */
         .studios-icon-box {
             border: 1px solid var(--accent-orange);
             padding: 2px;
-            border-radius: 3px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
         }
+        
         .studios-icon-box svg {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             fill: var(--accent-orange);
         }
 
-        /* VIEWPORT ROUTER CONTAINER SETUP */
+        /* CORE VIEW MANAGER */
         main {
             margin-top: 48px;
         }
@@ -193,7 +198,7 @@
             display: block;
         }
 
-        /* IMMERSIVE HOME MAIN LIFT PACKS */
+        /* HOMEPAGE HERO ELEMENTS */
         .home-welcome-hero {
             height: calc(100vh - 48px);
             background-color: #000000;
@@ -207,32 +212,32 @@
         }
 
         .home-welcome-hero h1 {
-            font-size: 120px;
+            font-size: 140px;
             font-weight: 700;
-            letter-spacing: -4px;
-            line-height: 1;
+            letter-spacing: -6px;
+            line-height: 0.9;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .home-welcome-hero h2 {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 400;
             color: #ffffff;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
         }
 
         .home-welcome-hero p {
-            font-size: 14px;
+            font-size: 15px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--text-secondary);
         }
 
-        /* SCROLLABLE HOME STRIPS */
+        /* SCROLLABLE HOME PRODUCT PANELS */
         .home-strip-section {
-            height: 80vh;
+            height: 85vh;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -240,37 +245,44 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .home-strip-section h2 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
         }
 
         .home-strip-section p {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--text-secondary);
-            margin-top: 8px;
-            margin-bottom: 20px;
+            margin-top: 12px;
+            margin-bottom: 24px;
+            max-width: 600px;
         }
 
         .strip-cta {
-            font-size: 16px;
-            color: #fff;
-            border-bottom: 1px solid #fff;
+            font-size: 17px;
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
             cursor: pointer;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
         }
 
-        /* MINI HOVER CARD GRID FOR CORE SYSTEM SOFTWARE ELEMENTS */
+        .strip-cta:hover {
+            opacity: 0.7;
+        }
+
+        /* HOMEPAGE CARDS MATRIX GRID */
         .home-product-matrix {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 12px;
+            gap: 16px;
+            padding: 16px;
             background-color: #000000;
         }
 
@@ -279,154 +291,303 @@
         }
 
         .matrix-card {
-            height: 540px;
+            height: 580px;
             background-size: cover;
             background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            padding-top: 60px;
+            padding-top: 64px;
             text-align: center;
             background-color: var(--bg-secondary);
             border-radius: 4px;
+            border: 1px solid transparent;
+            transition: var(--transition-smooth);
         }
 
-        .matrix-card h3 { font-size: 28px; font-weight: 600; }
-        .matrix-card p { font-size: 15px; color: var(--text-secondary); margin-top: 6px; margin-bottom: 14px; max-width: 80%; }
+        .matrix-card:hover {
+            border-color: #444446;
+        }
 
-        /* APPLE-STYLE CONFIGURATOR UI DESIGN */
+        .matrix-card h3 { 
+            font-size: 32px; 
+            font-weight: 600; 
+            letter-spacing: -0.5px;
+        }
+        
+        .matrix-card p { 
+            font-size: 16px; 
+            color: var(--text-secondary); 
+            margin-top: 8px; 
+            margin-bottom: 18px; 
+            max-width: 80%; 
+        }
+
+        /* MASSIVE COMPREHENSIVE CONFIGURATOR FRAMEWORKS */
         .config-container {
-            max-width: 1024px;
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 60px 22px;
+            padding: 80px 22px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
         }
 
-        @media(max-width: 768px) {
-            .config-container { grid-template-columns: 1fr; }
+        @media(max-width: 900px) {
+            .config-container { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        .config-gallery {
+            position: relative;
+        }
+
+        .config-gallery-sticky {
+            position: sticky;
+            top: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
 
         .config-gallery img {
             width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
             border-radius: 12px;
             background-color: var(--bg-secondary);
-            position: sticky;
-            top: 100px;
         }
 
-        .config-details h2 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -1px;
+        .tech-spec-badge-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
         }
 
-        .config-price {
-            font-size: 24px;
-            margin-top: 8px;
-            margin-bottom: 40px;
-        }
-
-        .config-group {
-            margin-bottom: 32px;
-        }
-
-        .config-group-label {
-            font-size: 13px;
-            color: var(--text-secondary);
-            font-weight: 600;
+        .tech-spec-badge-box h5 {
+            font-size: 12px;
+            color: var(--text-tertiary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 12px;
         }
 
-        .card-selector-row {
+        .tech-spec-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 16px;
+        }
+
+        .spec-metric {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .config-details h2 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+        }
+
+        .config-sub-brand {
+            font-size: 14px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .config-price {
+            font-size: 28px;
+            font-weight: 500;
+            margin-top: 12px;
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+
+        .config-group {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 32px;
+        }
+
+        .config-group:last-of-type {
+            border-bottom: none;
+        }
+
+        .config-group-label {
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .card-selector-row {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
 
         .selection-box {
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             cursor: pointer;
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .selection-box:hover {
+            border-color: #86868b;
         }
 
         .selection-box.active {
-            border-color: #ffffff;
-            background-color: #111112;
+            border-color: var(--accent-orange);
+            background-color: rgba(255, 123, 0, 0.03);
         }
 
-        .selection-box h4 { font-size: 16px; font-weight: 600; }
-        .selection-box p { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+        .selection-box-text-side {
+            text-align: left;
+        }
+
+        .selection-box h4 { font-size: 16px; font-weight: 600; color: #ffffff; }
+        .selection-box p { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+        .selection-box-price-side {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+        }
 
         .action-submit-btn {
             width: 100%;
-            padding: 16px;
-            background-color: #ffffff;
-            color: #000000;
+            padding: 18px;
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
             border: none;
-            border-radius: 8px;
-            font-size: 15px;
+            border-radius: 12px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
+            transition: opacity 0.2s ease;
+            margin-top: 16px;
         }
 
-        /* TEXT AND COMPLIANCE INFRASTRUCTURE PACKS */
+        .action-submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* TEXT ENGINE PANEL LAYOUTS */
         .text-layout-panel {
-            max-width: 720px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 80px 22px;
+            padding: 96px 22px;
         }
 
         .text-layout-panel h2 {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
+            letter-spacing: -2px;
+            margin-bottom: 32px;
         }
 
         .text-layout-panel h3 {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
-            margin-top: 36px;
-            margin-bottom: 14px;
-            padding-bottom: 6px;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .text-layout-panel p {
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.625;
             color: #e8e8ed;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .job-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .job-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .job-card .meta {
+            font-size: 13px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            font-weight: 500;
         }
 
         .careers-input {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            color: #fff;
+            color: #ffffff;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 15px;
             outline: none;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
+            font-family: var(--font-stack);
+            transition: border-color 0.2s ease;
         }
 
-        .careers-input:focus { border-color: #fff; }
+        .careers-input:focus { border-color: #ffffff; }
 
-        /* UNIFORM REFINED CORPORATE FOOTER AREA */
+        .careers-select {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 18px;
+            font-family: var(--font-stack);
+            appearance: none;
+        }
+
+        /* PREMIUM LEGAL TEXT RULES */
+        .legal-block {
+            margin-bottom: 32px;
+        }
+        
+        .legal-block h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        /* SYSTEM AREA FOOTER GRID */
         footer {
             background-color: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
-            padding: 40px 0;
+            padding: 48px 0;
             font-size: 12px;
             color: var(--text-secondary);
         }
@@ -439,17 +600,32 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links span {
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links span:hover {
+            color: var(--text-primary);
         }
     </style>
 </head>
 <body>
 
+    <!-- PERSISTENT TOP APP-BAR OVERLAY AREA -->
     <header>
         <div class="nav-container">
             <div class="nav-logo" onclick="resetToHomeAndScrollTop()">
                 <svg viewBox="0 0 24 24"><path d="M12,2C11.45,2 11,2.45 11,3C11,3.55 11.45,4 12,4C12.55,4 13,3.55 13,3C13,2.45 12.55,2 12,2Z"/></svg>
-                Clevis
+                Clevis Corporation
             </div>
             <ul class="nav-links">
                 <li class="nav-item">
@@ -457,11 +633,11 @@
                     <div class="dropdown-panel">
                         <div class="dropdown-content">
                             <div class="dropdown-col">
-                                <h4>Ecosystem Infrastructure</h4>
+                                <h4>Compute Devices</h4>
                                 <ul>
-                                    <li onclick="navigateToCustomizer('lucasphone')">LucasPhone Mini</li>
-                                    <li onclick="navigateToCustomizer('cleviswatch')">ClevisWatch Ultra-Pro</li>
-                                    <li onclick="navigateToCustomizer('clevistv')">ClevisTV Max</li>
+                                    <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
+                                    <li onclick="openConfigurator('cleviswatch')">ClevisWatch Ultra-Pro</li>
+                                    <li onclick="openConfigurator('clevistv')">ClevisTV Max</li>
                                 </ul>
                             </div>
                         </div>
@@ -472,258 +648,449 @@
                     <div class="dropdown-panel">
                         <div class="dropdown-content">
                             <div class="dropdown-col">
-                                <h4>Clevis Studios</h4>
+                                <h4>Clevis Studios Catalog</h4>
                                 <ul>
-                                    <li onclick="navigateToCustomizer('angryarabs')">
+                                    <li onclick="openConfigurator('angryarabs')">
                                         <div class="studios-icon-box">
                                             <svg viewBox="0 0 24 24"><path d="M12,2C11.45,2 11,2.45 11,3C11,3.55 11.45,4 12,4C12.55,4 13,3.55 13,3C13,2.45 12.55,2 12,2Z"/></svg>
                                         </div>
                                         Angry Arabs
                                     </li>
-                                    <li onclick="navigateToCustomizer('circleblast')">Circle Blast</li>
-                                    <li onclick="navigateToCustomizer('calebsim')">Caleb's Eating Sim</li>
+                                    <li onclick="openConfigurator('circleblast')">Circle Blast</li>
+                                    <li onclick="openConfigurator('calebsim')">Caleb's Eating Sim</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item" onclick="navigateToStaticView('careers')">Careers</li>
-                <li class="nav-item" onclick="navigateToStaticView('legal')">Legal</li>
+                <li class="nav-item" onclick="switchToPanel('careers')">Careers</li>
+                <li class="nav-item" onclick="switchToPanel('legal')">Legal</li>
             </ul>
         </div>
     </header>
 
     <main>
 
-        <div id="view-home" class="view-section active">
+        <!-- HIGH-PERFORMANCE UNIFIED SCROLLABLE HOMEPAGE -->
+        <div id="panel-home" class="view-section active">
             
+            <!-- MINIMAL GREETING ENTRY VIEWPORT -->
             <section class="home-welcome-hero">
                 <h1>HI</h1>
                 <h2>Welcome to the Clevis Ecosystem</h2>
                 <p>by Chase McDillan</p>
             </section>
 
-            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=1200');">
+            <!-- INFRASTRUCTURE PROFILE: LUCASPHONE -->
+            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%), url('https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=1400');">
                 <h2>LucasPhone Mini</h2>
-                <p>Silicon processing architectures reduced to standard minimalist design formats.</p>
-                <span class="strip-cta" onclick="navigateToCustomizer('lucasphone')">Configure Device &gt;</span>
+                <p>Compact form layout packing advanced silicon arrays, architecture execution frames, and complete device memory processing modules.</p>
+                <span class="strip-cta" onclick="openConfigurator('lucasphone')">Configure Device Tier &gt;</span>
             </section>
 
-            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=1200');">
+            <!-- INFRASTRUCTURE PROFILE: CLEVISTV -->
+            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%), url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=1400');">
                 <h2>ClevisTV Max</h2>
-                <p>Multi-threaded processing arrays driving 8K matrix display fields.</p>
-                <span class="strip-cta" onclick="navigateToCustomizer('clevistv')">Configure Matrix &gt;</span>
+                <p>Multi-threaded display environments running native raster pipelines across large form structural layout surfaces.</p>
+                <span class="strip-cta" onclick="openConfigurator('clevistv')">Configure Spatial Grid &gt;</span>
             </section>
 
+            <!-- SEGMENTED GRID ECOSYSTEM MATRIX -->
             <div class="home-product-matrix">
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600');">
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=700');">
                     <h3>Angry Arabs</h3>
-                    <p>Physics-guided structural vector mechanics compiled for mobile frameworks by Clevis Studios.</p>
-                    <span class="strip-cta" onclick="navigateToCustomizer('angryarabs')">Acquire Title &gt;</span>
+                    <p>Physics engineering modules tracking multi-body mass calculations and collision vector data paths inside custom graphic shells.</p>
+                    <span class="strip-cta" onclick="openConfigurator('angryarabs')">Acquire Title Build &gt;</span>
                 </div>
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=600');">
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%), url('https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=700');">
                     <h3>ClevisWatch Ultra-Pro</h3>
-                    <p>Local telemetry sensor array modules feeding real-time network logs directly to wrists.</p>
-                    <span class="strip-cta" onclick="navigateToCustomizer('cleviswatch')">Configure Wearable &gt;</span>
+                    <p>Continuous telemetry collection frames outputting raw logging structures right to wrist displays.</p>
+                    <span class="strip-cta" onclick="openConfigurator('cleviswatch')">Configure Telemetry Array &gt;</span>
                 </div>
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=600');">
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%), url('https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=700');">
                     <h3>Circle Blast</h3>
-                    <p>High-refresh geometry system rendering fast asset collision vectors loop-by-loop.</p>
-                    <span class="strip-cta" onclick="navigateToCustomizer('circleblast')">Acquire Title &gt;</span>
+                    <p>High-refresh vector execution loops rendering real-time tracking points down to sub-millisecond timelines.</p>
+                    <span class="strip-cta" onclick="openConfigurator('circleblast')">Acquire Title Build &gt;</span>
                 </div>
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=600');">
+                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%), url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=700');">
                     <h3>Caleb's Eating Sim</h3>
-                    <p>Resource tracking simulation frameworks processing engine allocation states efficiently.</p>
-                    <span class="strip-cta" onclick="navigateToCustomizer('calebsim')">Acquire Title &gt;</span>
+                    <p>Resource processing metrics simulators running algorithmic calculation tables across continuous system iterations.</p>
+                    <span class="strip-cta" onclick="openConfigurator('calebsim')">Acquire Title Build &gt;</span>
                 </div>
             </div>
         </div>
 
-        <div id="view-buy" class="view-section">
+        <!-- TRANSACTION HUB CONFIGURATOR SCREEN -->
+        <div id="panel-buy" class="view-section">
             <div class="config-container">
+                
+                <!-- STICKY GALLERY TECH PROFILE AREA -->
                 <div class="config-gallery">
-                    <img id="dynamic-display-img" src="" alt="Ecosystem Configuration Element View">
+                    <div class="config-gallery-sticky">
+                        <img id="cfg-img" src="" alt="Clevis Ecosystem Engineering Render">
+                        
+                        <div class="tech-spec-badge-box">
+                            <h5>Engine Hardware Specifications</h5>
+                            <div class="tech-spec-grid">
+                                <div>
+                                    <div class="spec-metric" id="spec-cpu">N/A</div>
+                                    <div class="spec-label">Compute Engine Array</div>
+                                </div>
+                                <div>
+                                    <div class="spec-metric" id="spec-bw">N/A</div>
+                                    <div class="spec-label">Telemetry Bitrate</div>
+                                </div>
+                                <div>
+                                    <div class="spec-metric" id="spec-io">N/A</div>
+                                    <div class="spec-label">Bus Processing Speed</div>
+                                </div>
+                                <div>
+                                    <div class="spec-metric" id="spec-therm">N/A</div>
+                                    <div class="spec-label">Thermal Limits</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- TRANSACTIONAL MATRIX ATTRIBUTE SELECTORS -->
                 <div class="config-details">
-                    <h2 id="dynamic-display-title">Product Name</h2>
-                    <div class="config-price" id="dynamic-display-price">$0.00</div>
+                    <div class="config-sub-brand" id="cfg-brand">Clevis Hardware</div>
+                    <h2 id="cfg-title">Product Platform</h2>
+                    <div class="config-price" id="cfg-price">$0.00</div>
 
+                    <!-- REUSED DYNAMIC FORM COMPONENT TRACK 1 -->
                     <div class="config-group">
-                        <div class="config-group-label">1. Select Device Finish Tier</div>
+                        <div class="config-group-label" id="cfg-lbl-1">1. Finish Strategy Array</div>
                         <div class="card-selector-row">
-                            <div class="selection-box active" onclick="toggleSelectorVisual(this)">
-                                <h4>Matte Obsidian</h4>
-                                <p>Light-absorbing polymer coating</p>
+                            <div class="selection-box active" id="finish-opt-0" onclick="selectFinishOption(0)">
+                                <div class="selection-box-text-side">
+                                    <h4 id="finish-title-0">Matte Obsidian</h4>
+                                    <p id="finish-desc-0">Light-absorbing polymer shell</p>
+                                </div>
+                                <div class="selection-box-price-side">Standard</div>
                             </div>
-                            <div class="selection-box" onclick="toggleSelectorVisual(this)">
-                                <h4>Alabaster White</h4>
-                                <p>Polished structural alloy finish</p>
+                            <div class="selection-box" id="finish-opt-1" onclick="selectFinishOption(1)">
+                                <div class="selection-box-text-side">
+                                    <h4 id="finish-title-1">Alabaster White</h4>
+                                    <p id="finish-desc-1">Polished metal alloy surface</p>
+                                </div>
+                                <div class="selection-box-price-side">+$0</div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- REUSED DYNAMIC FORM COMPONENT TRACK 2 -->
                     <div class="config-group">
-                        <div class="config-group-label">2. Process Matrix Allocation Array</div>
+                        <div class="config-group-label" id="cfg-lbl-2">2. Processing Architecture Cluster</div>
                         <div class="card-selector-row">
-                            <div class="selection-box active" onclick="processPremiumPricingUpdate(this, 0)">
-                                <h4 id="option-spec-title-1">Baseline Cluster</h4>
-                                <p id="option-spec-desc-1">Standard run metrics</p>
+                            <div class="selection-box active" id="tier-opt-0" onclick="selectTierOption(0)">
+                                <div class="selection-box-text-side">
+                                    <h4 id="tier-title-0">Baseline Setup</h4>
+                                    <p id="tier-desc-0">Standard allocation blocks</p>
+                                </div>
+                                <div class="selection-box-price-side" id="tier-premium-0">+$0</div>
                             </div>
-                            <div class="selection-box" onclick="processPremiumPricingUpdate(this, 1)">
-                                <h4 id="option-spec-title-2">Extended Cluster</h4>
-                                <p id="option-spec-desc-2">Uncapped processing tracks</p>
+                            <div class="selection-box" id="tier-opt-1" onclick="selectTierOption(1)">
+                                <div class="selection-box-text-side">
+                                    <h4 id="tier-title-1">Extended Matrix</h4>
+                                    <p id="tier-desc-1">Maximum core configuration tracks</p>
+                                </div>
+                                <div class="selection-box-price-side" id="tier-premium-1">+$0</div>
                             </div>
                         </div>
                     </div>
 
-                    <button class="action-submit-btn" onclick="alert('Configuration signature cataloged and queued.')">Deploy Build Array</button>
+                    <button class="action-submit-btn" onclick="triggerCheckoutLog()">Compile Device Array & Order</button>
                 </div>
             </div>
         </div>
 
-        <div id="view-careers" class="view-section text-layout-panel">
+        <!-- ARCHITECTURE CAREERS RECRUITMENT INTERFACE -->
+        <div id="panel-careers" class="view-section text-layout-panel">
             <h2>Join the Architecture</h2>
-            <p>We build production models, computing environments, and complex graphic rendering systems from the ground up.</p>
+            <p>At Clevis Corporation and Clevis Studios, we assemble low-level processing models, advanced device runtimes, and optimized physical mapping systems completely from scratch.</p>
             
-            <h3>Clevis Corporation Systems Recruitment</h3>
-            <p><strong>Senior Kernel Systems Architect:</strong> Design low-level memory handling protocols and power delivery arrays for upcoming mobile variations.</p>
-            <p><strong>Telemetry Optimization Lead:</strong> Scale processing paths on next-generation display matrices to limit interface rendering delays.</p>
+            <h3>Clevis Corporation Infrastructure Roles</h3>
+            
+            <div class="job-card">
+                <h4>Senior Silicon Architecture Engineer</h4>
+                <div class="meta">Hardware Infrastructure Group | Fixed Station</div>
+                <p>Manage physical silicon substrate layouts, bus tracing routing systems, and instruction decode logic units to stabilize performance on next-generation variations.</p>
+            </div>
 
-            <h3>Clevis Studios Engineering Recruitment</h3>
-            <p><strong>Lead Game Engine Specialist (Angry Arabs Branch):</strong> Develop rigid-body mechanical physics trees and continuous environmental asset compilation frameworks.</p>
-            <p><strong>Interactive Systems Logic Engineer:</strong> Debug algorithmic runtime parameters handling user inputs and real-time interface metrics scaling.</p>
+            <div class="job-card">
+                <h4>Telemetry Network Systems Lead</h4>
+                <div class="meta">Data Infrastructure Group | Fixed Station</div>
+                <p>Build on-device data tracing loggers, cryptographic hash packaging, and telemetry packet parsers processing deep telemetry arrays safely.</p>
+            </div>
 
-            <h3 style="margin-top: 40px;">Transmit Selection Protocol Data</h3>
-            <form onsubmit="event.preventDefault(); alert('Profile packet transmission complete.');">
-                <input type="text" class="careers-input" placeholder="Full Legal Legal Name" required>
-                <input type="email" class="careers-input" placeholder="Secure Communications Network Route" required>
-                <button type="submit" class="action-submit-btn" style="margin-top: 10px;">Transmit System Profile</button>
+            <h3>Clevis Studios Software Roles</h3>
+
+            <div class="job-card">
+                <h4>Game Engine Physics Programmer</h4>
+                <div class="meta">Clevis Studios Framework Division | Fixed Station</div>
+                <p>Focus completely on our Angry Arabs project track. Develop multi-body rigid-mass acceleration calculators and continuous asset compile engines to minimize translation latency.</p>
+            </div>
+
+            <div class="job-card">
+                <h4>Vector Raster Logic Specialist</h4>
+                <div class="meta">Simulation Engine Division | Fixed Station</div>
+                <p>Refine rendering code logic loops inside our high-refresh projects (Circle Blast), maximizing geometry pipelines against targeted microsecond display steps.</p>
+            </div>
+
+            <h3>Submit Selection Protocol Profile</h3>
+            <p>Load your system credentials directly into our transmission queue to evaluate alignment states.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Profile credentials fully cataloged into the engineering recruitment registry.');">
+                <label style="font-size: 13px; color: var(--text-secondary); font-weight: 600; display: block; margin-bottom: 6px;">Target Systems Cluster</label>
+                <select class="careers-select" required>
+                    <option value="silicon">Silicon Architecture Division (Corp)</option>
+                    <option value="telemetry">Telemetry Tracking Frameworks (Corp)</option>
+                    <option value="physics">Rigid-Body Physics Trees (Studios)</option>
+                    <option value="raster">High-Refresh Raster Systems (Studios)</option>
+                </select>
+
+                <label style="font-size: 13px; color: var(--text-secondary); font-weight: 600; display: block; margin-bottom: 6px;">Full Identity Signatures</label>
+                <input type="text" class="careers-input" placeholder="Legal Name Profile" required>
+                
+                <label style="font-size: 13px; color: var(--text-secondary); font-weight: 600; display: block; margin-bottom: 6px;">Secure Transmission Address</label>
+                <input type="email" class="careers-input" placeholder="Communication Network Route" required>
+                
+                <button type="submit" class="action-submit-btn">Transmit Candidate System Profile</button>
             </form>
         </div>
 
+        <!-- CORPORATE COMPLIANCE DIRECTIVES AND LEGAL CHARTERS -->
         <div id="view-legal" class="view-section text-layout-panel">
-            <h2>Legal Framework & Compliance</h2>
-            <p>Review the compliance policies governing hardware telemetry processing channels and the interactive engine distributions from Clevis Studios.</p>
+            <h2>Legal Framework & Operations</h2>
+            <p>Review the comprehensive global structural terms, device performance logging frameworks, and system execution software compliance rules across all branches.</p>
             
-            <h3>1. Global Device Infrastructure Telemetry</h3>
-            <p>Hardware platforms produced by Clevis Corporation log data metrics directly to flash memory arrays. This data ensures operating performance stays consistent with production standards. All collected diagnostics are fully hashed locally on-device before transmission protocols execute.</p>
+            <div class="legal-block">
+                <h3>1. Global Telemetry Data Processing Mandates</h3>
+                <p>All hardware modules generated by Clevis Corporation automatically record continuous operation metrics into structural flash system logs. This processing tracks component exhaustion parameters and thermal limits to sustain operational benchmarks. These data arrays are localized and securely hashed before transmission routines run.</p>
+            </div>
 
-            <h3>2. Clevis Studios End User License Agreement (EULA)</h3>
-            <p>Software runtimes, assets, and engine binaries packaged under the simulation programs <i>Angry Arabs</i>, <i>Circle Blast</i>, and <i>Caleb's Eating Sim</i> are protected properties owned exclusively by Clevis Studios. Compiling, reverse engineering, or parsing active binaries out of the distribution scope is forbidden.</p>
+            <div class="legal-block">
+                <h3>2. End-User Software Execution Licenses (Clevis Studios)</h3>
+                <p>The code compilation packages, underlying data layers, image assets, and binaries included under our simulation distributions (specifically Angry Arabs, Circle Blast, and Caleb's Eating Sim) are assets protected by international law. Extracting, decompiling, or parsing execution loops outside the strict scope of distribution is blocked.</p>
+            </div>
 
-            <h3>3. Allocation Matrix Rights</h3>
-            <p>Hardware memory and capacity variations remain subject to available part stocks. Device adjustments, customization setups, and system queues can be modified without notice to maintain engineering quality benchmarks set by Chase McDillan.</p>
+            <div class="legal-block">
+                <h3>3. Equipment Capacity Allocation Rules</h3>
+                <p>All configuration states, hardware finishes, component upgrades, and transactional queues remain completely subject to active element supply chains. Clevis Corporation reserves the right to change internal structural hardware vendors to protect general system standards defined by Chase McDillan.</p>
+            </div>
+
+            <div class="legal-block">
+                <h3>4. Device Architecture Security Protocols</h3>
+                <p>Modifying kernel code trees, bypassing processing restrictions, or flashing external alternative execution layouts onto Clevis Corporation hardware assets invalidates all service coverage. Broken modules will be barred from joining central network arrays to keep the remaining ecosystem safe.</p>
+            </div>
         </div>
 
     </main>
 
+    <!-- COMPACT SYSTEM FOOTER AREA -->
     <footer>
         <div class="footer-inner">
-            <div>Copyright &copy; 2026 Clevis Corporation Inc. All rights reserved.</div>
-            <div style="display: flex; gap: 24px;">
-                <span style="cursor: pointer;" onclick="navigateToStaticView('legal')">Privacy Policy</span>
-                <span style="cursor: pointer;" onclick="navigateToStaticView('legal')">Terms of Licensing</span>
+            <div>Copyright &copy; 2026 Clevis Corporation Inc. All operational parameters registered.</div>
+            <div class="footer-links">
+                <span onclick="switchToPanel('legal')">Data Terms</span>
+                <span onclick="switchToPanel('legal')">System Compliance</span>
             </div>
         </div>
     </footer>
 
+    <!-- HIGH-DENSITY DATA ARCHITECTURE AND INTERACTIVE ROUTING PLUGINS -->
     <script>
-        const globalCorporateDatabase = {
+        const unifiedProductDatabase = {
             lucasphone: {
+                brand: "Clevis Hardware Systems",
                 title: "LucasPhone Mini",
                 basePrice: 799,
-                img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=600",
-                tiers: [{ name: "128GB Flash Cluster", premium: 0 }, { name: "512GB Performance Cluster", premium: 150 }]
+                img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "8-Core Silicon", telemetry: "450 Mbps", io: "4.2 GB/s", therm: "Passive Liquid" },
+                finishes: [
+                    { name: "Matte Obsidian", desc: "Light-absorbing polymer layer", premium: 0 },
+                    { name: "Alabaster White", desc: "Anodized dense metal matrix", premium: 0 }
+                ],
+                tiers: [
+                    { name: "128GB Baseline Setup", desc: "Standard production flash tier", premium: 0 },
+                    { name: "512GB Extended Matrix", desc: "High-throughput operational space", premium: 180 }
+                ]
             },
             cleviswatch: {
+                brand: "Clevis Hardware Systems",
                 title: "ClevisWatch Ultra-Pro",
                 basePrice: 449,
-                img: "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=600",
-                tiers: [{ name: "41mm Core Node", premium: 0 }, { name: "45mm Mesh Connected Node", premium: 60 }]
+                img: "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "3-Core Matrix", telemetry: "120 Mbps", io: "1.1 GB/s", therm: "Encapsulated" },
+                finishes: [
+                    { name: "Satin Titanium", desc: "Aerospace-grade structural alloy", premium: 0 },
+                    { name: "Deep Charcoal", desc: "Hardened diamond-carbon crust", premium: 40 }
+                ],
+                tiers: [
+                    { name: "41mm Baseline Setup", desc: "Standard tracking density node", premium: 0 },
+                    { name: "45mm Extended Matrix", desc: "Expanded display mesh array", premium: 70 }
+                ]
             },
             clevistv: {
+                brand: "Clevis Hardware Systems",
                 title: "ClevisTV Max",
                 basePrice: 1299,
-                img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=600",
-                tiers: [{ name: "55-inch Matrix Screen", premium: 0 }, { name: "85-inch Extended Panel Array", premium: 450 }]
+                img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "16-Core Spatial", telemetry: "2.4 Gbps", io: "12.6 GB/s", therm: "Active Fan Array" },
+                finishes: [
+                    { name: "Brushed Aluminum", desc: "Clean metal bezel framing", premium: 0 },
+                    { name: "Stealth Shadow", desc: "Zero-reflection borders", premium: 0 }
+                ],
+                tiers: [
+                    { name: "55-inch Baseline Setup", desc: "Standard matrix display grid", premium: 0 },
+                    { name: "85-inch Extended Matrix", desc: "Cinema scale rendering canvas", premium: 600 }
+                ]
             },
             angryarabs: {
-                title: "Angry Arabs (Clevis Studios)",
+                brand: "Clevis Studios Engine",
+                title: "Angry Arabs",
                 basePrice: 4.99,
-                img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600",
-                tiers: [{ name: "Standard Runtime Engine", premium: 0 }, { name: "Full Assets + Physics Package", premium: 5.00 }]
+                img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "Vector Mechanics", telemetry: "Real-time logs", io: "60 Hz Polling", therm: "Software Capped" },
+                finishes: [
+                    { name: "Digital Edition", desc: "Direct network distribution code", premium: 0 },
+                    { name: "Developer Edition", desc: "Includes structural build assets", premium: 15.00 }
+                ],
+                tiers: [
+                    { name: "Standard Simulation Tier", desc: "Core code execution environment", premium: 0 },
+                    { name: "Advanced Physics Package", desc: "Uncapped coordinate math arrays", premium: 5.00 }
+                ]
             },
             circleblast: {
-                title: "Circle Blast (Clevis Studios)",
+                brand: "Clevis Studios Engine",
+                title: "Circle Blast",
                 basePrice: 2.99,
-                img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=600",
-                tiers: [{ name: "Standard Simulation Tier", premium: 0 }, { name: "Uncapped Frame Buffer Suite", premium: 3.00 }]
+                img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "Geometry Engine", telemetry: "High-frequency", io: "120 Hz Tracker", therm: "Optimized Loop" },
+                finishes: [
+                    { name: "Standard Distribution", desc: "Compiled binary application", premium: 0 },
+                    { name: "Collector Packaging", desc: "Includes retro graphic matrix skins", premium: 3.00 }
+                ],
+                tiers: [
+                    { name: "Standard Runtime Tier", desc: "Baseline geometry calculation grid", premium: 0 },
+                    { name: "Uncapped Frame Buffer Suite", desc: "Zero engine execution limits", premium: 4.00 }
+                ]
             },
             calebsim: {
-                title: "Caleb's Eating Sim (Clevis Studios)",
+                brand: "Clevis Studios Engine",
+                title: "Caleb's Eating Sim",
                 basePrice: 1.99,
-                img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=600",
-                tiers: [{ name: "Base State Simulator", premium: 0 }, { name: "Advanced Multi-Thread Tracking Suite", premium: 2.00 }]
+                img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=700",
+                specs: { cpu: "Logic Iteration", telemetry: "Periodic sync", io: "30 Hz Loop", therm: "Ultra Minimal" },
+                finishes: [
+                    { name: "Standard Edition", desc: "Base resource allocation block", premium: 0 },
+                    { name: "Gold Asset Pack", desc: "Alternative parameter tracking matrices", premium: 2.00 }
+                ],
+                tiers: [
+                    { name: "Standard Simulator Setup", desc: "Standard process metrics logging", premium: 0 },
+                    { name: "Multi-Thread Tracking Suite", desc: "Deep algorithm state monitoring", premium: 3.00 }
+                ]
             }
         };
 
-        let loadedElementKey = "lucasphone";
-        let functionalSelectedPremiumAdd = 0;
+        let loadedKey = "lucasphone";
+        let activeFinishIndex = 0;
+        let activeTierIndex = 0;
 
-        function navigateToCustomizer(productKey) {
-            document.querySelectorAll('.view-section').forEach(view => view.classList.remove('active'));
-            const targetView = document.getElementById('view-buy');
-            targetView.classList.add('active');
+        function openConfigurator(productKey) {
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            document.getElementById('panel-buy').classList.add('active');
             
-            loadedElementKey = productKey;
-            functionalSelectedPremiumAdd = 0;
+            loadedKey = productKey;
+            activeFinishIndex = 0;
+            activeTierIndex = 0;
             
-            const record = globalCorporateDatabase[productKey];
-            document.getElementById('dynamic-display-title').innerText = record.title;
-            document.getElementById('dynamic-display-img').src = record.img;
+            const record = unifiedProductDatabase[productKey];
             
-            document.getElementById('option-spec-title-1').innerText = record.tiers[0].name;
-            document.getElementById('option-spec-title-2').innerText = record.tiers[1].name;
+            // Build text labels
+            document.getElementById('cfg-brand').innerText = record.brand;
+            document.getElementById('cfg-title').innerText = record.title;
+            document.getElementById('cfg-img').src = record.img;
             
-            // Reset active state class configurations on cards
-            const parentRow = document.getElementById('option-spec-title-1').parentElement.parentElement;
-            Array.from(parentRow.children).forEach((box, index) => {
-                box.classList.toggle('active', index === 0);
-            });
-
-            evaluateOutputPricingMatrix();
+            // Load custom specifications
+            document.getElementById('spec-cpu').innerText = record.specs.cpu;
+            document.getElementById('spec-bw').innerText = record.specs.telemetry;
+            document.getElementById('spec-io').innerText = record.specs.io;
+            document.getElementById('spec-therm').innerText = record.specs.therm;
+            
+            // Update Finish Configurator Options
+            document.getElementById('finish-title-0').innerText = record.finishes[0].name;
+            document.getElementById('finish-desc-0').innerText = record.finishes[0].desc;
+            document.getElementById('finish-title-1').innerText = record.finishes[1].name;
+            document.getElementById('finish-desc-1').innerText = record.finishes[1].desc;
+            
+            // Update Architecture Configuration Options
+            document.getElementById('tier-title-0').innerText = record.tiers[0].name;
+            document.getElementById('tier-desc-0').innerText = record.tiers[0].desc;
+            document.getElementById('tier-title-1').innerText = record.tiers[1].name;
+            document.getElementById('tier-desc-1').innerText = record.tiers[1].desc;
+            
+            // Update Pricing Text
+            document.getElementById('tier-premium-0').innerText = record.tiers[0].premium === 0 ? "Standard" : `+$${record.tiers[0].premium}`;
+            document.getElementById('tier-premium-1').innerText = record.tiers[1].premium === 0 ? "Standard" : `+$${record.tiers[1].premium}`;
+            
+            refreshSelectionStyleStates();
+            calculateEcosystemPricing();
             window.scrollTo(0, 0);
         }
 
-        function navigateToStaticView(viewId) {
-            document.querySelectorAll('.view-section').forEach(view => view.classList.remove('active'));
-            document.getElementById(`view-${viewId}`).classList.add('active');
+        function selectFinishOption(idx) {
+            activeFinishIndex = idx;
+            refreshSelectionStyleStates();
+            calculateEcosystemPricing();
+        }
+
+        function selectTierOption(idx) {
+            activeTierIndex = idx;
+            refreshSelectionStyleStates();
+            calculateEcosystemPricing();
+        }
+
+        function refreshSelectionStyleStates() {
+            // Finish components
+            document.getElementById('finish-opt-0').classList.toggle('active', activeFinishIndex === 0);
+            document.getElementById('finish-opt-1').classList.toggle('active', activeFinishIndex === 1);
+            
+            // Tier components
+            document.getElementById('tier-opt-0').classList.toggle('active', activeTierIndex === 0);
+            document.getElementById('tier-opt-1').classList.toggle('active', activeTierIndex === 1);
+        }
+
+        function calculateEcosystemPricing() {
+            const record = unifiedProductDatabase[loadedKey];
+            const netAmount = record.basePrice + record.finishes[activeFinishIndex].premium + record.tiers[activeTierIndex].premium;
+            
+            const compiledString = record.basePrice < 15 ? `$${netAmount.toFixed(2)}` : `$${Math.floor(netAmount).toLocaleString()}`;
+            document.getElementById('cfg-price').innerText = compiledString;
+        }
+
+        function switchToPanel(panelId) {
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            
+            // Re-route legacy name bindings gracefully
+            const resolvedId = panelId === 'legal' ? 'view-legal' : `panel-${panelId}`;
+            document.getElementById(resolvedId).classList.add('active');
             window.scrollTo(0, 0);
         }
 
         function resetToHomeAndScrollTop() {
-            document.querySelectorAll('.view-section').forEach(view => view.classList.remove('active'));
-            document.getElementById('view-home').classList.add('active');
+            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
+            document.getElementById('panel-home').classList.add('active');
             window.scrollTo(0, 0);
         }
 
-        function toggleSelectorVisual(element) {
-            Array.from(element.parentElement.children).forEach(box => box.classList.remove('active'));
-            element.classList.add('active');
-        }
-
-        function processPremiumPricingUpdate(element, index) {
-            toggleSelectorVisual(element);
-            const record = globalCorporateDatabase[loadedElementKey];
-            functionalSelectedPremiumAdd = record.tiers[index].premium;
-            evaluateOutputPricingMatrix();
-        }
-
-        function evaluateOutputPricingMatrix() {
-            const record = globalCorporateDatabase[loadedElementKey];
-            const sumTotal = record.basePrice + functionalSelectedPremiumAdd;
-            const printString = record.basePrice < 15 ? `$${sumTotal.toFixed(2)}` : `$${Math.floor(sumTotal).toLocaleString()}`;
-            document.getElementById('dynamic-display-price').innerText = printString;
+        function triggerCheckoutLog() {
+            const product = unifiedProductDatabase[loadedKey];
+            const finishName = product.finishes[activeFinishIndex].name;
+            const tierName = product.tiers[activeTierIndex].name;
+            alert(`Compilation complete.\nPlatform: ${product.title}\nFinish: ${finishName}\nTier: ${tierName}\nConfiguration successfully queued into building matrix.`);
         }
     </script>
 </body>
