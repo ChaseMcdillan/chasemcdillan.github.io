@@ -54,12 +54,12 @@
             visibility: visible; 
             transform: translateX(-50%) translateY(0); 
         }
-        .dropdown-content {
-    max-width: 1200px;
+.dropdown-content {
+    max-width: 900px;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
 }
         .dropdown-col ul { list-style: none; display: flex; gap: 20px; }
         .dropdown-col ul li { font-size: 14px; color: var(--text-primary); cursor: pointer; }
@@ -215,16 +215,34 @@
         </div>
     </div>
 </li>
-                <li class="nav-item">Games
-                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
-                        <li onclick="openConfigurator('angryarabs')">Angry Arabs</li>
-                        <li onclick="openConfigurator('circleblast')">Circle Blast</li>
-                       <li onclick="openConfigurator('calebsim')">
-    Caleb's Eating Sim
-</li>
+<li class="nav-item">Software
+    <div class="dropdown-panel">
+        <div class="dropdown-content" style="display:block; max-width:300px;">
+            <div class="dropdown-col">
+                <ul style="display:flex; flex-direction:column; gap:12px;">
+                    <li onclick="openConfigurator('angryarabs')">
+                        Angry Arabs
+                    </li>
 
-<li onclick="window.open('https://chasemcdillan.github.io/chasemcdillan.github.io-calebeatingsim/', '_blank')">
-    Caleb's Eating Sim - FREE DEMO
+                    <li onclick="openConfigurator('circleblast')">
+                        Circle Blast
+                    </li>
+
+                    <li onclick="openConfigurator('calebsim')">
+                        Caleb's Eating Sim
+                    </li>
+
+                    <li onclick="window.open('https://chasemcdillan.github.io/chasemcdillan.github.io-calebeatingsim/', '_blank')">
+                        Caleb's Eating Sim Demo
+                    </li>
+
+                    <li onclick="openConfigurator('clevistv')">
+                        ClevisTV
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </li>
                     </ul></div></div></div>
                 </li>
@@ -290,6 +308,14 @@
             <h3>Clevis Vision Ecosystem</h3>
             <p>Spatial computing systems designed to merge digital and physical experiences.</p>
         </div>
+
+        <div class="job-card">
+    <h3>ClevisTV</h3>
+    <p>
+        Premium streaming, exclusive originals,
+        and entertainment across every Clevis device.
+    </p>
+</div>
     </div>
 
     <div style="margin-bottom:120px;">
@@ -476,7 +502,28 @@
             ]},
             calebsim: { title: "Caleb's Eating Sim", desc: "Ultra-minimal tracking logic engine setup.", models: [
                 { name: "Standard Simulator Distribution", price: 1.99, specs: { cpu: "Iteration Loop", telemetry: "Sync Active" }, finishes: [{ name: "Core Setup Profile", p: 0, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=500" }] }
-            ]}
+            ]},
+            clevistv: {
+    title: "ClevisTV",
+    desc: "Streaming and entertainment reimagined.",
+    models: [
+        {
+            name: "ClevisTV Premium",
+            price: 9.99,
+            specs: {
+                cpu: "Streaming Matrix",
+                telemetry: "4K HDR"
+            },
+            finishes: [
+                {
+                    name: "Digital Subscription",
+                    p: 0,
+                    img: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&q=80&w=600"
+                }
+            ]
+        }
+    ]
+},
         };
 
         let currentModelArray = [];
