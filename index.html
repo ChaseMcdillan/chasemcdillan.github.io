@@ -54,7 +54,13 @@
             visibility: visible; 
             transform: translateX(-50%) translateY(0); 
         }
-        .dropdown-content { max-width: 1024px; width: 100%; display: grid; grid-template-columns: 1fr; }
+        .dropdown-content {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
         .dropdown-col ul { list-style: none; display: flex; gap: 20px; }
         .dropdown-col ul li { font-size: 14px; color: var(--text-primary); cursor: pointer; }
         .dropdown-col ul li:hover { color: var(--accent-orange); }
@@ -160,15 +166,55 @@
     <span>Clevis Corporation</span>
 </div>
             <ul class="nav-links">
-                <li class="nav-item">Hardware
-                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
-                        <li onclick="openConfigurator('clevisphone')">ClevisPhone</li>
-                        <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
-                        <li onclick="openConfigurator('clevisbook')">ClevisBook</li>
-                        <li onclick="openConfigurator('clevispad')">ClevisPad</li>
-                        <li onclick="openConfigurator('clevisvision')">Clevis Vision</li>
-                    </ul></div></div></div>
-                </li>
+<li class="nav-item">Hardware
+    <div class="dropdown-panel">
+        <div class="dropdown-content">
+
+            <div class="dropdown-col">
+                <h4 style="margin-bottom:12px;color:var(--accent-orange);">
+                    Phones
+                </h4>
+                <ul style="display:flex;flex-direction:column;gap:10px;">
+                    <li onclick="openConfigurator('clevisphone')">ClevisPhone</li>
+                    <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
+                    <li onclick="openConfigurator('iblowup')">iBlowUp 13 Max</li>
+                </ul>
+            </div>
+
+            <div class="dropdown-col">
+                <h4 style="margin-bottom:12px;color:var(--accent-orange);">
+                    Computers
+                </h4>
+                <ul style="display:flex;flex-direction:column;gap:10px;">
+                    <li onclick="openConfigurator('clevisbook')">ClevisBook</li>
+                    <li onclick="openConfigurator('cammiebook')">CammieBook Pro</li>
+                </ul>
+            </div>
+
+            <div class="dropdown-col">
+                <h4 style="margin-bottom:12px;color:var(--accent-orange);">
+                    Tablets & Spatial
+                </h4>
+                <ul style="display:flex;flex-direction:column;gap:10px;">
+                    <li onclick="openConfigurator('clevispad')">ClevisPad</li>
+                    <li onclick="openConfigurator('clevisvision')">Clevis Vision</li>
+                </ul>
+            </div>
+
+            <div class="dropdown-col">
+                <h4 style="margin-bottom:12px;color:var(--accent-orange);">
+                    Vehicles
+                </h4>
+                <ul style="display:flex;flex-direction:column;gap:10px;">
+                    <li onclick="openConfigurator('antimobile')">
+                        Antidisesteablishmentarianismobile
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</li>
                 <li class="nav-item">Games
                     <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
                         <li onclick="openConfigurator('angryarabs')">Angry Arabs</li>
