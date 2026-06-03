@@ -247,8 +247,18 @@
                     </ul></div></div></div>
                 </li>
                 <li class="nav-item" onclick="switchToPanel('farmerplus')">FarmerPlus</li>
-<li class="nav-item" onclick="switchToPanel('careers')">Careers</li>
-<li class="nav-item" onclick="switchToPanel('legal')">Legal</li>
+<li class="nav-item">Company
+    <div class="dropdown-panel">
+        <div class="dropdown-content" style="display:block; max-width:250px;">
+            <div class="dropdown-col">
+                <ul style="display:flex; flex-direction:column; gap:12px;">
+                    <li onclick="switchToPanel('careers')">Careers</li>
+                    <li onclick="switchToPanel('legal')">Legal</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</li>
             </ul>
         </div>
     </header>
