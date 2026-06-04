@@ -348,3 +348,17 @@ border-radius:24px;
 .dropdown:hover .dropdown-content{
     display:block;
 }
+.carousel{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    padding:30px;
+}
+
+.carousel img{
+    width:500px;
+    height:280px;
+    object-fit:cover;
+    border-radius:20px;
+    flex-shrink:0;
+}
