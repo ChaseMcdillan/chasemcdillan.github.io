@@ -7,62 +7,42 @@
 
 <title>Clevis Corporation</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="styles.css">
 </head>
-<script src="js/app.js"></script>
-</body>
+
+<body>
 
 <header class="navbar">
 
-    <div class="logo-area">
-        <img src="images/clevis-logo.png" alt="Clevis Logo">
-        <span>CLEVIS</span>
+    <div class="nav-left">
+
+        <img
+        src="images/clevis-logo.png"
+        alt="Clevis Logo"
+        class="nav-logo">
+
+        <span class="brand">
+            Clevis Corporation
+        </span>
+
     </div>
 
-    <nav>
+    <nav class="nav-right">
 
         <div class="dropdown">
 
-            <button class="nav-btn">
+            <button class="nav-button">
                 Hardware
             </button>
 
-            <div class="dropdown-content hardware-grid">
+            <div class="dropdown-content">
 
-                <div>
-                    <h4>Phones</h4>
-
-                    <a href="#">ClevisPhone Elite 4</a>
-                    <a href="#">ClevisPhone Aura 4</a>
-                    <a href="#">ClevisPhone Pure 2</a>
-                    <a href="#">iBlowUp 13 Max</a>
-                </div>
-
-                <div>
-                    <h4>Computers</h4>
-
-                    <a href="#">ClevisBook Nano 2</a>
-                    <a href="#">ClevisBook Mega 1</a>
-                    <a href="#">CammieBook Pro</a>
-                </div>
-
-                <div>
-                    <h4>Tablets & Spatial</h4>
-
-                    <a href="#">ClevisPad</a>
-                    <a href="#">Clevis Vision</a>
-                </div>
-
-                <div>
-                    <h4>Vehicles</h4>
-
-                    <a href="#">
-                        Antidisesteablishmentarianismobile
-                    </a>
-                </div>
+                <a href="#">iBlowUp 13 Max</a>
+                <a href="#">CammieBook Pro</a>
+                <a href="#">Clevis Vision</a>
+                <a href="#">
+                    Antidisesteablishmentarianismobile
+                </a>
 
             </div>
 
@@ -70,63 +50,24 @@
 
         <div class="dropdown">
 
-            <button class="nav-btn">
+            <button class="nav-button">
                 Software
             </button>
 
-            <div class="dropdown-content software-list">
+            <div class="dropdown-content">
 
                 <a href="#">ClevisTV</a>
-
                 <a href="#">Angry Arabs</a>
-
                 <a href="#">Circle Blast</a>
-
-                <a href="#">
-                    Caleb's Eating Sim
-                </a>
-
-                <a
-                href="https://chasemcdillan.github.io/chasemcdillan.github.io-calebeatingsim/"
-                target="_blank">
-                    FREE DEMO
-                </a>
+                <a href="#">Caleb's Eating Sim</a>
 
             </div>
 
         </div>
 
-        <a href="pages/farmerplus.html" class="nav-link">
-            FarmerPlus
-        </a>
+        <a href="#farmerplus">FarmerPlus</a>
 
-        <div class="dropdown">
-
-            <button class="nav-btn">
-                Company
-            </button>
-
-            <div class="dropdown-content software-list">
-
-                <a href="#mission">
-                    Mission
-                </a>
-
-                <a href="pages/campus.html">
-                    AI-Clevis Campus
-                </a>
-
-                <a href="pages/careers.html">
-                    Careers
-                </a>
-
-                <a href="pages/legal.html">
-                    Legal
-                </a>
-
-            </div>
-
-        </div>
+        <a href="#company">Company</a>
 
     </nav>
 
@@ -138,6 +79,7 @@
 
         <img
         src="images/clevis-logo.png"
+        alt="Clevis Logo"
         class="hero-logo">
 
         <h1>
@@ -146,8 +88,9 @@
 
         <p>
             Designed in Calgary.
-            Creating the next generation of hardware,
-            software, entertainment, and AI-powered experiences.
+            Creating the next generation
+            of hardware, software,
+            entertainment, and AI-powered experiences.
         </p>
 
         <a href="#ecosystem" class="hero-button">
@@ -158,23 +101,182 @@
 
 </section>
 
-<section class="featured-product">
+<section id="ecosystem" class="section">
 
-    <div class="featured-text">
+    <h2>
+        The Clevis Ecosystem
+    </h2>
 
-        <h2>iBlowUp 13 Max</h2>
+    <p class="section-subtitle">
 
-        <p>
-            Powerful. Fast.
-            Unapologetically Clevis.
-        </p>
+        Hardware. Software.
+        Entertainment. AI.
+        One connected experience.
+
+    </p>
+
+    <div class="card-grid">
+
+        <div class="card">
+
+            <h3>Hardware</h3>
+
+            <p>
+                Phones, laptops,
+                tablets, vehicles,
+                and future technologies.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Software</h3>
+
+            <p>
+                Entertainment,
+                productivity,
+                and creative experiences.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>FarmerPlus</h3>
+
+            <p>
+                Membership platform
+                connecting the entire ecosystem.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>AI</h3>
+
+            <p>
+                The next generation
+                of intelligent experiences.
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
-<section id="ecosystem">
+<section class="campus-section">
 
-    <h2>Clevis Ecosystem</h2>
+    <h2>
+        AI-Clevis Campus
+    </h2>
+
+    <p>
+
+        A vision for tomorrow.
+        Innovation, research,
+        creativity, and AI development.
+
+    </p>
+
+    <img
+    src="images/campus.webp"
+    alt="AI Clevis Campus"
+    class="campus-image">
 
 </section>
+
+<section class="carousel-section">
+
+    <h2>
+        Exploring Tomorrow
+    </h2>
+
+    <div class="carousel">
+
+        <img src="images/carousel1.webp">
+        <img src="images/carousel2.webp">
+        <img src="images/carousel3.webp">
+        <img src="images/carousel4.webp">
+        <img src="images/carousel5.webp">
+
+    </div>
+
+</section>
+
+<section id="farmerplus" class="section">
+
+    <h2>
+        FarmerPlus
+    </h2>
+
+    <p>
+
+        One membership.
+        Every Clevis experience.
+
+    </p>
+
+</section>
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h4>Products</h4>
+
+            <a href="#">iBlowUp 13 Max</a>
+            <a href="#">CammieBook Pro</a>
+            <a href="#">Clevis Vision</a>
+
+        </div>
+
+        <div>
+
+            <h4>Software</h4>
+
+            <a href="#">ClevisTV</a>
+            <a href="#">Angry Arabs</a>
+            <a href="#">Circle Blast</a>
+
+        </div>
+
+        <div>
+
+            <h4>Company</h4>
+
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="#">Newsroom</a>
+
+        </div>
+
+        <div>
+
+            <h4>Legal</h4>
+
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Copyright</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 Clevis Corporation.
+        The Future is Built by Clevis.
+
+    </div>
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
