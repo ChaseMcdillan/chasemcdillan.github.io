@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -81,7 +81,7 @@
             color: #ff7b00;
         }
 
-        /* FIXED DROPDOWN - Stays open */
+        /* Fixed Dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -102,11 +102,7 @@
             z-index: 10001;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* This keeps dropdown open when hovering over content */
+        .dropdown:hover .dropdown-content,
         .dropdown-content:hover {
             display: block;
         }
@@ -197,23 +193,11 @@
             transform: scale(1.02);
         }
 
-        /* Scroll Animation */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Sections - MAKE SURE CONTENT IS VISIBLE */
+        /* Sections */
         .section {
-            padding: 100px 8%;
-            min-height: auto;
+            padding: 80px 8%;
             background: #000000;
+            border-bottom: 1px solid #111;
         }
 
         .section h2 {
@@ -221,6 +205,7 @@
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -1px;
+            color: #ffffff;
         }
         
         .section h2 span {
@@ -230,8 +215,20 @@
         .section-subhead {
             font-size: 18px;
             color: #888;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             max-width: 600px;
+        }
+
+        /* Fade Up Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Product Strips */
@@ -257,11 +254,12 @@
         .home-strip-section h2 {
             font-size: 48px;
             font-weight: 700;
+            color: #ffffff;
         }
         
         .home-strip-section p {
             font-size: 18px;
-            color: #86868b;
+            color: #cccccc;
             margin: 12px 0 24px;
             max-width: 600px;
         }
@@ -289,6 +287,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             padding: 16px;
+            background: #000000;
         }
         
         @media (max-width: 768px) {
@@ -319,11 +318,12 @@
         
         .matrix-card h3 {
             font-size: 28px;
+            color: #ffffff;
         }
         
         .matrix-card p {
             font-size: 14px;
-            color: #86868b;
+            color: #cccccc;
             margin: 8px 0 18px;
             max-width: 80%;
         }
@@ -353,6 +353,7 @@
         .card h3 {
             font-size: 24px;
             margin-bottom: 12px;
+            color: #ffffff;
         }
 
         .card p {
@@ -382,6 +383,10 @@
             transform: translateY(-5px);
         }
 
+        .membership-card h3 {
+            color: #ffffff;
+        }
+
         .membership-card .price {
             font-size: 48px;
             font-weight: 700;
@@ -392,6 +397,10 @@
         .membership-card .price span {
             font-size: 16px;
             color: #888;
+        }
+
+        .membership-card p {
+            color: #aaa;
         }
 
         .membership-card button {
@@ -405,7 +414,7 @@
             margin-top: 20px;
         }
 
-        /* ========== IMPROVED CAROUSEL ========== */
+        /* CAROUSEL */
         .carousel-container {
             width: 100%;
             overflow-x: auto;
@@ -490,6 +499,7 @@
             font-weight: 700;
             margin-bottom: 8px;
             letter-spacing: -0.5px;
+            color: #ffffff;
         }
 
         .carousel-card-content .tagline {
@@ -509,7 +519,7 @@
             display: flex;
             justify-content: center;
             gap: 16px;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .carousel-btn {
@@ -563,6 +573,7 @@
         .config-details h2 {
             font-size: 36px;
             margin-bottom: 16px;
+            color: #ffffff;
         }
 
         .config-price {
@@ -581,6 +592,7 @@
             display: flex;
             justify-content: space-between;
             transition: all 0.2s ease;
+            color: #ffffff;
         }
 
         .option-selector.active {
@@ -623,6 +635,7 @@
             font-weight: 700;
             letter-spacing: -3px;
             margin-bottom: 40px;
+            color: #ffffff;
         }
 
         .careers-page .blue-btn {
@@ -750,21 +763,13 @@
                 </div>
             </section>
 
-            <!-- Welcome / HI Section -->
-            <section class="section fade-up" style="text-align: center; padding: 60px 8%;">
-                <h1 style="font-size: 80px; font-weight: 700; letter-spacing: -3px;">HI</h1>
-                <h2 style="font-size: 32px; font-weight: 400; margin-top: 20px;">Welcome to the <span>Clevis</span> Ecosystem</h2>
-                <p>by Chase McDillan</p>
-            </section>
-
-            <!-- CAROUSEL - FIRST THING YOU SEE WHEN SCROLLING -->
-            <section id="carouselSection" class="section">
+            <!-- CAROUSEL SECTION - Directly below hero with no gap -->
+            <div id="carouselSection" class="section" style="padding-top: 60px;">
                 <h2>Featured <span>Products</span></h2>
                 <p class="section-subhead">The latest innovations from Clevis</p>
                 
                 <div class="carousel-container" id="mainCarousel">
                     <div class="carousel-track">
-                        <!-- ClevisPhone Card -->
                         <div class="carousel-card" onclick="openConfigurator('clevisphone')">
                             <div class="carousel-card-image" style="background-image: url('clevis-phone.png'); background-size: cover; background-position: center;">
                                 <div class="carousel-card-badge">NEW</div>
@@ -775,7 +780,6 @@
                                 <div class="description">A17 Bionic chip. Advanced camera system. All-day battery life.</div>
                             </div>
                         </div>
-                        <!-- ClevisBook Card -->
                         <div class="carousel-card" onclick="openConfigurator('clevisbook')">
                             <div class="carousel-card-image" style="background-image: url('clevis-book.png'); background-size: cover; background-position: center;">
                                 <div class="carousel-card-badge">PRO</div>
@@ -786,7 +790,6 @@
                                 <div class="description">M3 Max chip. 22-hour battery. Stunning Liquid Retina XDR display.</div>
                             </div>
                         </div>
-                        <!-- Clevis Vision Card -->
                         <div class="carousel-card" onclick="openConfigurator('clevisvision')">
                             <div class="carousel-card-image" style="background-image: url('clevis-vision.png'); background-size: cover; background-position: center;">
                                 <div class="carousel-card-badge">SPATIAL</div>
@@ -797,7 +800,6 @@
                                 <div class="description">Revolutionary mixed reality. 4K displays. Immersive experiences.</div>
                             </div>
                         </div>
-                        <!-- ClevisPad Card -->
                         <div class="carousel-card" onclick="openConfigurator('clevispad')">
                             <div class="carousel-card-image" style="background-image: url('clevis-pad.png'); background-size: cover; background-position: center;">
                                 <div class="carousel-card-badge">STUDIO</div>
@@ -805,10 +807,9 @@
                             <div class="carousel-card-content">
                                 <h3>ClevisPad</h3>
                                 <div class="tagline">Your next computer. Not a computer.</div>
-                                <div class="description">Stunning display. Incredible performance. iPadOS magic.</div>
+                                <div class="description">Stunning display. Incredible performance.</div>
                             </div>
                         </div>
-                        <!-- LucasPhone Mini Card -->
                         <div class="carousel-card" onclick="openConfigurator('lucasphone')">
                             <div class="carousel-card-image" style="background-image: url('lucas-phone.png'); background-size: cover; background-position: center;">
                                 <div class="carousel-card-badge">MINI</div>
@@ -819,24 +820,13 @@
                                 <div class="description">Compact design. Powerful performance. All-day battery.</div>
                             </div>
                         </div>
-                        <!-- Clevis Audio Card -->
-                        <div class="carousel-card">
-                            <div class="carousel-card-image" style="background-image: url('clevis-audio.png'); background-size: cover; background-position: center;">
-                                <div class="carousel-card-badge">AUDIO</div>
-                            </div>
-                            <div class="carousel-card-content">
-                                <h3>Clevis Audio Pro</h3>
-                                <div class="tagline">Sound. Redefined.</div>
-                                <div class="description">Spatial audio. Active noise cancellation. 30-hour battery life.</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="carousel-controls">
                     <button class="carousel-btn" onclick="scrollCarousel(-400)">←</button>
                     <button class="carousel-btn" onclick="scrollCarousel(400)">→</button>
                 </div>
-            </section>
+            </div>
 
             <!-- Product Strips -->
             <div class="home-strip-section fade-up" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000');">
@@ -871,7 +861,7 @@
             </div>
 
             <!-- Ecosystem Section -->
-            <section id="ecosystem" class="section fade-up">
+            <div id="ecosystem" class="section fade-up">
                 <h2>The <span>Clevis</span> Ecosystem</h2>
                 <p class="section-subhead">Seamlessly integrated experiences across hardware, software, and AI.</p>
                 <div class="cards-grid">
@@ -892,10 +882,10 @@
                         <p>Intelligent systems powering the future of computing.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Memberships Section -->
-            <section class="section fade-up">
+            <div class="section fade-up">
                 <h2>FarmerPlus <span>Membership</span></h2>
                 <p class="section-subhead">Unlock exclusive benefits across the entire Clevis ecosystem.</p>
                 <div class="membership-grid">
@@ -918,10 +908,10 @@
                         <button>Upgrade</button>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Legal Section -->
-            <section id="legal" class="section fade-up">
+            <div id="legal" class="section fade-up">
                 <h2>Legal <span>Framework</span></h2>
                 <p class="section-subhead">All component processing options and device configurations are subject to systemic updates managed by Chase McDillan.</p>
                 <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
@@ -934,7 +924,7 @@
                         <p>Hardware, software, and service terms and conditions.</p>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
 
         <!-- Careers Page -->
@@ -947,7 +937,7 @@
         <div id="configurator" style="display: none;">
             <div id="discovery-view" style="max-width: 800px; margin: 0 auto; padding: 80px 22px;">
                 <button style="background: none; border: none; color: #ff7b00; cursor: pointer; margin-bottom: 30px; font-size: 16px;" onclick="closeConfigurator()">← Back to Home</button>
-                <h1 id="config-title" style="font-size: 48px; margin-bottom: 16px;"></h1>
+                <h1 id="config-title" style="font-size: 48px; margin-bottom: 16px; color: #fff;"></h1>
                 <p id="config-desc" style="color: #888; font-size: 18px; margin-bottom: 40px;"></p>
                 <div id="model-list"></div>
             </div>
@@ -973,4 +963,202 @@
                         <input type="checkbox" id="discount-toggle" onchange="updatePrice()">
                     </div>
                     <button class="btn-primary" onclick="checkout()">Queue to Build Matrix →</button>
-                    <button style="margin-top: 16px; background:
+                    <button style="margin-top: 16px; background: none; border: none; color: #888; cursor: pointer;" onclick="backToDiscovery()">← Back to models</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>Company</h4>
+                <a onclick="showCareers()">Careers</a>
+                <a onclick="scrollToLegal()">Legal</a>
+            </div>
+            <div>
+                <h4>Products</h4>
+                <a onclick="openConfigurator('clevisphone')">Hardware</a>
+                <a onclick="openConfigurator('angryarabs')">Software</a>
+                <a>FarmerPlus</a>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <a>Support</a>
+                <a>Developer</a>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <a href="https://calebleung52.github.io" target="_blank">Meet Caleb</a>
+                <a>Newsletter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Clevis Corporation — The Future is Built by Clevis
+        </div>
+    </footer>
+
+    <script>
+        // Product Database
+        const products = {
+            clevisphone: { title: "ClevisPhone Series", desc: "Our hallmark computational communication matrices.", models: [
+                { name: "ClevisPhone Elite 4", price: 1199, specs: { cpu: "E14 Architecture", bus: "950 Mbps" }, finishes: [{ name: "Space Graphite", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" }, { name: "Satin Gold", p: 50, img: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?w=600" }] },
+                { name: "ClevisPhone Aura 4", price: 999, specs: { cpu: "Aura Silicon v4", bus: "850 Mbps" }, finishes: [{ name: "Aurora Blue", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" }] },
+                { name: "ClevisPhone Pure 2", price: 799, specs: { cpu: "Pure Node Gen2", bus: "700 Mbps" }, finishes: [{ name: "Ceramic Silver", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" }] }
+            ]},
+            lucasphone: { title: "LucasPhone Mini", desc: "Ultra-compact performance frameworks.", models: [
+                { name: "LucasPhone Mini", price: 699, specs: { cpu: "L1 Mini Core", bus: "500 Mbps" }, finishes: [{ name: "Matte Black", p: 0, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?w=600" }, { name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1565630916779-e303be97b6f5?w=600" }] }
+            ]},
+            clevisbook: { title: "ClevisBook Frameworks", desc: "Desktop processing pipelines packed inside a forged design matrix.", models: [
+                { name: "ClevisBook Nano 2", price: 1499, specs: { cpu: "N2 Efficient Node", bus: "2.4 Gbps" }, finishes: [{ name: "Stellar Silver", p: 0, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600" }] },
+                { name: "ClevisBook Mega 1", price: 2499, specs: { cpu: "M1 Colossus Engine", bus: "9.6 Gbps" }, finishes: [{ name: "Deep Charcoal", p: 150, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600" }] }
+            ]},
+            clevispad: { title: "ClevisPad Matrix", desc: "High-refresh mobile canvases optimized for system design.", models: [
+                { name: "ClevisPad Thin", price: 899, specs: { cpu: "T1 Engine", bus: "600 Mbps" }, finishes: [{ name: "Anodized Slate", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600" }] },
+                { name: "ClevisPad 2", price: 1099, specs: { cpu: "Pro Core Gen2", bus: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600" }] }
+            ]},
+            clevisvision: { title: "Clevis Vision Ecosystem", desc: "Spatial telemetry matrices mapping real-world display metrics.", models: [
+                { name: "Clevis Vision Pro", price: 3499, specs: { cpu: "Dual Spatial Node", bus: "48 GB/s" }, finishes: [{ name: "Solo Knit Band Titanium", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=600" }] },
+                { name: "Clevis Vision", price: 1999, specs: { cpu: "Standard Spatial Core", bus: "24 GB/s" }, finishes: [{ name: "Lightweight Charcoal", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=600" }] }
+            ]},
+            angryarabs: { title: "Angry Arabs", desc: "Clevis Studios simulation engine distribution build.", models: [
+                { name: "Standard Simulation Engine", price: 4.99, specs: { cpu: "Vector Matrix", bus: "Active Logs" }, finishes: [{ name: "Digital Build Profile", p: 0, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500" }] }
+            ]},
+            circleblast: { title: "Circle Blast", desc: "High-refresh layout rendering engine loops.", models: [
+                { name: "Standard Runtime Build", price: 2.99, specs: { cpu: "Geometry Core", bus: "120Hz Loop" }, finishes: [{ name: "Standard Matrix Pack", p: 0, img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=500" }] }
+            ]},
+            calebsim: { title: "Caleb's Eating Sim", desc: "Ultra-minimal tracking logic engine setup.", models: [
+                { name: "Standard Simulator Distribution", price: 1.99, specs: { cpu: "Iteration Loop", bus: "Sync Active" }, finishes: [{ name: "Core Setup Profile", p: 0, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500" }] }
+            ]}
+        };
+
+        let currentProduct = null;
+        let currentModelIdx = 0;
+        let currentFinishIdx = 0;
+        let discountActive = false;
+
+        // Navigation Functions
+        function showHome() {
+            document.getElementById('homepage').style.display = 'block';
+            document.getElementById('careerspage').style.display = 'none';
+            document.getElementById('configurator').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function showCareers() {
+            document.getElementById('homepage').style.display = 'none';
+            document.getElementById('careerspage').style.display = 'flex';
+            document.getElementById('configurator').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToCarousel() {
+            document.getElementById('carouselSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToLegal() {
+            document.getElementById('legal').scrollIntoView({ behavior: 'smooth' });
+            showHome();
+        }
+
+        // Carousel Functions
+        function scrollCarousel(distance) {
+            const carousel = document.getElementById('mainCarousel');
+            carousel.scrollBy({ left: distance, behavior: 'smooth' });
+        }
+
+        // Configurator Functions
+        function openConfigurator(key) {
+            currentProduct = products[key];
+            if (!currentProduct) return;
+            
+            document.getElementById('homepage').style.display = 'none';
+            document.getElementById('careerspage').style.display = 'none';
+            document.getElementById('configurator').style.display = 'block';
+            
+            document.getElementById('config-title').innerText = currentProduct.title;
+            document.getElementById('config-desc').innerText = currentProduct.desc;
+            
+            const listDiv = document.getElementById('model-list');
+            listDiv.innerHTML = '';
+            
+            currentProduct.models.forEach((model, idx) => {
+                const card = document.createElement('div');
+                card.className = 'option-selector';
+                card.innerHTML = `<div><strong>${model.name}</strong><p style="font-size:12px;color:#888">Base Model</p></div><div style="color:#ff7b00">$${model.price}</div>`;
+                card.onclick = () => showPurchase(idx);
+                listDiv.appendChild(card);
+            });
+            
+            document.getElementById('discovery-view').style.display = 'block';
+            document.getElementById('purchase-view').style.display = 'none';
+        }
+
+        function showPurchase(modelIdx) {
+            currentModelIdx = modelIdx;
+            currentFinishIdx = 0;
+            const model = currentProduct.models[modelIdx];
+            
+            document.getElementById('discovery-view').style.display = 'none';
+            document.getElementById('purchase-view').style.display = 'grid';
+            
+            document.getElementById('product-name').innerText = model.name;
+            document.getElementById('spec-cpu').innerText = model.specs.cpu;
+            document.getElementById('spec-bus').innerText = model.specs.bus;
+            
+            const finishDiv = document.getElementById('finish-options');
+            finishDiv.innerHTML = '<h4 style="margin-bottom:12px;color:#fff">Finishes</h4>';
+            model.finishes.forEach((finish, idx) => {
+                const opt = document.createElement('div');
+                opt.className = idx === 0 ? 'option-selector active' : 'option-selector';
+                opt.innerHTML = `<div>${finish.name}</div><div>${finish.p === 0 ? 'Included' : '+$' + finish.p}</div>`;
+                opt.onclick = () => {
+                    currentFinishIdx = idx;
+                    updatePrice();
+                    document.querySelectorAll('#finish-options .option-selector').forEach(el => el.classList.remove('active'));
+                    opt.classList.add('active');
+                    document.getElementById('product-img').src = finish.img;
+                };
+                finishDiv.appendChild(opt);
+            });
+            
+            document.getElementById('product-img').src = model.finishes[0].img;
+            updatePrice();
+        }
+
+        function updatePrice() {
+            const model = currentProduct.models[currentModelIdx];
+            const finish = model.finishes[currentFinishIdx];
+            let price = model.price + finish.p;
+            if (document.getElementById('discount-toggle').checked) price *= 0.9;
+            document.getElementById('product-price').innerText = '$' + (price < 100 ? price.toFixed(2) : Math.floor(price).toLocaleString());
+        }
+
+        function backToDiscovery() {
+            document.getElementById('discovery-view').style.display = 'block';
+            document.getElementById('purchase-view').style.display = 'none';
+        }
+
+        function closeConfigurator() {
+            showHome();
+        }
+
+        function checkout() {
+            const model = currentProduct.models[currentModelIdx];
+            alert('✅ Configuration complete for ' + model.name + '!\n\nYour device has been queued for manufacturing.');
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
