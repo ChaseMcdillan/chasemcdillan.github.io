@@ -1,272 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clevis Corporation</title>
 
-<link rel="stylesheet" href="styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clevis Corporation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<nav class="navbar">
+    <header class="navbar">
 
-<div class="logo-section">
-<img src="clevis-logo.png" alt="Clevis Logo">
-<span>Clevis</span>
-</div>
+        <div class="nav-left">
+            <img src="clevis-logo.png" alt="Clevis Logo" class="nav-logo">
+            <span class="brand">Clevis Corporation</span>
+        </div>
 
-<div class="nav-links">
+        <nav class="nav-right">
 
-<div class="dropdown">
+            <div class="dropdown">
+                <button class="nav-button">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="#">iBlowUp 13 Max</a>
+                    <a href="#">CammieBook Pro</a>
+                    <a href="#">Clevis Vision</a>
+                </div>
+            </div>
 
-<button class="nav-button">
-Hardware
-</button>
+            <div class="dropdown">
+                <button class="nav-button">Software</button>
+                <div class="dropdown-content">
+                    <a href="#">ClevisTV</a>
+                    <a href="#">Circle Blast</a>
+                    <a href="#">Caleb's Eating Sim</a>
+                </div>
+            </div>
 
-<div class="dropdown-content">
+            <a href="#ecosystem">Ecosystem</a>
+            <a href="#campus">AI Campus</a>
+            <a href="#careers">Careers</a>
 
-<a href="hardware/iblowup13max.html">
-iBlowUp 13 Max
-</a>
+        </nav>
 
-<a href="hardware/cammiebookpro.html">
-CammieBook Pro
-</a>
+    </header>
 
-<a href="hardware/clevisvision.html">
-Clevis Vision
-</a>
+    <section class="hero">
 
-<a href="hardware/antidisestablishmentarianismobile.html">
-Antidisestablishmentarianismobile
-</a>
+        <img src="hero-campus.png" class="hero-image" alt="Clevis AI Campus">
 
-</div>
+        <div class="hero-overlay">
 
-</div>
+            <img src="clevis-logo.png" class="hero-logo" alt="Clevis">
 
-<div class="dropdown">
+            <h1>The Future is Built by Clevis</h1>
 
-<button class="nav-button">
-Software
-</button>
+            <p>
+                Hardware. Software. Entertainment.
+                Artificial Intelligence.
+                One connected ecosystem.
+            </p>
 
-<div class="dropdown-content">
+            <a href="#ecosystem" class="hero-button">
+                Explore the Ecosystem
+            </a>
 
-<a href="software/iblowup13max.html">
-iBlowUp 13 Max
-</a>
+        </div>
 
-<a href="hardware/cammiebookpro.html">
-CammieBook Pro
-</a>
+    </section>
 
-<a href="hardware/clevisvision.html">
-Clevis Vision
-</a>
+    <section id="ecosystem" class="section">
 
-<a href="hardware/antidisestablishmentarianismobile.html">
-Antidisestablishmentarianismobile
-</a>
+        <h2>The Clevis Ecosystem</h2>
 
-</div>
+        <div class="cards">
 
-</div>
-<a href="farmerplus.html">FarmerPlus</a>
-<a href="careers.html">Careers</a>
-<a href="legal.html">Legal</a>
+            <div class="card">
+                <h3>Hardware</h3>
+                <p>Phones, laptops, tablets, vehicles and future technology.</p>
+            </div>
 
-</div>
+            <div class="card">
+                <h3>Software</h3>
+                <p>Entertainment, productivity and creative experiences.</p>
+            </div>
 
-</nav>
+            <div class="card">
+                <h3>FarmerPlus</h3>
+                <p>Membership platform connecting every Clevis experience.</p>
+            </div>
 
-<header class="hero">
+            <div class="card">
+                <h3>Artificial Intelligence</h3>
+                <p>Next-generation intelligent systems and services.</p>
+            </div>
 
-<section class="hero">
+        </div>
 
-    <img src="hero-campus.png" class="hero-bg">
+    </section>
 
-    <div class="hero-overlay">
+    <section id="campus" class="section">
 
-        <img src="clevis-logo.png" class="hero-logo">
-
-        <h1>The Future is Built by Clevis</h1>
+        <h2>AI-Clevis Campus</h2>
 
         <p>
-            Hardware. Software. Entertainment.
-            Artificial Intelligence.
-            One Ecosystem.
+            A future-focused innovation campus bringing together hardware,
+            software, entertainment and artificial intelligence.
         </p>
 
-        <a href="#ecosystem" class="hero-button">
-            Explore the Ecosystem
-        </a>
+    </section>
 
-    </div>
+    <section class="section">
 
-</section>
-  <section class="carousel-section">
+        <h2>Featured Products</h2>
 
-<h2>Explore the Future</h2>
+        <div class="carousel">
 
-<div class="carousel">
+            <div class="slide">iBlowUp 13 Max</div>
+            <div class="slide">CammieBook Pro</div>
+            <div class="slide">Clevis Vision</div>
+            <div class="slide">ClevisTV</div>
 
-<img src="hero-campus.png">
-<img src="hero-campus.png">
-<img src="hero-campus.png">
-<img src="hero-campus.png">
-
-</div>
-
-</section>
-
-</header>
-
-<section id="ecosystem" class="section">
-
-<h2>The Clevis Ecosystem</h2>
-
-<p>
-Hardware. Software. Entertainment. AI.
-One connected experience.
-</p>
-<section class="campus-section">
-
-<h2>AI-Clevis Campus</h2>
-
-<img src="hero-campus.png" class="campus-image">
-
-<p>
-Building tomorrow through artificial intelligence,
-research, and innovation.
-</p>
-
-</section>
-<div class="cards">
-
-<div class="card">
-<h3>Hardware</h3>
-<p>Phones, laptops, vehicles, and future technologies.</p>
-</div>
-
-<div class="card">
-<h3>Software</h3>
-<p>Entertainment, productivity, and creative experiences.</p>
-</div>
-
-<div class="card">
-<h3>FarmerPlus</h3>
-<p>The membership platform connecting everything.</p>
-</div>
-
-<div class="card">
-<h3>AI-Clevis Campus</h3>
-<p>The next generation of intelligent experiences.</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="artwork-section">
-
-<h2>Designed for Tomorrow</h2>
-
-<div class="artwork-grid">
-
-<div class="artwork"></div>
-<div class="artwork"></div>
-<div class="artwork"></div>
-
-</div>
-
-</section>
-
-<footer>
-
-<div class="footer-grid">
-
-<div>
-<h4>Products</h4>
-<a href="hardware.html">Hardware</a>
-<a href="software.html">Software</a>
-<a href="farmerplus.html">FarmerPlus</a>
-</div>
-
-<div>
-<h4>Company</h4>
-<a href="careers.html">Careers</a>
-<a href="#">About</a>
-<a href="#">Newsroom</a>
-</div>
-
-<div>
-<h4>Legal</h4>
-<a href="legal.html">Privacy</a>
-<a href="legal.html">Terms</a>
-<a href="legal.html">Copyright</a>
-</div>
-
-</div>
-
-<div class="footer-bottom">
-© 2026 Clevis Corporation — The Future is Built by Clevis
-</div>
-
-</footer>
-
-<script src="app.js"></script>
-
-  <section class="hero">
-
-    <div class="hero-bg"></div>
-
-    <div class="hero-content">
-
-        <img src="clevis-logo.png" alt="Clevis Logo" class="hero-logo">
-
-        <h1>The Future is Built by Clevis</h1>
-
-        <p>
-            Hardware. Software. Entertainment.
-            Artificial Intelligence.
-            One ecosystem.
-        </p>
-
-    </div>
-
-</section>
-
-<section class="campus-section">
-
-    <h2>AI-Clevis Campus</h2>
-
-    <p>
-        The next generation of AI-powered learning,
-        creativity, productivity and entertainment.
-    </p>
-
-    <div class="campus-grid">
-
-        <div class="campus-card">
-            <h3>AI Creation</h3>
-            <p>Create music, stories, games and films.</p>
         </div>
 
-        <div class="campus-card">
-            <h3>AI Learning</h3>
-            <p>Personalized education and tutoring.</p>
+    </section>
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Newsroom</a>
+            </div>
+
+            <div>
+                <h4>Products</h4>
+                <a href="#">Hardware</a>
+                <a href="#">Software</a>
+                <a href="#">FarmerPlus</a>
+            </div>
+
+            <div>
+                <h4>Legal</h4>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Copyright</a>
+            </div>
+
         </div>
 
-        <div class="campus-card">
-            <h3>AI Productivity</h3>
-            <p>Smarter workflows and intelligent assistants.</p>
+        <div class="footer-bottom">
+            © 2026 Clevis Corporation — The Future is Built by Clevis
         </div>
 
-    </div>
+    </footer>
 
-</section>
+    <script src="app.js"></script>
+
 </body>
+
 </html>
