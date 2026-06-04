@@ -1,210 +1,279 @@
-// ======================================
-// CLEVIS WEBSITE ENGINE
-// ======================================
+// =======================================
+// CLEVIS CORPORATION WEBSITE ENGINE
+// =======================================
 
-// Smooth reveal animations
+// Reveal Animations
 
-const revealElements = document.querySelectorAll(
-    ".reveal, .reveal-right"
+const reveals = document.querySelectorAll(
+".reveal, .reveal-right"
 );
 
-const observer = new IntersectionObserver(
-(entries) => {
+const revealObserver =
+new IntersectionObserver(
 
-    entries.forEach(entry => {
+(entries)=>{
 
-        if(entry.isIntersecting){
+entries.forEach(entry=>{
 
-            entry.target.classList.add("show");
+if(entry.isIntersecting){
 
-        }
+entry.target.classList.add("show");
 
-    });
-
-},
-{
-    threshold:0.15
 }
-);
 
-revealElements.forEach(element => {
-    observer.observe(element);
 });
 
-// ======================================
-// Navbar glass effect
-// ======================================
+},
+
+{
+threshold:0.15
+}
+
+);
+
+reveals.forEach(item=>{
+
+revealObserver.observe(item);
+
+});
+
+// =======================================
+// Navbar Glass Effect
+// =======================================
 
 const navbar =
 document.querySelector(".navbar");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    if(window.scrollY > 50){
+if(window.scrollY > 40){
 
-        navbar.style.background =
-        "rgba(0,0,0,.92)";
+navbar.style.background =
+"rgba(0,0,0,.92)";
 
-        navbar.style.backdropFilter =
-        "blur(30px)";
+navbar.style.backdropFilter =
+"blur(30px)";
 
-    }
-    else{
+}
+else{
 
-        navbar.style.background =
-        "rgba(0,0,0,.75)";
+navbar.style.background =
+"rgba(0,0,0,.75)";
 
-    }
-
-});
-
-// ======================================
-// Carousel Auto Pause
-// ======================================
-
-const carousel =
-document.querySelector(".carousel-track");
-
-if(carousel){
-
-    carousel.addEventListener(
-    "mouseenter",
-    () => {
-
-        carousel.style.animationPlayState =
-        "paused";
-
-    });
-
-    carousel.addEventListener(
-    "mouseleave",
-    () => {
-
-        carousel.style.animationPlayState =
-        "running";
-
-    });
+navbar.style.backdropFilter =
+"blur(20px)";
 
 }
 
-// ======================================
-// Hero Glow Effect
-// ======================================
+});
 
-document.addEventListener(
+// =======================================
+// Hero Background Motion
+// =======================================
+
+const hero =
+document.querySelector(".hero");
+
+if(hero){
+
+window.addEventListener(
 "mousemove",
-(event)=>{
+(e)=>{
 
-    const hero =
-    document.querySelector(".hero");
+const x =
+e.clientX /
+window.innerWidth;
 
-    if(!hero) return;
+const y =
+e.clientY /
+window.innerHeight;
 
-    const x =
-    event.clientX /
-    window.innerWidth;
-
-    const y =
-    event.clientY /
-    window.innerHeight;
-
-    hero.style.backgroundPosition =
-    `${50 + x*5}% ${50 + y*5}%`;
+hero.style.backgroundPosition =
+`${50 + x*4}% ${50 + y*4}%`;
 
 });
 
-// ======================================
-// Future Product Loader
-// ======================================
+}
 
-const productDatabase = {
+// =======================================
+// Carousel Auto Scroll
+// =======================================
 
-    phones:[
-        "ClevisPhone Elite 4",
-        "ClevisPhone Aura 4",
-        "ClevisPhone Pure 2",
-        "iBlowUp 13 Max"
-    ],
+const carousel =
+document.querySelector(".carousel");
 
-    computers:[
-        "ClevisBook Nano 2",
-        "ClevisBook Mega 1",
-        "CammieBook Pro"
-    ],
+if(carousel){
 
-    tablets:[
-        "ClevisPad",
-        "Clevis Vision"
-    ],
+let scrollSpeed = 1;
 
-    vehicles:[
-        "Antidisesteablishmentarianismobile"
-    ]
+function autoScroll(){
+
+carousel.scrollLeft += scrollSpeed;
+
+if(
+carousel.scrollLeft >=
+carousel.scrollWidth -
+carousel.clientWidth
+){
+
+carousel.scrollLeft = 0;
+
+}
+
+requestAnimationFrame(
+autoScroll
+);
+
+}
+
+autoScroll();
+
+carousel.addEventListener(
+"mouseenter",
+()=>{
+
+scrollSpeed = 0;
+
+}
+);
+
+carousel.addEventListener(
+"mouseleave",
+()=>{
+
+scrollSpeed = 1;
+
+}
+);
+
+}
+
+// =======================================
+// Smooth Anchor Scrolling
+// =======================================
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor=>{
+
+anchor.addEventListener(
+"click",
+function(e){
+
+e.preventDefault();
+
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+// =======================================
+// Product Registry
+// =======================================
+
+const clevisProducts = {
+
+phones:[
+"ClevisPhone Elite 4",
+"ClevisPhone Aura 4",
+"ClevisPhone Pure 2",
+"iBlowUp 13 Max"
+],
+
+computers:[
+"ClevisBook Nano 2",
+"ClevisBook Mega 1",
+"CammieBook Pro"
+],
+
+tablets:[
+"ClevisPad",
+"Clevis Vision"
+],
+
+vehicles:[
+"Antidisesteablishmentarianismobile"
+]
 
 };
 
-// Future-proof expansion
+// Easy future expansion
 
 function registerProduct(
 category,
 name
 ){
 
-    if(!productDatabase[category]){
+if(
+!clevisProducts[category]
+){
 
-        productDatabase[category] = [];
+clevisProducts[category] = [];
 
-    }
+}
 
-    productDatabase[category].push(name);
+clevisProducts[category]
+.push(name);
 
 }
 
 // Example:
-
+//
 // registerProduct(
 // "phones",
 // "ClevisPhone Ultra"
 // );
 
-// ======================================
-// Smooth Page Scroll
-// ======================================
+// =======================================
+// FarmerPlus Registry
+// =======================================
 
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(anchor=>{
+const farmerPlusBenefits = [
 
-    anchor.addEventListener(
-    "click",
-    function(e){
+"Priority Support",
 
-        e.preventDefault();
+"ClevisTV Included",
 
-        const target =
-        document.querySelector(
-        this.getAttribute("href")
-        );
+"Exclusive Discounts",
 
-        if(target){
+"Early Product Access",
 
-            target.scrollIntoView({
-                behavior:"smooth"
-            });
+"Member Events"
 
-        }
+];
 
-    });
+// =======================================
+// Site Loaded
+// =======================================
+
+window.addEventListener(
+"load",
+()=>{
+
+document.body.classList.add(
+"loaded"
+);
+
+console.log(
+"Clevis Corporation Loaded"
+);
+
+console.log(
+"The Future is Built by Clevis"
+);
 
 });
-
-// ======================================
-// Console Welcome
-// ======================================
-
-console.log(`
-===================================
-CLEVIS CORPORATION
-The Future is Built by Clevis
-===================================
-`);
