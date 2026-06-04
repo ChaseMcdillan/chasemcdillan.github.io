@@ -448,3 +448,22 @@ border-radius:24px;
     }
 
 }
+.hero-overlay{
+    animation:fadeInUp 1.5s ease;
+}
+
+@keyframes fadeInUp{
+
+    from{
+        opacity:0;
+        transform:
+        translate(-50%,-40%);
+    }
+
+    to{
+        opacity:1;
+        transform:
+        translate(-50%,-50%);
+    }
+
+}
