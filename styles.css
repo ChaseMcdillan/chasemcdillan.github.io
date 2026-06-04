@@ -379,3 +379,10 @@ transform:translateY(0);
 }
 
 }
+.hero-button{
+transition:0.3s;
+}
+
+.hero-button:hover{
+transform:translateY(-4px);
+}
