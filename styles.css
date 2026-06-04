@@ -386,3 +386,13 @@ transition:0.3s;
 .hero-button:hover{
 transform:translateY(-4px);
 }
+.campus-section{
+text-align:center;
+padding:100px 20px;
+}
+
+.campus-image{
+width:100%;
+max-width:1200px;
+border-radius:24px;
+}
