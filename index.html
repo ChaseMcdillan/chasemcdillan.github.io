@@ -3,439 +3,734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clevis Corporation Ecosystem</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Clevis Corporation | Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-primary: #000000;
-            --bg-secondary: #161617;
-            --text-primary: #ffffff;
-            --text-secondary: #86868b;
-            --accent-orange: #ff7b00;
-            --border-color: #333333;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; }
-        
-        header { position: fixed; top: 0; width: 100%; height: 48px; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .nav-container { max-width: 1024px; margin: 0 auto; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 22px; }
-        .nav-logo-group { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-        .nav-logo-img { height: 28px; width: auto; display: block; }
-        .nav-logo-text { font-weight: 500; font-size: 14px; color: var(--text-primary); }
-        .nav-links { display: flex; gap: 40px; list-style: none; }
-        .nav-item { font-size: 12px; color: var(--text-secondary); cursor: pointer; position: relative; padding: 15px 0; }
-        .nav-item:hover { color: var(--text-primary); }
-        
-        .dropdown-panel { 
-            position: absolute; 
-            top: 48px; 
-            left: 50%; 
-            transform: translateX(-50%) translateY(-8px); 
-            width: 100vw; 
-            background: var(--bg-secondary); 
-            border-bottom: 1px solid var(--border-color); 
-            opacity: 0; 
-            visibility: hidden; 
-            padding: 30px; 
-            display: flex; 
-            justify-content: center; 
-            z-index: 9998; 
-            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
-        .nav-item:hover .dropdown-panel { 
-            opacity: 1; 
-            visibility: visible; 
-            transform: translateX(-50%) translateY(0); 
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .dropdown-content { max-width: 1024px; width: 100%; display: grid; grid-template-columns: 1fr; }
-        .dropdown-col ul { list-style: none; display: flex; gap: 20px; }
-        .dropdown-col ul li { font-size: 14px; color: var(--text-primary); cursor: pointer; }
-        .dropdown-col ul li:hover { color: var(--accent-orange); }
-        
-        main { margin-top: 48px; }
-        .view-section { display: none; }
-        .view-section.active { display: block; }
-        
-        .home-welcome-hero { 
-            height: calc(100vh - 48px); 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center;
-            opacity: 0;
-            animation: fadeInPage 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
         }
-        @keyframes fadeInPage {
-            to { opacity: 1; }
+
+        .nav-logo {
+            height: 32px;
+            width: auto;
         }
-        .home-welcome-hero h1 { font-size: 120px; font-weight: 700; letter-spacing: -5px; }
-        .home-welcome-hero h2 { font-size: 32px; font-weight: 400; margin-bottom: 10px; }
-        
-        .home-strip-section { 
-            height: 60vh; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            padding: 40px; 
-            border-bottom: 1px solid var(--border-color); 
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+
+        .brand {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
         }
-        .home-strip-section:hover {
-            transform: scale(1.015);
+
+        .nav-right {
+            display: flex;
+            gap: 28px;
+            align-items: center;
         }
-        .home-strip-section h2 { font-size: 48px; font-weight: 700; }
-        .home-strip-section p { font-size: 18px; color: var(--text-secondary); margin: 12px 0 24px; max-width: 600px; }
-        
-        .strip-cta { font-size: 16px; color: #ffffff; border-bottom: 1px solid #ffffff; cursor: pointer; padding-bottom: 2px; transition: opacity 0.3s ease, border-color 0.3s ease; background: none; border-top: none; border-left: none; border-right: none; }
-        .strip-cta:hover { opacity: 0.6; border-color: transparent; }
-        
-        .home-product-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 16px; }
-        @media(max-width: 768px) { .home-product-matrix { grid-template-columns: 1fr; } }
-        
-        .matrix-card { 
-            height: 450px; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            background-color: var(--bg-secondary); 
-            border-radius: 6px; 
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+
+        .nav-right a, .dropbtn {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
-        .matrix-card:hover {
+
+        .nav-right a:hover, .dropbtn:hover {
+            color: #ff7b00;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #111111;
+            min-width: 200px;
+            border-radius: 12px;
+            padding: 8px 0;
+            margin-top: 12px;
+            border: 1px solid #333;
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            font-size: 13px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 8%;
+            transform: translateY(-50%);
+            max-width: 650px;
+            z-index: 10;
+        }
+
+        .hero-logo {
+            width: 100px;
+            margin-bottom: 24px;
+        }
+
+        .hero-overlay h1 {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-overlay p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #cccccc;
+            margin-bottom: 32px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #ff7b00;
+            color: white;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background: #e66a00;
             transform: scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
-        .matrix-card h3 { font-size: 28px; }
-        .matrix-card p { font-size: 14px; color: var(--text-secondary); margin: 8px 0 18px; max-width: 80%; }
-        
-        .config-container { max-width: 1000px; margin: 0 auto; padding: 60px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        @media(max-width: 768px) { .config-container { grid-template-columns: 1fr; } }
-        .config-gallery img { width: 100%; border-radius: 8px; background: var(--bg-secondary); }
-        .tech-spec-badge-box { background: var(--bg-secondary); padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid var(--border-color); }
-        .tech-spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; }
-        .config-details h2 { font-size: 36px; font-weight: 700; }
-        .config-price { font-size: 24px; margin: 10px 0 30px; color: var(--accent-orange); }
-        .config-group { margin-bottom: 30px; }
-        
-        .selection-box { border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; display: flex; justify-content: space-between; margin-bottom: 10px; cursor: pointer; background: transparent; transition: border-color 0.3s ease, background 0.3s ease; }
-        .selection-box.active { border-color: var(--accent-orange); background: rgba(255,123,0,0.05); }
-        
-        .action-submit-btn { width: 100%; padding: 16px; background: var(--text-primary); color: var(--bg-primary); border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s ease, color 0.3s ease; }
-        .action-submit-btn:hover { background: var(--accent-orange); color: #ffffff; }
-        
-        .text-layout-panel { max-width: 800px; margin: 0 auto; padding: 60px 22px; }
-        .text-layout-panel h2 { font-size: 36px; margin-bottom: 20px; }
-        .job-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 15px; transition: transform 0.3s ease; }
-        .job-card:hover { transform: translateY(-2px); border-color: #555; }
-        
-        footer { background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 30px 0; font-size: 12px; color: var(--text-secondary); }
-        .footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-        .footer-links { display: flex; gap: 20px; }
-        .footer-links a, .footer-links span { color: var(--text-secondary); text-decoration: none; cursor: pointer; }
-        .footer-links a:hover, .footer-links span:hover { color: var(--text-primary); }
+
+        /* Sections */
+        .section {
+            padding: 100px 8%;
+        }
+
+        .section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-subhead {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 50px;
+            max-width: 600px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #ff7b00;
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* Product Carousel */
+        .carousel {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scrollbar-width: thin;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .carousel::-webkit-scrollbar-track {
+            background: #222;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: #ff7b00;
+            border-radius: 4px;
+        }
+
+        .product-card {
+            min-width: 280px;
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 40px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            border-color: #ff7b00;
+            transform: scale(1.02);
+        }
+
+        .product-card h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .product-card p {
+            color: #ff7b00;
+            font-weight: 600;
+        }
+
+        /* Configurator (from your original) */
+        .config-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 22px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .config-gallery img {
+            width: 100%;
+            border-radius: 24px;
+            background: #0a0a0a;
+        }
+
+        .tech-spec-box {
+            background: #0a0a0a;
+            padding: 24px;
+            border-radius: 20px;
+            margin-top: 24px;
+            border: 1px solid #222;
+        }
+
+        .tech-spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .config-details h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .config-price {
+            font-size: 32px;
+            color: #ff7b00;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .option-selector {
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .option-selector.active {
+            border-color: #ff7b00;
+            background: rgba(255, 123, 0, 0.05);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #ff7b00;
+            color: white;
+        }
+
+        /* Careers Section */
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .profile-name {
+            font-size: 80px;
+            font-weight: 700;
+            letter-spacing: -3px;
+        }
+
+        .profile-title {
+            font-size: 20px;
+            color: #ff7b00;
+            margin: 16px 0 24px;
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            padding: 60px 8% 30px;
+            border-top: 1px solid #111;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-grid h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .footer-grid a {
+            display: block;
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-grid a:hover {
+            color: #ff7b00;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #111;
+            color: #555;
+            font-size: 12px;
+        }
+
+        /* Utility */
+        .hidden { display: none; }
+        .active-section { display: block; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 12px 20px; }
+            .nav-right { gap: 16px; }
+            .hero-overlay h1 { font-size: 42px; }
+            .hero-overlay p { font-size: 16px; }
+            .section h2 { font-size: 32px; }
+            .profile-name { font-size: 48px; }
+            .profile-section { grid-template-columns: 1fr; gap: 30px; }
+            .config-container { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="nav-logo-group" onclick="resetToHomeAndScrollTop()">
-                <img src="clevis-logo.png" alt="Clevis Logo" class="nav-logo-img" onerror="this.style.display='none'">
-                <span class="nav-logo-text">Clevis Corporation</span>
+    <header class="navbar">
+        <div class="nav-left" onclick="resetToHome()">
+            <img src="clevis-logo.png" alt="Clevis" class="nav-logo" onerror="this.style.display='none'">
+            <span class="brand">Clevis</span>
+        </div>
+        <div class="nav-right">
+            <div class="dropdown">
+                <button class="dropbtn">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="openConfigurator('clevisphone')">ClevisPhone</a>
+                    <a href="#" onclick="openConfigurator('lucasphone')">LucasPhone Mini</a>
+                    <a href="#" onclick="openConfigurator('clevisbook')">ClevisBook</a>
+                    <a href="#" onclick="openConfigurator('clevispad')">ClevisPad</a>
+                    <a href="#" onclick="openConfigurator('clevisvision')">Clevis Vision</a>
+                </div>
             </div>
-            <ul class="nav-links">
-                <li class="nav-item">Hardware
-                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
-                        <li onclick="openConfigurator('clevisphone')">ClevisPhone</li>
-                        <li onclick="openConfigurator('lucasphone')">LucasPhone Mini</li>
-                        <li onclick="openConfigurator('clevisbook')">ClevisBook</li>
-                        <li onclick="openConfigurator('clevispad')">ClevisPad</li>
-                        <li onclick="openConfigurator('clevisvision')">Clevis Vision</li>
-                    </ul></div></div></div>
-                </li>
-                <li class="nav-item">Games
-                    <div class="dropdown-panel"><div class="dropdown-content"><div class="dropdown-col"><ul>
-                        <li onclick="openConfigurator('angryarabs')">Angry Arabs</li>
-                        <li onclick="openConfigurator('circleblast')">Circle Blast</li>
-                        <li onclick="openConfigurator('calebsim')">Caleb's Eating Sim</li>
-                    </ul></div></div></div>
-                </li>
-                <li class="nav-item" onclick="switchToPanel('careers')">Careers</li>
-                <li class="nav-item" onclick="switchToPanel('legal')">Legal</li>
-            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Software</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="openConfigurator('angryarabs')">Angry Arabs</a>
+                    <a href="#" onclick="openConfigurator('circleblast')">Circle Blast</a>
+                    <a href="#" onclick="openConfigurator('calebsim')">Caleb's Eating Sim</a>
+                </div>
+            </div>
+            <a href="#" onclick="switchToPage('ecosystem')">Ecosystem</a>
+            <a href="#" onclick="switchToPage('campus')">AI Campus</a>
+            <a href="#" onclick="switchToPage('careers')">Careers</a>
         </div>
     </header>
 
     <main>
-        <div id="panel-home" class="view-section active">
-            <section class="home-welcome-hero"><h1>HI</h1><h2>Welcome to the Clevis Ecosystem</h2><p>by Chase McDillan</p></section>
-            
-            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1000');">
-                <h2>ClevisPhone</h2><p>Engineered with premium computational display architectures.</p>
-                <span class="strip-cta" onclick="openConfigurator('clevisphone')">Explore ClevisPhone Architecture &gt;</span>
-            </section>
+        <!-- Hero Section -->
+        <section id="hero-section" class="hero active-section">
+            <img src="GPTimage.png" alt="Clevis AI Campus" class="hero-image" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000'">
+            <div class="hero-overlay">
+                <img src="clevis-logo.png" alt="Clevis" class="hero-logo" onerror="this.style.display='none'">
+                <h1>The Future is Built by Clevis</h1>
+                <p>Hardware. Software. Entertainment. Artificial Intelligence. One connected ecosystem, designed in Calgary.</p>
+                <a href="#" class="hero-button" onclick="switchToPage('ecosystem')">Explore Ecosystem →</a>
+            </div>
+        </section>
 
-            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=1000');">
-                <h2>LucasPhone Mini</h2><p>Compact layouts packing advanced execution silicon matrices.</p>
-                <span class="strip-cta" onclick="openConfigurator('lucasphone')">Explore LucasPhone Framework &gt;</span>
-            </section>
-
-            <section class="home-strip-section" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000');">
-                <h2>ClevisBook Pro</h2><p>Uncapped desktop pipelines packed inside a forged aluminum framework.</p>
-                <span class="strip-cta" onclick="openConfigurator('clevisbook')">Explore Compute Line &gt;</span>
-            </section>
-
-            <div class="home-product-matrix">
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600');">
-                    <h3>ClevisPad Studio</h3><p>High-refresh canvases optimized for visual telemetry routing workflows.</p>
-                    <span class="strip-cta" onclick="openConfigurator('clevispad')">Explore Displays &gt;</span>
+        <!-- Ecosystem Section -->
+        <section id="ecosystem-section" class="section hidden">
+            <h2>The Clevis Ecosystem</h2>
+            <p class="section-subhead">Seamlessly integrated experiences across hardware, software, and AI.</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>⚡ Hardware</h3>
+                    <p>Phones, laptops, tablets, and next-gen spatial computing.</p>
                 </div>
-                <div class="matrix-card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600');">
-                    <h3>Clevis Vision Spatial</h3><p>Unmatched volumetric spatial telemetry computing nodes.</p>
-                    <span class="strip-cta" onclick="openConfigurator('clevisvision')">Explore Spatial Gear &gt;</span>
+                <div class="card">
+                    <h3>🎮 Software</h3>
+                    <p>Entertainment, productivity, and creative tools.</p>
+                </div>
+                <div class="card">
+                    <h3>🌾 FarmerPlus</h3>
+                    <p>Membership platform connecting every Clevis experience.</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 AI</h3>
+                    <p>Intelligent systems powering the future of computing.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="panel-buy" class="view-section">
-            <div id="discovery-sub-view" style="max-width:800px; margin:0 auto; padding:60px 22px;">
-                <h1 id="disc-brand-title" style="font-size:48px; font-weight:700; margin-bottom:10px;"></h1>
-                <p id="disc-brand-desc" style="color:var(--text-secondary); font-size:18px; margin-bottom:40px;"></p>
-                <h3 style="font-size:14px; text-transform:uppercase; color:var(--text-secondary); margin-bottom:15px; letter-spacing:1px;">Select Variant Base</h3>
-                <div id="disc-model-list" style="display:flex; flex-direction:column; gap:12px; margin-bottom:40px;"></div>
+        <!-- AI Campus Section -->
+        <section id="campus-section" class="section hidden">
+            <h2>AI-Clevis Campus</h2>
+            <p class="section-subhead">A future-focused innovation campus bringing together hardware, software, entertainment, and artificial intelligence.</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>🏗️ R&D Center</h3>
+                    <p>Cutting-edge research in AI and silicon design.</p>
+                </div>
+                <div class="card">
+                    <h3>🎬 Content Studio</h3>
+                    <p>Creating immersive entertainment experiences.</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 Community Hub</h3>
+                    <p>Where developers and creators collaborate.</p>
+                </div>
             </div>
-            
-            <div id="apple-purchase-view" style="display:none;" class="config-container">
+        </section>
+
+        <!-- Products Carousel -->
+        <section id="products-section" class="section hidden">
+            <h2>Featured Products</h2>
+            <p class="section-subhead">Discover the latest from Clevis.</p>
+            <div class="carousel">
+                <div class="product-card" onclick="openConfigurator('clevisphone')">
+                    <h4>ClevisPhone Elite</h4>
+                    <p>From $1199</p>
+                </div>
+                <div class="product-card" onclick="openConfigurator('clevisbook')">
+                    <h4>ClevisBook Pro</h4>
+                    <p>From $1499</p>
+                </div>
+                <div class="product-card" onclick="openConfigurator('clevisvision')">
+                    <h4>Clevis Vision</h4>
+                    <p>From $1999</p>
+                </div>
+                <div class="product-card" onclick="openConfigurator('clevispad')">
+                    <h4>ClevisPad</h4>
+                    <p>From $899</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configurator Panel -->
+        <section id="configurator-section" class="hidden">
+            <div id="discovery-view" style="max-width: 800px; margin: 0 auto; padding: 80px 22px;">
+                <h1 id="config-title" style="font-size: 48px; margin-bottom: 16px;"></h1>
+                <p id="config-desc" style="color: #888; font-size: 18px; margin-bottom: 40px;"></p>
+                <div id="model-list"></div>
+                <button class="btn-primary" style="margin-top: 20px; background: #222; color: white;" onclick="backToProducts()">← Back to Products</button>
+            </div>
+            <div id="purchase-view" style="display: none;" class="config-container">
                 <div class="config-gallery">
-                    <img id="cfg-img" src="" alt="Premium Device Display" style="transition:transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);">
-                    <div class="tech-spec-badge-box">
+                    <img id="product-img" src="">
+                    <div class="tech-spec-box">
                         <div class="tech-spec-grid">
-                            <div><b id="spec-cpu"></b><br><span style="color:var(--text-secondary)">Compute Node</span></div>
-                            <div><b id="spec-bw"></b><br><span style="color:var(--text-secondary)">Telemetry Bus</span></div>
+                            <div><strong id="spec-cpu"></strong><br><span style="color:#888">Processor</span></div>
+                            <div><strong id="spec-bus"></strong><br><span style="color:#888">Bandwidth</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="config-details">
-                    <span style="font-size:12px; font-weight:600; text-transform:uppercase; color:var(--accent-orange); letter-spacing:1px;">Configure Premium Finish</span>
-                    <h2 id="cfg-title" style="margin:5px 0 15px;">Product Matrix</h2>
-                    
-                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:16px; border-radius:8px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center;">
+                    <h2 id="product-name"></h2>
+                    <div class="config-price" id="product-price">$0</div>
+                    <div id="finish-options"></div>
+                    <div style="margin: 20px 0; padding: 16px; background: #0a0a0a; border-radius: 16px; display: flex; justify-content: space-between;">
                         <div>
-                            <h4 style="font-size:14px;">FarmerPlus Subscription Matrix</h4>
-                            <p style="font-size:12px; color:var(--text-secondary);">Apply global 10% architectural member discount.</p>
+                            <strong>FarmerPlus</strong>
+                            <p style="font-size: 12px; color: #888;">10% member discount</p>
                         </div>
-                        <input type="checkbox" id="farmer-plus-toggle" style="width:20px; height:20px; accent-color:var(--accent-orange); cursor:pointer;" onchange="toggleFarmerPlusMatrix()">
+                        <input type="checkbox" id="discount-toggle" onchange="updatePrice()">
                     </div>
-
-                    <div class="config-group">
-                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Select Style Matrix Option</label>
-                        <div id="apple-color-swatches" style="display:flex; flex-direction:column; gap:10px;"></div>
-                    </div>
-                    <div class="config-group">
-                        <label style="font-size:12px; color:var(--text-secondary); display:block; margin-bottom:8px;">Memory Substrate Tiers</label>
-                        <div class="selection-box active"><div><h4>Unified Runtime Matrix Profile</h4></div><div>Included</div></div>
-                    </div>
-                    <div class="config-price" id="cfg-price" style="font-size:32px; font-weight:700; color:#fff; margin-bottom:20px;">$0.00</div>
-                    <button class="action-submit-btn" onclick="triggerCheckoutLog()">Queue to Build Matrix</button>
-                    <button class="strip-cta" style="background:none; border:none; margin-top:20px; display:block;" onclick="backToDiscoveryView()"> &lt; Back to System Variants</button>
+                    <button class="btn-primary" onclick="checkout()">Configure & Build →</button>
+                    <button style="margin-top: 16px; background: none; border: none; color: #888; cursor: pointer;" onclick="backToDiscovery()">← Back to models</button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="panel-careers" class="view-section">
-            <div class="home-welcome-hero" style="height:100vh; margin-top:-48px;">
-                <h1 style="font-size:120px; font-weight:700; letter-spacing:-5px;">Hello</h1>
-                <h2 style="font-size:32px; font-weight:400; color:var(--text-secondary);">I am Caleb Leung</h2>
-                <p style="font-size:14px; color:var(--accent-orange); text-transform:uppercase; letter-spacing:2px; margin-top:15px;">Photographer & Tech Designer Matrix</p>
-            </div>
-            <div style="max-width:800px; margin:0 auto; padding:100px 22px; border-top:1px solid var(--border-color);">
-                <h2 style="font-size:48px; font-weight:700; margin-bottom:30px;">Structuring Visual Substrates</h2>
-                <p style="font-size:18px; line-height:1.6; color:var(--text-secondary); margin-bottom:40px;">
-                    Operating at the interface of hardware architecture design and high-frequency light capture telemetry loops. My profile targets the removal of clutter inside modern user configurations, implementing deep minimalist system paths.
-                </p>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:60px;">
-                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
-                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Aperture Engineering</h4>
-                        <p style="font-size:13px; color:var(--text-secondary)">High-contrast dynamic exposure monitoring vectors.</p>
-                    </div>
-                    <div style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:24px; border-radius:8px;">
-                        <h4 style="font-size:14px; text-transform:uppercase; color:var(--accent-orange); margin-bottom:5px;">Interface Substrates</h4>
-                        <p style="font-size:13px; color:var(--text-secondary)">Minimal code-footprint user response frameworks.</p>
-                    </div>
+        <!-- Careers Section -->
+        <section id="careers-section" class="section hidden">
+            <div class="profile-section">
+                <div>
+                    <div class="profile-name">Caleb Leung</div>
+                    <div class="profile-title">Photographer & Tech Designer</div>
+                    <p style="color: #aaa; line-height: 1.6;">Operating at the interface of hardware architecture design and high-frequency light capture. Implementing deep minimalist system paths.</p>
+                    <button class="btn-primary" style="margin-top: 30px; background: #ff7b00; color: white;" onclick="window.open('https://calebleung52.github.io', '_blank')">View Portfolio →</button>
                 </div>
-                <button class="action-submit-btn" onclick="window.open('https://calebleung52.github.io', '_blank')" style="background:#fff; color:#000;">Learn More</button>
+                <div style="background: linear-gradient(135deg, #ff7b00 0%, #ffaa00 100%); border-radius: 30px; min-height: 400px; display: flex; align-items: center; justify-content: center; font-size: 100px;">📷</div>
             </div>
-        </div>
-
-        <div id="view-legal" class="view-section text-layout-panel">
-            <h2>Legal Framework</h2>
-            <p>All component processing options and device configurations are subject to systemic updates managed by Chase McDillan.</p>
-        </div>
+        </section>
     </main>
 
     <footer>
-        <div class="footer-inner">
-            <div>&copy; 2026 Clevis Corporation.</div>
-            <div class="footer-links">
-                <a href="https://calebleung52.github.io" target="_blank">Meet Us</a>
-                <span onclick="switchToPanel('legal')">Data Terms</span>
+        <div class="footer-grid">
+            <div>
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#" onclick="switchToPage('careers')">Careers</a>
+                <a href="#">Newsroom</a>
             </div>
+            <div>
+                <h4>Products</h4>
+                <a href="#" onclick="openConfigurator('clevisphone')">Hardware</a>
+                <a href="#" onclick="openConfigurator('angryarabs')">Software</a>
+                <a href="#">FarmerPlus</a>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <a href="#">Support</a>
+                <a href="#">Developer</a>
+                <a href="#">Documentation</a>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Copyright</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Clevis Corporation — The Future is Built by Clevis
         </div>
     </footer>
 
     <script>
-        const db = {
-            clevisphone: { title: "ClevisPhone Series", desc: "Our hallmark computational communication matrices.", models: [
-                { name: "ClevisPhone Elite 4", price: 1199, specs: { cpu: "E14 Architecture", telemetry: "950 Mbps" }, finishes: [{ name: "Space Graphite", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }, { name: "Satin Gold", p: 50, img: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?auto=format&fit=crop&q=80&w=600" }] },
-                { name: "ClevisPhone Aura 4", price: 999, specs: { cpu: "Aura Silicon v4", telemetry: "850 Mbps" }, finishes: [{ name: "Aurora Blue", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
-                { name: "ClevisPhone Pure 2", price: 799, specs: { cpu: "Pure Node Gen2", telemetry: "700 Mbps" }, finishes: [{ name: "Ceramic Silver", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" }] },
-                { name: "Nebula A2 Flagship", price: 1299, specs: { cpu: "Nebula Quantum Core", telemetry: "1.2 Gbps" }, finishes: [{ name: "Cosmic Obsidian", p: 0, img: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?auto=format&fit=crop&q=80&w=600" }] }
+        // Product Database
+        const products = {
+            clevisphone: { title: "ClevisPhone", desc: "Our hallmark computational communication matrices.", models: [
+                { name: "ClevisPhone Elite", price: 1199, specs: { cpu: "E14 Chip", bus: "950 Mbps" }, finishes: [{ name: "Space Graphite", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" }] },
+                { name: "ClevisPhone Aura", price: 999, specs: { cpu: "Aura v4", bus: "850 Mbps" }, finishes: [{ name: "Aurora Blue", p: 0, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" }] }
             ]},
-            lucasphone: { title: "LucasPhone Mini", desc: "Ultra-compact performance frameworks.", models: [
-                { name: "LucasPhone Mini", price: 699, specs: { cpu: "L1 Mini Core", telemetry: "500 Mbps" }, finishes: [{ name: "Matte Black", p: 0, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?auto=format&fit=crop&q=80&w=600" }, { name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1565630916779-e303be97b6f5?auto=format&fit=crop&q=80&w=600" }] }
+            clevisbook: { title: "ClevisBook", desc: "Desktop power in a portable frame.", models: [
+                { name: "ClevisBook Pro", price: 2499, specs: { cpu: "M1 Colossus", bus: "9.6 Gbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600" }] }
             ]},
-            clevisbook: { title: "ClevisBook Frameworks", desc: "Desktop processing pipelines packed inside a forged design matrix.", models: [
-                { name: "ClevisBook Nano 2", price: 1499, specs: { cpu: "N2 Efficient Node", telemetry: "2.4 Gbps" }, finishes: [{ name: "Stellar Silver", p: 0, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] },
-                { name: "ClevisBook Mega 1", price: 2499, specs: { cpu: "M1 Colossus Engine", telemetry: "9.6 Gbps" }, finishes: [{ name: "Deep Charcoal", p: 150, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600" }] }
+            clevisvision: { title: "Clevis Vision", desc: "Spatial computing redefined.", models: [
+                { name: "Clevis Vision Pro", price: 3499, specs: { cpu: "Dual Spatial", bus: "48 GB/s" }, finishes: [{ name: "Titanium", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=600" }] }
             ]},
-            clevispad: { title: "ClevisPad Matrix", desc: "High-refresh mobile canvases optimized for system design.", models: [
-                { name: "ClevisPad Thin", price: 899, specs: { cpu: "T1 Engine", telemetry: "600 Mbps" }, finishes: [{ name: "Anodized Slate", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
-                { name: "ClevisPad 2", price: 1099, specs: { cpu: "Pro Core Gen2", telemetry: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] },
-                { name: "LucasPad Mini", price: 599, specs: { cpu: "L-Silicon Pad Node", telemetry: "400 Mbps" }, finishes: [{ name: "Alabaster White", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600" }] }
+            clevispad: { title: "ClevisPad", desc: "Your next creative canvas.", models: [
+                { name: "ClevisPad Pro", price: 1099, specs: { cpu: "Pro Core", bus: "800 Mbps" }, finishes: [{ name: "Space Gray", p: 0, img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600" }] }
             ]},
-            clevisvision: { title: "Clevis Vision Ecosystem", desc: "Spatial telemetry matrices mapping real-world display metrics.", models: [
-                { name: "Clevis Vision Pro", price: 3499, specs: { cpu: "Dual Spatial Node", telemetry: "48 GB/s Bus" }, finishes: [{ name: "Solo Knit Band Titanium", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] },
-                { name: "Clevis Vision", price: 1999, specs: { cpu: "Standard Spatial Core", telemetry: "24 GB/s Bus" }, finishes: [{ name: "Lightweight Charcoal", p: 0, img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=600" }] }
-            ]},
-            angryarabs: { title: "Angry Arabs", desc: "Clevis Studios simulation engine distribution build.", models: [
-                { name: "Standard Simulation Engine", price: 4.99, specs: { cpu: "Vector Matrix", telemetry: "Active Logs" }, finishes: [{ name: "Digital Build Profile", p: 0, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=500" }] }
-            ]},
-            circleblast: { title: "Circle Blast", desc: "High-refresh layout rendering engine loops.", models: [
-                { name: "Standard Runtime Build", price: 2.99, specs: { cpu: "Geometry Core", telemetry: "120Hz Loop" }, finishes: [{ name: "Standard Matrix Pack", p: 0, img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=500" }] }
-            ]},
-            calebsim: { title: "Caleb's Eating Sim", desc: "Ultra-minimal tracking logic engine setup.", models: [
-                { name: "Standard Simulator Distribution", price: 1.99, specs: { cpu: "Iteration Loop", telemetry: "Sync Active" }, finishes: [{ name: "Core Setup Profile", p: 0, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=500" }] }
-            ]}
+            angryarabs: { title: "Angry Arabs", desc: "Strategic simulation.", models: [{ name: "Standard", price: 4.99, specs: { cpu: "Vector", bus: "Active" }, finishes: [{ name: "Digital", p: 0, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500" }] }] },
+            circleblast: { title: "Circle Blast", desc: "Arcade action.", models: [{ name: "Standard", price: 2.99, specs: { cpu: "Geometry", bus: "120Hz" }, finishes: [{ name: "Standard", p: 0, img: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=500" }] }] },
+            calebsim: { title: "Caleb's Eating Sim", desc: "The ultimate food adventure.", models: [{ name: "Standard", price: 1.99, specs: { cpu: "Loop", bus: "Sync" }, finishes: [{ name: "Core", p: 0, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500" }] }] },
+            lucasphone: { title: "LucasPhone Mini", desc: "Big power, small size.", models: [{ name: "LucasPhone Mini", price: 699, specs: { cpu: "L1 Core", bus: "500 Mbps" }, finishes: [{ name: "Matte Black", p: 0, img: "https://images.unsplash.com/photo-1592417817098-8f3d6eb18865?w=600" }] }] }
         };
 
-        let currentModelArray = [];
-        let chosenModelIdx = 0;
-        let finishIdx = 0;
-        let isFarmerPlusApplied = false;
+        let currentProduct = null;
+        let currentModelIdx = 0;
+        let currentFinishIdx = 0;
+        let discountActive = false;
+
+        function switchToPage(page) {
+            document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+            if (page === 'hero') document.getElementById('hero-section').classList.remove('hidden');
+            else if (page === 'ecosystem') document.getElementById('ecosystem-section').classList.remove('hidden');
+            else if (page === 'campus') document.getElementById('campus-section').classList.remove('hidden');
+            else if (page === 'careers') document.getElementById('careers-section').classList.remove('hidden');
+            else if (page === 'products') document.getElementById('products-section').classList.remove('hidden');
+            
+            if (page !== 'configurator') {
+                document.getElementById('configurator-section').classList.add('hidden');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function resetToHome() {
+            switchToPage('hero');
+        }
 
         function openConfigurator(key) {
-            switchToPanel('buy');
-            const dataRoot = db[key] || { title: key.toUpperCase(), desc: "Custom configuration deployment.", models: [] };
-            document.getElementById('disc-brand-title').innerText = dataRoot.title;
-            document.getElementById('disc-brand-desc').innerText = dataRoot.desc;
+            currentProduct = products[key];
+            if (!currentProduct) return;
             
-            backToDiscoveryView();
-            currentModelArray = dataRoot.models;
+            document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+            document.getElementById('configurator-section').classList.remove('hidden');
             
-            const listContainer = document.getElementById('disc-model-list');
-            listContainer.innerHTML = '';
+            document.getElementById('config-title').innerText = currentProduct.title;
+            document.getElementById('config-desc').innerText = currentProduct.desc;
             
-            currentModelArray.forEach((model, index) => {
+            const listDiv = document.getElementById('model-list');
+            listDiv.innerHTML = '';
+            
+            currentProduct.models.forEach((model, idx) => {
                 const card = document.createElement('div');
-                card.className = 'job-card';
-                card.style.cssText = 'cursor:pointer; display:flex; justify-content:space-between; align-items:center;';
-                card.innerHTML = '<div><h4 style="font-size:18px;">' + model.name + '</h4><p style="font-size:12px; color:var(--text-secondary)">Base Platform Profile</p></div><div style="font-size:18px; font-weight:600; color:var(--accent-orange);">$' + model.price + '</div>';
-                card.onclick = (function(idx) { return function() { launchApplePurchaseInterface(idx); }; })(index);
-                listContainer.appendChild(card);
+                card.className = 'option-selector';
+                card.innerHTML = `<div><strong>${model.name}</strong><p style="font-size:12px;color:#888">Base Model</p></div><div style="color:#ff7b00">$${model.price}</div>`;
+                card.onclick = () => showPurchase(idx);
+                listDiv.appendChild(card);
             });
+            
+            document.getElementById('discovery-view').style.display = 'block';
+            document.getElementById('purchase-view').style.display = 'none';
         }
 
-        function launchApplePurchaseInterface(modelIdx) {
-            chosenModelIdx = modelIdx;
-            finishIdx = 0;
-            document.getElementById('discovery-sub-view').style.display = 'none';
-            document.getElementById('apple-purchase-view').style.display = 'grid';
+        function showPurchase(modelIdx) {
+            currentModelIdx = modelIdx;
+            currentFinishIdx = 0;
+            const model = currentProduct.models[modelIdx];
             
-            const item = currentModelArray[modelIdx];
-            document.getElementById('cfg-title').innerText = item.name;
-            document.getElementById('spec-cpu').innerText = item.specs.cpu;
-            document.getElementById('spec-bw').innerText = item.specs.telemetry;
+            document.getElementById('discovery-view').style.display = 'none';
+            document.getElementById('purchase-view').style.display = 'grid';
             
-            const swatchBox = document.getElementById('apple-color-swatches');
-            swatchBox.innerHTML = '';
-            item.finishes.forEach((fin, idx) => {
+            document.getElementById('product-name').innerText = model.name;
+            document.getElementById('spec-cpu').innerText = model.specs.cpu;
+            document.getElementById('spec-bus').innerText = model.specs.bus;
+            
+            const finishDiv = document.getElementById('finish-options');
+            finishDiv.innerHTML = '<h4 style="margin-bottom:12px">Finishes</h4>';
+            model.finishes.forEach((finish, idx) => {
                 const opt = document.createElement('div');
-                opt.className = idx === 0 ? 'selection-box active' : 'selection-box';
-                opt.id = 'apple-fin-' + idx;
-                opt.innerHTML = '<div><h4>' + fin.name + '</h4></div><div>' + (fin.p === 0 ? 'Standard' : '+$' + fin.p) + '</div>';
-                opt.onclick = (function(i) { return function() { selectAppleColorTrack(i); }; })(idx);
-                swatchBox.appendChild(opt);
+                opt.className = idx === 0 ? 'option-selector active' : 'option-selector';
+                opt.innerHTML = `<div>${finish.name}</div><div>${finish.p === 0 ? 'Included' : '+$' + finish.p}</div>`;
+                opt.onclick = () => {
+                    currentFinishIdx = idx;
+                    updatePrice();
+                    document.querySelectorAll('#finish-options .option-selector').forEach(el => el.classList.remove('active'));
+                    opt.classList.add('active');
+                    document.getElementById('product-img').src = finish.img;
+                };
+                finishDiv.appendChild(opt);
             });
             
-            updateAppleMediaLayout();
+            document.getElementById('product-img').src = model.finishes[0].img;
+            updatePrice();
         }
 
-        function selectAppleColorTrack(idx) {
-            finishIdx = idx;
-            currentModelArray[chosenModelIdx].finishes.forEach((_, i) => {
-                const element = document.getElementById('apple-fin-' + i);
-                if(element) {
-                    if(i === idx) {
-                        element.classList.add('active');
-                    } else {
-                        element.classList.remove('active');
-                    }
-                }
-            });
-            updateAppleMediaLayout();
+        function updatePrice() {
+            const model = currentProduct.models[currentModelIdx];
+            const finish = model.finishes[currentFinishIdx];
+            let price = model.price + finish.p;
+            if (document.getElementById('discount-toggle').checked) price *= 0.9;
+            document.getElementById('product-price').innerText = '$' + (price < 100 ? price.toFixed(2) : Math.floor(price).toLocaleString());
         }
 
-        function updateAppleMediaLayout() {
-            const item = currentModelArray[chosenModelIdx];
-            const activeFinishObj = item.finishes[finishIdx];
-            const imgElement = document.getElementById('cfg-img');
-            imgElement.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                imgElement.src = activeFinishObj.img;
-                imgElement.style.transform = 'scale(1)';
-            }, 200);
-            
-            let finalPrice = item.price + activeFinishObj.p;
-            if (isFarmerPlusApplied) finalPrice *= 0.90;
-            
-            document.getElementById('cfg-price').innerText = item.price < 15 ? '$' + finalPrice.toFixed(2) : '$' + Math.floor(finalPrice).toLocaleString();
+        function backToDiscovery() {
+            document.getElementById('discovery-view').style.display = 'block';
+            document.getElementById('purchase-view').style.display = 'none';
         }
 
-        function toggleFarmerPlusMatrix() {
-            isFarmerPlusApplied = document.getElementById('farmer-plus-toggle').checked;
-            updateAppleMediaLayout();
+        function backToProducts() {
+            switchToPage('products');
         }
 
-        function backToDiscoveryView() {
-            document.getElementById('discovery-sub-view').style.display = 'block';
-            document.getElementById('apple-purchase-view').style.display = 'none';
-            document.getElementById('farmer-plus-toggle').checked = false;
-            isFarmerPlusApplied = false;
-        }
-
-        function switchToPanel(id) {
-            document.querySelectorAll('.view-section').forEach(function(p) { p.classList.remove('active'); });
-            document.getElementById(id === 'legal' ? 'view-legal' : 'panel-' + id).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
-        function resetToHomeAndScrollTop() {
-            document.querySelectorAll('.view-section').forEach(function(p) { p.classList.remove('active'); });
-            document.getElementById('panel-home').classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
-        function triggerCheckoutLog() {
-            alert('Configuration complete for ' + currentModelArray[chosenModelIdx].name + '. Pipeline successfully queued into building matrix.');
+        function checkout() {
+            const model = currentProduct.models[currentModelIdx];
+            alert(`✅ ${model.name} configured!\n\nYour device has been queued for manufacturing.`);
         }
     </script>
 </body>
